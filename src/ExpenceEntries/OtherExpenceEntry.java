@@ -1,6 +1,6 @@
 package ExpenceEntries;
 
-import java.util.Date;
+import java.util.Calendar;
 import HelperTypes.ExpenceEntryType;
 
 /**
@@ -11,23 +11,25 @@ public class OtherExpenceEntry extends ExpenceEntry {
     protected Double moneySpent;
     protected Integer importance;
     protected String comment;
-    protected Date time;
-    protected Date date;
+    protected Calendar time;
+    protected Calendar Calendar;
     protected ExpenceEntryType entryType;
 
     public OtherExpenceEntry(Double moneySpent, Integer importance, String comment) {
         this.moneySpent = moneySpent;
         this.importance = importance;
         this.comment = comment;
+        this.entryType = ExpenceEntryType.OTHER;
     }
 
     public OtherExpenceEntry(Double moneySpent, Integer importance,
-                             String comment, Date time, Date date, ExpenceEntryType entryType) {
+                             String comment, Calendar time, Calendar Calendar, ExpenceEntryType entryType) {
+        this.entryType = ExpenceEntryType.OTHER;
         this.moneySpent = moneySpent;
         this.importance = importance;
         this.comment = comment;
         this.time = time;
-        this.date = date;
+        this.Calendar = Calendar;
         this.entryType = entryType;
     }
 
@@ -62,23 +64,23 @@ public class OtherExpenceEntry extends ExpenceEntry {
     }
 
     @Override
-    public Date getTime() {
+    public Calendar getTime() {
         return time;
     }
 
     @Override
-    public void setTime(Date time) {
+    public void setTime(Calendar time) {
         this.time = time;
     }
 
     @Override
-    public Date getDate() {
-        return date;
+    public Calendar getCalendar() {
+        return Calendar;
     }
 
     @Override
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCalendar(Calendar Calendar) {
+        this.Calendar = Calendar;
     }
 
     @Override

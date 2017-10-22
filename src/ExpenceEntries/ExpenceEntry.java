@@ -1,6 +1,6 @@
 package ExpenceEntries;
 
-import java.util.Date;
+import java.util.Calendar;
 import HelperTypes.ExpenceEntryType;
 
 /**
@@ -13,8 +13,8 @@ import HelperTypes.ExpenceEntryType;
         moneySpent: Double,
         importance: Integer,
         comment: String,
-        time: Date,
-        date: Date,
+        time: Calendar,
+        Calendar: Calendar,
         entryType: ExpenceEntryType
     }
  */
@@ -31,12 +31,12 @@ abstract public class ExpenceEntry {
     abstract String getComment();
     abstract void setComment(String comment);
 
-    //should search for time and date implementations in java
-    abstract Date getTime();
-    abstract void setTime(Date time);
+    //should search for time and Calendar implementations in java
+    abstract Calendar getTime();
+    abstract void setTime(Calendar time);
 
-    abstract Date getDate();
-    abstract void setDate(Date date);
+    abstract Calendar getCalendar();
+    abstract void setCalendar(Calendar Calendar);
 
     //should
     abstract ExpenceEntryType getEntryType();
