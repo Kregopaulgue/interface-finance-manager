@@ -11,10 +11,32 @@ import java.util.LinkedList;
 /**
  * Created by Master on 20.10.2017.
  */
+
+/*
+
+    TotalDayEntries
+    {
+        LinkedList<OtherExpenceEntry>: simpleEntries,
+        LinkedList<CombinedExpenceEntry>: combinedEntries,
+
+        Calendar dayDate,
+
+        Integer: simpleEntriesAmount,
+        Integer: combinedEntriesAmount,
+
+        Double: allMoneySpent,
+        Double: allMoneySpentSimpleEntries,
+        Double: allMoneySpentCombinedEntries,
+
+        Double: wishedMoneyLimit
+    }
+
+ */
+
 public class TotalDayEntries implements GeneralTotalEntryOperations{
 
-    private LinkedList<OtherExpenceEntry> simpleEntries;
-    private LinkedList<CombinedOtherExpenceEntry> combinedEntries;
+    private LinkedList<OtherExpenceEntry> simpleEntries = new LinkedList<OtherExpenceEntry>();
+    private LinkedList<CombinedOtherExpenceEntry> combinedEntries = new LinkedList<CombinedOtherExpenceEntry>();
     private Calendar dayDate;
 
     private Integer simpleEntriesAmount;
@@ -25,6 +47,8 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
     private Double allMoneySpentCombinedEntries;
 
     private Double wishedMoneyLimit;
+
+    public TotalDayEntries() {}
 
     public TotalDayEntries(LinkedList<OtherExpenceEntry> simpleEntries,
                            LinkedList<CombinedOtherExpenceEntry> combinedEntries) {

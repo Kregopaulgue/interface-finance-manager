@@ -73,44 +73,44 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     @Override
     public LinkedList<OtherExpenceEntry> getSimpleEntries() {
-        LinkedList<OtherExpenceEntry> weekSimpleEntries = new LinkedList<OtherExpenceEntry>();
-        for(int i = 0; i < this.allDayEntriesInWeek.size(); i++) {
-            weekSimpleEntries.addAll(this.allDayEntriesInWeek.get(i).getSimpleEntries());
-        }
-        return simpleEntries;
+        this.setSimpleEntries();
+        return this.simpleEntries;
     }
 
-    public void setSimpleEntries(LinkedList<OtherExpenceEntry> simpleEntries) {
-        this.simpleEntries = simpleEntries;
+    public void setSimpleEntries() {
+        for(TotalDayEntries tempDay : this.allDayEntriesInWeek) {
+            this.simpleEntries.addAll(tempDay.getSimpleEntries());
+        }
     }
 
     @Override
     public LinkedList<CombinedOtherExpenceEntry> getCombinedEntries() {
-        LinkedList<CombinedOtherExpenceEntry> weekCombinedEntries = new LinkedList<CombinedOtherExpenceEntry>();
-        for(int i = 0; i < this.allDayEntriesInWeek.size(); i++) {
-            weekCombinedEntries.addAll(this.allDayEntriesInWeek.get(i).getCombinedEntries());
-        }
-        return weekCombinedEntries;
+        this.setCombinedEntries();
+        return this.combinedEntries;
     }
 
-    public void setCombinedEntries(LinkedList<CombinedOtherExpenceEntry> combinedEntries) {
-        this.combinedEntries = combinedEntries;
+    public void setCombinedEntries() {
+        for(TotalDayEntries tempDay : this.allDayEntriesInWeek) {
+            this.combinedEntries.addAll(tempDay.getCombinedEntries());
+        }
     }
 
     public Integer getSimpleEntriesAmount() {
+        this.setSimpleEntriesAmount();
         return simpleEntriesAmount;
     }
 
-    public void setSimpleEntriesAmount(Integer simpleEntriesAmount) {
-        this.simpleEntriesAmount = simpleEntriesAmount;
+    public void setSimpleEntriesAmount() {
+        this.simpleEntriesAmount = this.simpleEntries.size();
     }
 
     public Integer getCombinedEntriesAmount() {
+        this.setCombinedEntriesAmount();
         return combinedEntriesAmount;
     }
 
-    public void setCombinedEntriesAmount(Integer combinedEntriesAmount) {
-        this.combinedEntriesAmount = combinedEntriesAmount;
+    public void setCombinedEntriesAmount() {
+        this.combinedEntriesAmount = this.combinedEntries.size();
     }
 
     @Override

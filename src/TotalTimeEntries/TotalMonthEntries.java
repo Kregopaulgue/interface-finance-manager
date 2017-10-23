@@ -10,10 +10,36 @@ import java.util.LinkedList;
 /**
  * Created by Master on 23.10.2017.
  */
+
+/*
+
+    TotalDayEntries
+    {
+
+        ArrayList<TotalDayEntries>: allDayEntriesInMonth,
+        ArrayList<TotalWeekEntries>: allWeekEntriesInMonth,
+
+        LinkedList<OtherExpenceEntry>: simpleEntries,
+        LinkedList<CombinedExpenceEntry>: combinedEntries,
+
+        Calendar dayDate,
+
+        Integer: simpleEntriesAmount,
+        Integer: combinedEntriesAmount,
+
+        Double: allMoneySpent,
+        Double: allMoneySpentSimpleEntries,
+        Double: allMoneySpentCombinedEntries,
+
+        Double: wishedMoneyLimit
+    }
+
+ */
+
 public class TotalMonthEntries implements GeneralTotalEntryOperations {
 
-    private ArrayList<TotalDayEntries> allDayEntriesInMonth;
-    private ArrayList<TotalWeekEntries> allWeekEntriesInMonth;
+    private ArrayList<TotalDayEntries> allDayEntriesInMonth = new ArrayList<TotalDayEntries>();
+    private ArrayList<TotalWeekEntries> allWeekEntriesInMonth = new ArrayList<TotalWeekEntries>();
 
     private LinkedList<OtherExpenceEntry> simpleEntries;
     private LinkedList<CombinedOtherExpenceEntry> combinedEntries;
@@ -27,10 +53,11 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
 
     private Double wishedMoneyLimit;
 
+
     public TotalMonthEntries(ArrayList<TotalWeekEntries> weekEntries) {
         this.allWeekEntriesInMonth = weekEntries;
         for(TotalWeekEntries tempWeek : weekEntries) {
-            for(int i = 0; i < 4; i++) {
+            for(int i = 0; i < weekEntries.size(); i++) {
                 allDayEntriesInMonth.add(tempWeek.getCertainDay(i));
             }
         }
@@ -80,22 +107,28 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         this.allWeekEntriesInMonth = allWeekEntriesInMonth;
     }
 
+    public void setSimpleEntries() {
+        for(int i = 0; i < this.allWeekEntriesInMonth.size(); i++) {
+            this.simpleEntries.addAll(this.allWeekEntriesInMonth.get(i).getSimpleEntries());
+        }
+    }
+
+    public void setCombinedEntries() {
+        for(int i = 0; i < this.allWeekEntriesInMonth.size(); i++) {
+            this.combinedEntries.addAll(this.allWeekEntriesInMonth.get(i).getCombinedEntries());
+        }
+    }
+
     @Override
     public LinkedList<OtherExpenceEntry> getSimpleEntries() {
-        LinkedList<OtherExpenceEntry> monthSimpleEntries = new LinkedList<OtherExpenceEntry>();
-        for(int i = 0; i < this.allWeekEntriesInMonth.size(); i++) {
-            monthSimpleEntries.addAll(this.allWeekEntriesInMonth.get(i).getSimpleEntries());
-        }
-        return monthSimpleEntries;
+        this.setSimpleEntries();
+        return this.simpleEntries;
     }
 
     @Override
     public LinkedList<CombinedOtherExpenceEntry> getCombinedEntries() {
-        LinkedList<CombinedOtherExpenceEntry> monthCombinedEntries = new LinkedList<CombinedOtherExpenceEntry>();
-        for(int i = 0; i < this.allWeekEntriesInMonth.size(); i++) {
-            monthCombinedEntries.addAll(this.allWeekEntriesInMonth.get(i).getCombinedEntries());
-        }
-        return monthCombinedEntries;
+        this.setCombinedEntries();
+        return this.combinedEntries;
     }
 
     public Integer getSimpleEntriesAmount() {
