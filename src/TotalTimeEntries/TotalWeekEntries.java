@@ -40,6 +40,9 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
     private LinkedList<OtherExpenceEntry> simpleEntries;
     private LinkedList<CombinedOtherExpenceEntry> combinedEntries;
 
+    private Calendar beggingDate;
+    private Calendar endDate;
+
     private Integer simpleEntriesAmount;
     private Integer combinedEntriesAmount;
 

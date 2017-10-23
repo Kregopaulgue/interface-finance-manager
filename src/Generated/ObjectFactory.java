@@ -24,7 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _TotalMonth_QNAME = new QName("", "TotalMonth");
+    private final static QName _TotalTime_QNAME = new QName("", "TotalTime");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: Generated
@@ -34,11 +34,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TotalMonthType }
+     * Create an instance of {@link TotalTimeType }
      * 
      */
-    public TotalMonthType createTotalMonthType() {
-        return new TotalMonthType();
+    public TotalTimeType createTotalTimeType() {
+        return new TotalTimeType();
     }
 
     /**
@@ -63,6 +63,14 @@ public class ObjectFactory {
      */
     public CombinedEntryType createCombinedEntryType() {
         return new CombinedEntryType();
+    }
+
+    /**
+     * Create an instance of {@link TotalMonthType }
+     * 
+     */
+    public TotalMonthType createTotalMonthType() {
+        return new TotalMonthType();
     }
 
     /**
@@ -138,12 +146,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TotalMonthType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link TotalTimeType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "TotalMonth")
-    public JAXBElement<TotalMonthType> createTotalMonth(TotalMonthType value) {
-        return new JAXBElement<TotalMonthType>(_TotalMonth_QNAME, TotalMonthType.class, null, value);
+    @XmlElementDecl(namespace = "", name = "TotalTime")
+    public JAXBElement<TotalTimeType> createTotalTime(TotalTimeType value) {
+        return new JAXBElement<TotalTimeType>(_TotalTime_QNAME, TotalTimeType.class, null, value);
     }
 
 }

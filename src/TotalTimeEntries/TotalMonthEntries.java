@@ -5,6 +5,7 @@ import ExpenceEntries.OtherExpenceEntry;
 import HelperInterfaces.GeneralTotalEntryOperations;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.LinkedList;
 
 /**
@@ -41,6 +42,9 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
 
     private LinkedList<OtherExpenceEntry> simpleEntries;
     private LinkedList<CombinedOtherExpenceEntry> combinedEntries;
+
+    private Calendar beggingDate;
+    private Calendar endDate;
 
     private Integer simpleEntriesAmount;
     private Integer combinedEntriesAmount;
