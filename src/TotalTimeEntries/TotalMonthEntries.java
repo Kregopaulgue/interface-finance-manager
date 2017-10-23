@@ -22,8 +22,6 @@ import java.util.LinkedList;
         LinkedList<OtherExpenceEntry>: simpleEntries,
         LinkedList<CombinedExpenceEntry>: combinedEntries,
 
-        Calendar dayDate,
-
         Integer: simpleEntriesAmount,
         Integer: combinedEntriesAmount,
 
@@ -46,6 +44,8 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
 
     private Integer simpleEntriesAmount;
     private Integer combinedEntriesAmount;
+
+    Double averageMoneySpent;
 
     private Double allMoneySpent;
     private Double allMoneySpentSimpleEntries;

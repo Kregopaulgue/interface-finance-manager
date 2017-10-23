@@ -11,6 +11,20 @@ import java.util.List;
 /**
  * Created by Master on 20.10.2017.
  */
+
+/*
+
+    CombinedOtherExpenceEntry
+    {
+        LinkedList<OtherExpenceEntry>: otherExpenceEntries,
+        Integer: amountOfEntries,
+        Double: allMoneySpent,
+        Double averageMoneySpent,
+        Calendar combinedExpenceEntryCalendar,
+        CombinedEntryType combinedEntryType
+    }
+
+ */
 public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
 
     private LinkedList<OtherExpenceEntry> otherExpenceEntries;

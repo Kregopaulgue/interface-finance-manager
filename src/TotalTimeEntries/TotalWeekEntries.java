@@ -11,6 +11,28 @@ import java.util.LinkedList;
 /**
  * Created by Master on 23.10.2017.
  */
+
+/*
+        TotalDayEntries
+        {
+
+        ArrayList<TotalDayEntries>: allDayEntriesInMonth,
+
+
+        LinkedList<OtherExpenceEntry>: simpleEntries,
+        LinkedList<CombinedExpenceEntry>: combinedEntries,
+
+        Integer: simpleEntriesAmount,
+        Integer: combinedEntriesAmount,
+
+        Double: allMoneySpent,
+        Double: allMoneySpentSimpleEntries,
+        Double: allMoneySpentCombinedEntries,
+
+        Double: wishedMoneyLimit
+        }
+*/
+
 public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     private ArrayList<TotalDayEntries> allDayEntriesInWeek;
@@ -20,6 +42,8 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     private Integer simpleEntriesAmount;
     private Integer combinedEntriesAmount;
+
+    Double averageMoneySpent;
 
     private Double allMoneySpent;
     private Double allMoneySpentSimpleEntries;

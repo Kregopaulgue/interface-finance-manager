@@ -39,6 +39,8 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
     private LinkedList<CombinedOtherExpenceEntry> combinedEntries = new LinkedList<CombinedOtherExpenceEntry>();
     private Calendar dayDate;
 
+    Double averageMoneySpent;
+
     private Integer simpleEntriesAmount;
     private Integer combinedEntriesAmount;
 
