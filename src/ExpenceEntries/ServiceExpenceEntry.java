@@ -7,6 +7,20 @@ import java.util.Calendar;
 /**
  * Created by Master on 20.10.2017.
  */
+
+/*
+    Abstract ExpenceEntry:
+    {
+        moneySpent: Double,
+        importance: Integer,
+        comment: String,
+        time: Calendar,
+        Calendar: Calendar,
+        entryType: ExpenceEntryType,
+        String: serviceDescription
+    }
+ */
+
 public class ServiceExpenceEntry extends OtherExpenceEntry {
 
     //it isnt different ot OtherExpenceEntry, but made for comfort

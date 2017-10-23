@@ -8,6 +8,20 @@ import java.util.Calendar;
 /**
  * Created by Master on 18.10.2017.
  */
+
+/*
+    FoodExpenceEntry:
+    {
+        moneySpent: Double,
+        importance: Integer,
+        comment: String,
+        time: Calendar,
+        Calendar: Calendar,
+        entryType: ExpenceEntryType,
+        String: textFoodType
+    }
+ */
+
 public class FoodExpenceEntry extends OtherExpenceEntry {
 
     private String textFoodType = new String("");

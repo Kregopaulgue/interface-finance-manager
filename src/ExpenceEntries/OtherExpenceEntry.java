@@ -6,6 +6,19 @@ import HelperTypes.ExpenceEntryType;
 /**
  * Created by Master on 18.10.2017.
  */
+
+/*
+    OtherExpenceEntry:
+    {
+        moneySpent: Double,
+        importance: Integer,
+        comment: String,
+        time: Calendar,
+        Calendar: Calendar,
+        entryType: ExpenceEntryType
+    }
+ */
+
 public class OtherExpenceEntry extends ExpenceEntry {
 
     protected Double moneySpent;

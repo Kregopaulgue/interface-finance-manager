@@ -7,6 +7,20 @@ import java.util.Calendar;
 /**
  * Created by Master on 18.10.2017.
  */
+
+/*
+    ClothExpenceEntry:
+    {
+        moneySpent: Double,
+        importance: Integer,
+        comment: String,
+        time: Calendar,
+        Calendar: Calendar,
+        entryType: ExpenceEntryType,
+        String: clothType
+    }
+ */
+
 public class ClothExpenceEntry extends OtherExpenceEntry {
 
     private String clothType;

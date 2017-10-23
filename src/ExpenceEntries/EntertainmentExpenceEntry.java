@@ -7,6 +7,20 @@ import java.util.Calendar;
 /**
  * Created by Master on 20.10.2017.
  */
+
+/*
+    EntertainmentExpenceEntry:
+    {
+        moneySpent: Double,
+        importance: Integer,
+        comment: String,
+        time: Calendar,
+        Calendar: Calendar,
+        entryType: ExpenceEntryType,
+        String: entertainmentDescription
+    }
+ */
+
 public class EntertainmentExpenceEntry extends OtherExpenceEntry {
 
     //as its entertainment importance by default set 0

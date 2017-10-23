@@ -8,6 +8,21 @@ import java.util.Calendar;
 /**
  * Created by Master on 20.10.2017.
  */
+
+/*
+    TechnicExpenceEntry:
+    {
+        moneySpent: Double,
+        importance: Integer,
+        comment: String,
+        time: Calendar,
+        Calendar: Calendar,
+        entryType: ExpenceEntryType,
+        String: textTechnicType,
+        Double: durability
+    }
+ */
+
 public class TechnicExpenceEntry extends OtherExpenceEntry {
 
     private TechnicType technicType;
