@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TotalMonth" type="TotalMonthType"/>
+  <xs:complexType name="EntertainmnetExpenceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="moneySpent"/>
+      <xs:element type="xs:string" name="importance"/>
+      <xs:element type="xs:string" name="comment"/>
+      <xs:element type="dateType" name="date"/>
+      <xs:element type="xs:string" name="expenceType"/>
+      <xs:element type="xs:string" name="entertainmentDescription"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServiceExpenceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="moneySpent"/>
+      <xs:element type="xs:string" name="importance"/>
+      <xs:element type="xs:string" name="comment"/>
+      <xs:element type="dateType" name="date"/>
+      <xs:element type="xs:string" name="expenceType"/>
+      <xs:element type="xs:string" name="serviceDescription"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CombinedEntryType">
+    <xs:sequence>
+      <xs:element type="OtherExpenceEntriesType" name="OtherExpenceEntries"/>
+      <xs:element type="xs:string" name="amountOfEntries"/>
+      <xs:element type="xs:string" name="allMoneySpent"/>
+      <xs:element type="xs:string" name="averageMoneySpent"/>
+      <xs:element type="dateType" name="date"/>
+      <xs:element type="xs:string" name="combinedEntryType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TotalMonthType">
+    <xs:sequence>
+      <xs:element type="TotalWeekType" name="TotalWeek"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TechnicExpenceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="moneySpent"/>
+      <xs:element type="xs:string" name="importance"/>
+      <xs:element type="xs:string" name="comment"/>
+      <xs:element type="dateType" name="date"/>
+      <xs:element type="xs:string" name="expenceType"/>
+      <xs:element type="xs:string" name="textTechnicType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TotalWeekType">
+    <xs:sequence>
+      <xs:element type="TotalDayType" name="TotalDay"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FoodExpenceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="moneySpent"/>
+      <xs:element type="xs:string" name="importance"/>
+      <xs:element type="xs:string" name="comment"/>
+      <xs:element type="dateType" name="date"/>
+      <xs:element type="xs:string" name="expenceType"/>
+      <xs:element type="xs:string" name="textFoodType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OtherExpenceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="moneySpent"/>
+      <xs:element type="xs:string" name="importance"/>
+      <xs:element type="xs:string" name="comment"/>
+      <xs:element type="dateType" name="date"/>
+      <xs:element type="xs:string" name="expenceType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dateType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="year"/>
+      <xs:element type="xs:string" name="month"/>
+      <xs:element type="xs:string" name="day"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TotalDayType">
+    <xs:sequence>
+      <xs:element type="BillExpenceType" name="BillExpence"/>
+      <xs:element type="ClothExpenceType" name="ClothExpence"/>
+      <xs:element type="EntertainmnetExpenceType" name="EntertainmnetExpence"/>
+      <xs:element type="FoodExpenceType" name="FoodExpence"/>
+      <xs:element type="OtherExpenceType" name="OtherExpence"/>
+      <xs:element type="ServiceExpenceType" name="ServiceExpence"/>
+      <xs:element type="TechnicExpenceType" name="TechnicExpence"/>
+      <xs:element type="CombinedEntryType" name="CombinedEntry"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BillExpenceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="moneySpent"/>
+      <xs:element type="xs:string" name="importance"/>
+      <xs:element type="xs:string" name="comment"/>
+      <xs:element type="dateType" name="date"/>
+      <xs:element type="xs:string" name="expenceType"/>
+      <xs:element type="xs:string" name="billDescription"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ClothExpenceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="moneySpent"/>
+      <xs:element type="xs:string" name="importance"/>
+      <xs:element type="xs:string" name="comment"/>
+      <xs:element type="dateType" name="date"/>
+      <xs:element type="xs:string" name="expenceType"/>
+      <xs:element type="xs:string" name="clothType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OtherExpenceEntriesType">
+    <xs:sequence>
+      <xs:element type="FoodExpenceType" name="FoodExpence" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
