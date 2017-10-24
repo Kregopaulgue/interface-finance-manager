@@ -1,6 +1,8 @@
 
 package Generated;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -19,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="dateBegin" type="{}dateBeginType"/>
  *         &lt;element name="dateEnd" type="{}dateEndType"/>
- *         &lt;element name="TotalWeek" type="{}TotalWeekType"/>
+ *         &lt;element name="TotalWeek" type="{}TotalWeekType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,8 +42,8 @@ public class TotalMonthType {
     protected DateBeginType dateBegin;
     @XmlElement(required = true)
     protected DateEndType dateEnd;
-    @XmlElement(name = "TotalWeek", required = true)
-    protected TotalWeekType totalWeek;
+    @XmlElement(name = "TotalWeek")
+    protected List<TotalWeekType> totalWeek;
 
     /**
      * Gets the value of the dateBegin property.
@@ -94,25 +96,30 @@ public class TotalMonthType {
     /**
      * Gets the value of the totalWeek property.
      * 
-     * @return
-     *     possible object is
-     *     {@link TotalWeekType }
-     *     
-     */
-    public TotalWeekType getTotalWeek() {
-        return totalWeek;
-    }
-
-    /**
-     * Sets the value of the totalWeek property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the totalWeek property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TotalWeekType }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getTotalWeek().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TotalWeekType }
+     * 
+     * 
      */
-    public void setTotalWeek(TotalWeekType value) {
-        this.totalWeek = value;
+    public List<TotalWeekType> getTotalWeek() {
+        if (totalWeek == null) {
+            totalWeek = new ArrayList<TotalWeekType>();
+        }
+        return this.totalWeek;
     }
 
 }

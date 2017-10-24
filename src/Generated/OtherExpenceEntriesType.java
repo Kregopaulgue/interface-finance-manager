@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="FoodExpence" type="{}FoodExpenceType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="Expence" type="{}ExpenceType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,40 +30,40 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OtherExpenceEntriesType", propOrder = {
-    "foodExpence"
+    "expence"
 })
 public class OtherExpenceEntriesType {
 
-    @XmlElement(name = "FoodExpence")
-    protected List<FoodExpenceType> foodExpence;
+    @XmlElement(name = "Expence")
+    protected List<ExpenceType> expence;
 
     /**
-     * Gets the value of the foodExpence property.
+     * Gets the value of the expence property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the foodExpence property.
+     * This is why there is not a <CODE>set</CODE> method for the expence property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getFoodExpence().add(newItem);
+     *    getExpence().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link FoodExpenceType }
+     * {@link ExpenceType }
      * 
      * 
      */
-    public List<FoodExpenceType> getFoodExpence() {
-        if (foodExpence == null) {
-            foodExpence = new ArrayList<FoodExpenceType>();
+    public List<ExpenceType> getExpence() {
+        if (expence == null) {
+            expence = new ArrayList<ExpenceType>();
         }
-        return this.foodExpence;
+        return this.expence;
     }
 
 }

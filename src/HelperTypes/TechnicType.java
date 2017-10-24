@@ -5,11 +5,20 @@ package HelperTypes;
  */
 public enum TechnicType {
 
-    APPLIANCE,
-    COMPUTER,
-    HARDWARE,
-    AUDIO_SYSTEM,
-    GAMING_HARDWARE,
-    OTHER
+    APPLIANCE("APPLIANCE"),
+    COMPUTER("COMPUTER"),
+    HARDWARE("HARDWARE"),
+    AUDIO_SYSTEM("AUDIO_SYSTEM"),
+    GAMING_HARDWARE("GAMING_HARDWARE"),
+    OTHER("OTHER");
 
+    private String stringEquivalent;
+
+    TechnicType(String stringEquivalent) {
+        this.stringEquivalent = stringEquivalent;
+    }
+
+    public String getStringEquivalent() {
+        return stringEquivalent;
+    }
 }

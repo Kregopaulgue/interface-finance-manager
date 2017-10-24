@@ -1,6 +1,8 @@
 
 package Generated;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -18,13 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="dateDay" type="{}dateDayType"/>
- *         &lt;element name="BillExpence" type="{}BillExpenceType"/>
- *         &lt;element name="ClothExpence" type="{}ClothExpenceType"/>
- *         &lt;element name="EntertainmnetExpence" type="{}EntertainmnetExpenceType"/>
- *         &lt;element name="FoodExpence" type="{}FoodExpenceType"/>
- *         &lt;element name="OtherExpence" type="{}OtherExpenceType"/>
- *         &lt;element name="ServiceExpence" type="{}ServiceExpenceType"/>
- *         &lt;element name="TechnicExpence" type="{}TechnicExpenceType"/>
+ *         &lt;element name="Expence" type="{}ExpenceType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="CombinedEntry" type="{}CombinedEntryType"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -37,33 +33,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TotalDayType", propOrder = {
     "dateDay",
-    "billExpence",
-    "clothExpence",
-    "entertainmnetExpence",
-    "foodExpence",
-    "otherExpence",
-    "serviceExpence",
-    "technicExpence",
+    "expence",
     "combinedEntry"
 })
 public class TotalDayType {
 
     @XmlElement(required = true)
     protected DateDayType dateDay;
-    @XmlElement(name = "BillExpence", required = true)
-    protected BillExpenceType billExpence;
-    @XmlElement(name = "ClothExpence", required = true)
-    protected ClothExpenceType clothExpence;
-    @XmlElement(name = "EntertainmnetExpence", required = true)
-    protected EntertainmnetExpenceType entertainmnetExpence;
-    @XmlElement(name = "FoodExpence", required = true)
-    protected FoodExpenceType foodExpence;
-    @XmlElement(name = "OtherExpence", required = true)
-    protected OtherExpenceType otherExpence;
-    @XmlElement(name = "ServiceExpence", required = true)
-    protected ServiceExpenceType serviceExpence;
-    @XmlElement(name = "TechnicExpence", required = true)
-    protected TechnicExpenceType technicExpence;
+    @XmlElement(name = "Expence")
+    protected List<ExpenceType> expence;
     @XmlElement(name = "CombinedEntry", required = true)
     protected CombinedEntryType combinedEntry;
 
@@ -92,171 +70,32 @@ public class TotalDayType {
     }
 
     /**
-     * Gets the value of the billExpence property.
+     * Gets the value of the expence property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BillExpenceType }
-     *     
-     */
-    public BillExpenceType getBillExpence() {
-        return billExpence;
-    }
-
-    /**
-     * Sets the value of the billExpence property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the expence property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link BillExpenceType }
-     *     
-     */
-    public void setBillExpence(BillExpenceType value) {
-        this.billExpence = value;
-    }
-
-    /**
-     * Gets the value of the clothExpence property.
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getExpence().add(newItem);
+     * </pre>
      * 
-     * @return
-     *     possible object is
-     *     {@link ClothExpenceType }
-     *     
-     */
-    public ClothExpenceType getClothExpence() {
-        return clothExpence;
-    }
-
-    /**
-     * Sets the value of the clothExpence property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link ClothExpenceType }
-     *     
-     */
-    public void setClothExpence(ClothExpenceType value) {
-        this.clothExpence = value;
-    }
-
-    /**
-     * Gets the value of the entertainmnetExpence property.
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ExpenceType }
      * 
-     * @return
-     *     possible object is
-     *     {@link EntertainmnetExpenceType }
-     *     
-     */
-    public EntertainmnetExpenceType getEntertainmnetExpence() {
-        return entertainmnetExpence;
-    }
-
-    /**
-     * Sets the value of the entertainmnetExpence property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link EntertainmnetExpenceType }
-     *     
      */
-    public void setEntertainmnetExpence(EntertainmnetExpenceType value) {
-        this.entertainmnetExpence = value;
-    }
-
-    /**
-     * Gets the value of the foodExpence property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FoodExpenceType }
-     *     
-     */
-    public FoodExpenceType getFoodExpence() {
-        return foodExpence;
-    }
-
-    /**
-     * Sets the value of the foodExpence property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FoodExpenceType }
-     *     
-     */
-    public void setFoodExpence(FoodExpenceType value) {
-        this.foodExpence = value;
-    }
-
-    /**
-     * Gets the value of the otherExpence property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link OtherExpenceType }
-     *     
-     */
-    public OtherExpenceType getOtherExpence() {
-        return otherExpence;
-    }
-
-    /**
-     * Sets the value of the otherExpence property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link OtherExpenceType }
-     *     
-     */
-    public void setOtherExpence(OtherExpenceType value) {
-        this.otherExpence = value;
-    }
-
-    /**
-     * Gets the value of the serviceExpence property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ServiceExpenceType }
-     *     
-     */
-    public ServiceExpenceType getServiceExpence() {
-        return serviceExpence;
-    }
-
-    /**
-     * Sets the value of the serviceExpence property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ServiceExpenceType }
-     *     
-     */
-    public void setServiceExpence(ServiceExpenceType value) {
-        this.serviceExpence = value;
-    }
-
-    /**
-     * Gets the value of the technicExpence property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TechnicExpenceType }
-     *     
-     */
-    public TechnicExpenceType getTechnicExpence() {
-        return technicExpence;
-    }
-
-    /**
-     * Sets the value of the technicExpence property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TechnicExpenceType }
-     *     
-     */
-    public void setTechnicExpence(TechnicExpenceType value) {
-        this.technicExpence = value;
+    public List<ExpenceType> getExpence() {
+        if (expence == null) {
+            expence = new ArrayList<ExpenceType>();
+        }
+        return this.expence;
     }
 
     /**

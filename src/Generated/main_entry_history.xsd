@@ -1,62 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="TotalTime" type="TotalTimeType"/>
-  <xs:complexType name="EntertainmnetExpenceType">
+  <xs:complexType name="dateType">
     <xs:sequence>
-      <xs:element type="xs:string" name="moneySpent"/>
-      <xs:element type="xs:string" name="importance"/>
-      <xs:element type="xs:string" name="comment"/>
-      <xs:element type="dateType" name="date"/>
-      <xs:element type="xs:string" name="expenceType"/>
-      <xs:element type="xs:string" name="entertainmentDescription"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ServiceExpenceType">
-    <xs:sequence>
-      <xs:element type="xs:string" name="moneySpent"/>
-      <xs:element type="xs:string" name="importance"/>
-      <xs:element type="xs:string" name="comment"/>
-      <xs:element type="dateType" name="date"/>
-      <xs:element type="xs:string" name="expenceType"/>
-      <xs:element type="xs:string" name="serviceDescription"/>
+      <xs:element type="xs:string" name="year"/>
+      <xs:element name="month">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="day">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="23"/>
+            <xs:enumeration value="24"/>
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="10"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="CombinedEntryType">
     <xs:sequence>
       <xs:element type="OtherExpenceEntriesType" name="OtherExpenceEntries"/>
       <xs:element type="xs:string" name="amountOfEntries"/>
-      <xs:element type="xs:string" name="allMoneySpent"/>
+      <xs:element name="allMoneySpent">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="163.29"/>
+            <xs:enumeration value="163.210"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
       <xs:element type="xs:string" name="averageMoneySpent"/>
       <xs:element type="dateType" name="date"/>
       <xs:element type="xs:string" name="combinedEntryType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TotalDayType">
+    <xs:sequence>
+      <xs:element type="dateDayType" name="dateDay"/>
+      <xs:element type="ExpenceType" name="Expence" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="CombinedEntryType" name="CombinedEntry"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OtherExpenceEntriesType">
+    <xs:sequence>
+      <xs:element type="ExpenceType" name="Expence" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="TotalMonthType">
     <xs:sequence>
       <xs:element type="dateBeginType" name="dateBegin"/>
       <xs:element type="dateEndType" name="dateEnd"/>
-      <xs:element type="TotalWeekType" name="TotalWeek"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="TechnicExpenceType">
-    <xs:sequence>
-      <xs:element type="xs:string" name="moneySpent"/>
-      <xs:element type="xs:string" name="importance"/>
-      <xs:element type="xs:string" name="comment"/>
-      <xs:element type="dateType" name="date"/>
-      <xs:element type="xs:string" name="expenceType"/>
-      <xs:element type="xs:string" name="textTechnicType"/>
+      <xs:element type="TotalWeekType" name="TotalWeek" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="dateEndType">
     <xs:sequence>
       <xs:element type="xs:string" name="year"/>
-      <xs:element type="xs:string" name="month"/>
+      <xs:element name="month">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
       <xs:element name="day">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="23"/>
             <xs:enumeration value="30"/>
+            <xs:enumeration value="15"/>
+            <xs:enumeration value="8"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -65,91 +87,90 @@
   <xs:complexType name="dateDayType">
     <xs:sequence>
       <xs:element type="xs:string" name="year"/>
-      <xs:element type="xs:string" name="month"/>
-      <xs:element type="xs:string" name="day"/>
+      <xs:element name="month">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="day">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="23"/>
+            <xs:enumeration value="24"/>
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="10"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="TotalTimeType">
     <xs:sequence>
-      <xs:element type="TotalMonthType" name="TotalMonth"/>
+      <xs:element type="TotalMonthType" name="TotalMonth" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="TotalWeekType">
     <xs:sequence>
       <xs:element type="dateBeginType" name="dateBegin"/>
       <xs:element type="dateEndType" name="dateEnd"/>
-      <xs:element type="TotalDayType" name="TotalDay"/>
+      <xs:element type="TotalDayType" name="TotalDay" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="dateBeginType">
     <xs:sequence>
       <xs:element type="xs:string" name="year"/>
-      <xs:element type="xs:string" name="month"/>
-      <xs:element type="xs:string" name="day"/>
+      <xs:element name="month">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="day">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="23"/>
+            <xs:enumeration value="8"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="FoodExpenceType">
+  <xs:complexType name="ExpenceType">
     <xs:sequence>
       <xs:element type="xs:string" name="moneySpent"/>
       <xs:element type="xs:string" name="importance"/>
       <xs:element type="xs:string" name="comment"/>
       <xs:element type="dateType" name="date"/>
-      <xs:element type="xs:string" name="expenceType"/>
-      <xs:element type="xs:string" name="textFoodType"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="OtherExpenceType">
-    <xs:sequence>
-      <xs:element type="xs:string" name="moneySpent"/>
-      <xs:element type="xs:string" name="importance"/>
-      <xs:element type="xs:string" name="comment"/>
-      <xs:element type="dateType" name="date"/>
-      <xs:element type="xs:string" name="expenceType"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="dateType">
-    <xs:sequence>
-      <xs:element type="xs:string" name="year"/>
-      <xs:element type="xs:string" name="month"/>
-      <xs:element type="xs:string" name="day"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="TotalDayType">
-    <xs:sequence>
-      <xs:element type="dateDayType" name="dateDay"/>
-      <xs:element type="BillExpenceType" name="BillExpence"/>
-      <xs:element type="ClothExpenceType" name="ClothExpence"/>
-      <xs:element type="EntertainmnetExpenceType" name="EntertainmnetExpence"/>
-      <xs:element type="FoodExpenceType" name="FoodExpence"/>
-      <xs:element type="OtherExpenceType" name="OtherExpence"/>
-      <xs:element type="ServiceExpenceType" name="ServiceExpence"/>
-      <xs:element type="TechnicExpenceType" name="TechnicExpence"/>
-      <xs:element type="CombinedEntryType" name="CombinedEntry"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="BillExpenceType">
-    <xs:sequence>
-      <xs:element type="xs:string" name="moneySpent"/>
-      <xs:element type="xs:string" name="importance"/>
-      <xs:element type="xs:string" name="comment"/>
-      <xs:element type="dateType" name="date"/>
-      <xs:element type="xs:string" name="expenceType"/>
-      <xs:element type="xs:string" name="billDescription"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ClothExpenceType">
-    <xs:sequence>
-      <xs:element type="xs:string" name="moneySpent"/>
-      <xs:element type="xs:string" name="importance"/>
-      <xs:element type="xs:string" name="comment"/>
-      <xs:element type="dateType" name="date"/>
-      <xs:element type="xs:string" name="expenceType"/>
-      <xs:element type="xs:string" name="clothType"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="OtherExpenceEntriesType">
-    <xs:sequence>
-      <xs:element type="FoodExpenceType" name="FoodExpence" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="expenceType">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="BILL"/>
+            <xs:enumeration value="CLOTH"/>
+            <xs:enumeration value="ENTERTAINMENT"/>
+            <xs:enumeration value="FOOD"/>
+            <xs:enumeration value="OTHER"/>
+            <xs:enumeration value="SERVICE"/>
+            <xs:enumeration value="TECHNIC"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="expenceDescription" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Some description"/>
+            <xs:enumeration value="UNIMPORTANT_FOOD"/>
+            <xs:enumeration value="APPLIANCE"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

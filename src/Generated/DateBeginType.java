@@ -18,8 +18,23 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="year" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="month" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="day" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="month">
+ *           &lt;simpleType>
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *               &lt;enumeration value="9"/>
+ *               &lt;enumeration value="10"/>
+ *             &lt;/restriction>
+ *           &lt;/simpleType>
+ *         &lt;/element>
+ *         &lt;element name="day">
+ *           &lt;simpleType>
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *               &lt;enumeration value="1"/>
+ *               &lt;enumeration value="23"/>
+ *               &lt;enumeration value="8"/>
+ *             &lt;/restriction>
+ *           &lt;/simpleType>
+ *         &lt;/element>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

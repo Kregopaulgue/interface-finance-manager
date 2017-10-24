@@ -1,6 +1,8 @@
 
 package Generated;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -19,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="dateBegin" type="{}dateBeginType"/>
  *         &lt;element name="dateEnd" type="{}dateEndType"/>
- *         &lt;element name="TotalDay" type="{}TotalDayType"/>
+ *         &lt;element name="TotalDay" type="{}TotalDayType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,8 +42,8 @@ public class TotalWeekType {
     protected DateBeginType dateBegin;
     @XmlElement(required = true)
     protected DateEndType dateEnd;
-    @XmlElement(name = "TotalDay", required = true)
-    protected TotalDayType totalDay;
+    @XmlElement(name = "TotalDay")
+    protected List<TotalDayType> totalDay;
 
     /**
      * Gets the value of the dateBegin property.
@@ -94,25 +96,30 @@ public class TotalWeekType {
     /**
      * Gets the value of the totalDay property.
      * 
-     * @return
-     *     possible object is
-     *     {@link TotalDayType }
-     *     
-     */
-    public TotalDayType getTotalDay() {
-        return totalDay;
-    }
-
-    /**
-     * Sets the value of the totalDay property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the totalDay property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TotalDayType }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getTotalDay().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TotalDayType }
+     * 
+     * 
      */
-    public void setTotalDay(TotalDayType value) {
-        this.totalDay = value;
+    public List<TotalDayType> getTotalDay() {
+        if (totalDay == null) {
+            totalDay = new ArrayList<TotalDayType>();
+        }
+        return this.totalDay;
     }
 
 }
