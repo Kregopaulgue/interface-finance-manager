@@ -58,7 +58,7 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
     private Double wishedMoneyLimit;
 
 
-    public TotalMonthEntries(ArrayList<TotalWeekEntries> weekEntries) {
+    public TotalMonthEntries(ArrayList<TotalWeekEntries> weekEntries, Calendar beggingDate, Calendar endDate) {
         this.allWeekEntriesInMonth = weekEntries;
         for(TotalWeekEntries tempWeek : weekEntries) {
             for(int i = 0; i < weekEntries.size(); i++) {
@@ -67,6 +67,8 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         }
         this.simpleEntriesAmount = this.getSimpleEntries().size();
         this.combinedEntriesAmount = this.getCombinedEntries().size();
+        this.beggingDate = beggingDate;
+        this.endDate = endDate;
     }
 
     //to write constructor for dayEntries array
@@ -165,5 +167,21 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
 
     public void setWishedMoneyLimit(Double wishedMoneyLimit) {
         this.wishedMoneyLimit = wishedMoneyLimit;
+    }
+
+    public Calendar getBeggingDate() {
+        return beggingDate;
+    }
+
+    public void setBeggingDate(Calendar beggingDate) {
+        this.beggingDate = beggingDate;
+    }
+
+    public Calendar getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Calendar endDate) {
+        this.endDate = endDate;
     }
 }

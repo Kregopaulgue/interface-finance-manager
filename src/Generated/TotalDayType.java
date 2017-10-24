@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="dateDay" type="{}dateDayType"/>
  *         &lt;element name="BillExpence" type="{}BillExpenceType"/>
  *         &lt;element name="ClothExpence" type="{}ClothExpenceType"/>
  *         &lt;element name="EntertainmnetExpence" type="{}EntertainmnetExpenceType"/>
@@ -35,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TotalDayType", propOrder = {
+    "dateDay",
     "billExpence",
     "clothExpence",
     "entertainmnetExpence",
@@ -46,6 +48,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class TotalDayType {
 
+    @XmlElement(required = true)
+    protected DateDayType dateDay;
     @XmlElement(name = "BillExpence", required = true)
     protected BillExpenceType billExpence;
     @XmlElement(name = "ClothExpence", required = true)
@@ -62,6 +66,30 @@ public class TotalDayType {
     protected TechnicExpenceType technicExpence;
     @XmlElement(name = "CombinedEntry", required = true)
     protected CombinedEntryType combinedEntry;
+
+    /**
+     * Gets the value of the dateDay property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DateDayType }
+     *     
+     */
+    public DateDayType getDateDay() {
+        return dateDay;
+    }
+
+    /**
+     * Sets the value of the dateDay property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DateDayType }
+     *     
+     */
+    public void setDateDay(DateDayType value) {
+        this.dateDay = value;
+    }
 
     /**
      * Gets the value of the billExpence property.

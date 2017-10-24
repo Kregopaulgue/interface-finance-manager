@@ -54,7 +54,7 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     private Double wishedMoneyLimit;
 
-    public TotalWeekEntries(ArrayList<TotalDayEntries> allDayEntriesInWeek) {
+    public TotalWeekEntries(ArrayList<TotalDayEntries> allDayEntriesInWeek, Calendar beggingDate, Calendar endDate) {
         this.allDayEntriesInWeek = allDayEntriesInWeek;
         this.simpleEntriesAmount = 0;
         for(TotalDayEntries tempDay : allDayEntriesInWeek) {
@@ -64,6 +64,8 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         for(TotalDayEntries tempDay : allDayEntriesInWeek) {
             this.combinedEntriesAmount += tempDay.getCombinedEntriesAmount();
         }
+        this.beggingDate = beggingDate;
+        this.endDate = endDate;
     }
 
     @Override
@@ -186,5 +188,21 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     public void addDay(TotalDayEntries dayEntry) {
         this.allDayEntriesInWeek.add(dayEntry);
+    }
+
+    public Calendar getBeggingDate() {
+        return beggingDate;
+    }
+
+    public void setBeggingDate(Calendar beggingDate) {
+        this.beggingDate = beggingDate;
+    }
+
+    public Calendar getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Calendar endDate) {
+        this.endDate = endDate;
     }
 }

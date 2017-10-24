@@ -82,11 +82,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DateEndType }
+     * 
+     */
+    public DateEndType createDateEndType() {
+        return new DateEndType();
+    }
+
+    /**
+     * Create an instance of {@link DateDayType }
+     * 
+     */
+    public DateDayType createDateDayType() {
+        return new DateDayType();
+    }
+
+    /**
      * Create an instance of {@link TotalWeekType }
      * 
      */
     public TotalWeekType createTotalWeekType() {
         return new TotalWeekType();
+    }
+
+    /**
+     * Create an instance of {@link DateBeginType }
+     * 
+     */
+    public DateBeginType createDateBeginType() {
+        return new DateBeginType();
     }
 
     /**
