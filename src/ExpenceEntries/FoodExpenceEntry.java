@@ -41,9 +41,9 @@ public class FoodExpenceEntry extends OtherExpenceEntry {
         chechForImportance(foodType, importance);
     }
 
-    public FoodExpenceEntry(Double moneySpent, Integer importance, String comment, Calendar time, Calendar Calendar,
-                            ExpenceEntryType entryType, String textFoodType, FoodType foodType) {
-        super(moneySpent, importance, comment, time, Calendar, entryType);
+    public FoodExpenceEntry(Double moneySpent, Integer importance, String comment, Calendar Calendar,
+                            FoodType foodType, String textFoodType) {
+        super(moneySpent, importance, comment, Calendar, textFoodType);
 
         this.foodType = foodType;
         this.entryType = ExpenceEntryType.FOOD;

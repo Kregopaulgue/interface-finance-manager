@@ -35,9 +35,8 @@ public class EntertainmentExpenceEntry extends OtherExpenceEntry {
     }
 
     public EntertainmentExpenceEntry(Double moneySpent, Integer importance,
-                                     String comment, Calendar time, Calendar Calendar,
-                                     ExpenceEntryType entryType, String entertainmentDescription) {
-        super(moneySpent, 0, comment, time, Calendar, entryType);
+                                     String comment, Calendar Calendar, String entertainmentDescription) {
+        super(moneySpent, 0, comment, Calendar, entertainmentDescription);
         this.entryType = ExpenceEntryType.ENTERTAINMENT;
         this.entertainmentDescription = entertainmentDescription;
     }

@@ -36,9 +36,8 @@ public class BillExpenceEntry extends OtherExpenceEntry{
     }
 
     public BillExpenceEntry(Double moneySpent, Integer importance,
-                            String comment, Calendar time, Calendar Calendar,
-                            ExpenceEntryType entryType, String billDescription) {
-        super(moneySpent, 10, comment, time, Calendar, entryType);
+                            String comment, Calendar Calendar, String billDescription) {
+        super(moneySpent, 10, comment, Calendar, billDescription);
         this.entryType = ExpenceEntryType.BILL;
         this.billDescription = billDescription;
     }

@@ -28,24 +28,23 @@ public class ClothExpenceEntry extends OtherExpenceEntry {
     private boolean doYouWantToBeFashion;
     private boolean doYouNeedIt;
 
-    public ClothExpenceEntry(Double moneySpent, Integer importance, String comment, String clothType,
-                             boolean isClothImportant, boolean doYouWantToBeFashion, boolean doYouNeedIt) {
-
-        super(moneySpent, importance, comment);
+    public ClothExpenceEntry(Double moneySpent, Integer importance, String comment,
+                             Calendar Calendar, String clothType, String expenceDescription) {
+        super(moneySpent, importance, comment, Calendar, clothType);
 
         this.entryType = ExpenceEntryType.CLOTH;
         this.clothType = clothType;
-        this.isClothImportant = isClothImportant;
-        this.doYouWantToBeFashion = doYouWantToBeFashion;
-        this.doYouNeedIt = doYouNeedIt;
+        this.isClothImportant = true;
+        this.doYouWantToBeFashion = true;
+        this.doYouNeedIt = true;
 
         checkForImportance(isClothImportant, doYouWantToBeFashion, doYouNeedIt);
     }
 
     public ClothExpenceEntry(Double moneySpent, Integer importance, String comment,
-                            Calendar time, Calendar Calendar, ExpenceEntryType entryType, String clothType,
+                             Calendar Calendar, String clothType,
                              boolean isClothImportant, boolean doYouWantToBeFashion, boolean doYouNeedIt) {
-        super(moneySpent, importance, comment, time, Calendar, entryType);
+        super(moneySpent, importance, comment, Calendar, clothType);
 
         this.entryType = ExpenceEntryType.CLOTH;
         this.clothType = clothType;

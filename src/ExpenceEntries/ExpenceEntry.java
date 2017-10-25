@@ -31,10 +31,6 @@ abstract public class ExpenceEntry {
     abstract String getComment();
     abstract void setComment(String comment);
 
-    //should search for time and Calendar implementations in java
-    abstract Calendar getTime();
-    abstract void setTime(Calendar time);
-
     abstract Calendar getCalendar();
     abstract void setCalendar(Calendar Calendar);
 

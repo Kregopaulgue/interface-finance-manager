@@ -24,9 +24,9 @@ public class OtherExpenceEntry extends ExpenceEntry {
     protected Double moneySpent;
     protected Integer importance;
     protected String comment;
-    protected Calendar time;
     protected Calendar Calendar;
     protected ExpenceEntryType entryType;
+    private String expenceDescription;
 
     public OtherExpenceEntry(Double moneySpent, Integer importance, String comment) {
         this.moneySpent = moneySpent;
@@ -36,14 +36,14 @@ public class OtherExpenceEntry extends ExpenceEntry {
     }
 
     public OtherExpenceEntry(Double moneySpent, Integer importance,
-                             String comment, Calendar time, Calendar Calendar, ExpenceEntryType entryType) {
+                             String comment, Calendar Calendar, String expenceDescription) {
         this.entryType = ExpenceEntryType.OTHER;
         this.moneySpent = moneySpent;
         this.importance = importance;
         this.comment = comment;
-        this.time = time;
         this.Calendar = Calendar;
-        this.entryType = entryType;
+        this.entryType = ExpenceEntryType.OTHER;
+        this.expenceDescription = expenceDescription;
     }
 
     @Override
@@ -74,16 +74,6 @@ public class OtherExpenceEntry extends ExpenceEntry {
     @Override
     public void setComment(String comment) {
         this.comment = comment;
-    }
-
-    @Override
-    public Calendar getTime() {
-        return time;
-    }
-
-    @Override
-    public void setTime(Calendar time) {
-        this.time = time;
     }
 
     @Override
