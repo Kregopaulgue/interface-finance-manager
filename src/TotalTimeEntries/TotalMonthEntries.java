@@ -5,7 +5,7 @@ import ExpenceEntries.OtherExpenceEntry;
 import HelperInterfaces.GeneralTotalEntryOperations;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 /**
@@ -43,8 +43,8 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
     private LinkedList<OtherExpenceEntry> simpleEntries;
     private LinkedList<CombinedOtherExpenceEntry> combinedEntries;
 
-    private Calendar beggingDate;
-    private Calendar endDate;
+    private GregorianCalendar beggingDate;
+    private GregorianCalendar endDate;
 
     private Integer simpleEntriesAmount;
     private Integer combinedEntriesAmount;
@@ -58,15 +58,17 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
     private Double wishedMoneyLimit;
 
 
-    public TotalMonthEntries(ArrayList<TotalWeekEntries> weekEntries, Calendar beggingDate, Calendar endDate) {
+    public TotalMonthEntries() {}
+
+    public TotalMonthEntries(ArrayList<TotalWeekEntries> weekEntries, GregorianCalendar beggingDate, GregorianCalendar endDate) {
         this.allWeekEntriesInMonth = weekEntries;
         for(TotalWeekEntries tempWeek : weekEntries) {
             for(int i = 0; i < weekEntries.size(); i++) {
                 allDayEntriesInMonth.add(tempWeek.getCertainDay(i));
             }
         }
-        this.simpleEntriesAmount = this.getSimpleEntries().size();
-        this.combinedEntriesAmount = this.getCombinedEntries().size();
+        //this.simpleEntriesAmount = this.getSimpleEntries().size();
+        //this.combinedEntriesAmount = this.getCombinedEntries().size();
         this.beggingDate = beggingDate;
         this.endDate = endDate;
     }
@@ -169,19 +171,19 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         this.wishedMoneyLimit = wishedMoneyLimit;
     }
 
-    public Calendar getBeggingDate() {
+    public GregorianCalendar getBeggingDate() {
         return beggingDate;
     }
 
-    public void setBeggingDate(Calendar beggingDate) {
+    public void setBeggingDate(GregorianCalendar beggingDate) {
         this.beggingDate = beggingDate;
     }
 
-    public Calendar getEndDate() {
+    public GregorianCalendar getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Calendar endDate) {
+    public void setEndDate(GregorianCalendar endDate) {
         this.endDate = endDate;
     }
 }

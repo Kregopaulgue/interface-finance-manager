@@ -1,6 +1,6 @@
 package ExpenceEntries;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 import HelperTypes.ExpenceEntryType;
 
 /**
@@ -13,8 +13,8 @@ import HelperTypes.ExpenceEntryType;
         moneySpent: Double,
         importance: Integer,
         comment: String,
-        time: Calendar,
-        Calendar: Calendar,
+        time: GregorianCalendar,
+        GregorianCalendar: GregorianCalendar,
         entryType: ExpenceEntryType
     }
  */
@@ -24,7 +24,7 @@ public class OtherExpenceEntry extends ExpenceEntry {
     protected Double moneySpent;
     protected Integer importance;
     protected String comment;
-    protected Calendar calendar;
+    protected GregorianCalendar GregorianCalendar;
     protected ExpenceEntryType entryType;
     private String expenceDescription;
 
@@ -38,12 +38,12 @@ public class OtherExpenceEntry extends ExpenceEntry {
     }
 
     public OtherExpenceEntry(Double moneySpent, Integer importance,
-                             String comment, Calendar Calendar, String expenceDescription) {
+                             String comment, GregorianCalendar GregorianCalendar, String expenceDescription) {
         this.entryType = ExpenceEntryType.OTHER;
         this.moneySpent = moneySpent;
         this.importance = importance;
         this.comment = comment;
-        this.calendar = Calendar;
+        this.GregorianCalendar = GregorianCalendar;
         this.entryType = ExpenceEntryType.OTHER;
         this.expenceDescription = expenceDescription;
     }
@@ -79,13 +79,13 @@ public class OtherExpenceEntry extends ExpenceEntry {
     }
 
     @Override
-    public Calendar getCalendar() {
-        return calendar;
+    public GregorianCalendar getCalendar() {
+        return GregorianCalendar;
     }
 
     @Override
-    public void setCalendar(Calendar calendar) {
-        this.calendar = calendar;
+    public void setCalendar(GregorianCalendar GregorianCalendar) {
+        this.GregorianCalendar = GregorianCalendar;
     }
 
     @Override
@@ -97,7 +97,7 @@ public class OtherExpenceEntry extends ExpenceEntry {
     public String toString() {
         String stringToReturn = "Money spent: " + moneySpent.toString() +
                               "\nImportance: " + importance.toString() +
-                              "\nDate: " + calendar.toString() +
+                              "\nDate: " + GregorianCalendar.getTime().toString() +
                               "\nEntry type: " + entryType.toString() +
                               "\nEntry description: " + expenceDescription;
         return stringToReturn;

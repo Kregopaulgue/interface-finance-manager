@@ -2,7 +2,7 @@ package ExpenceEntries;
 
 import HelperTypes.ExpenceEntryType;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Created by Master on 20.10.2017.
@@ -14,8 +14,8 @@ import java.util.Calendar;
         moneySpent: Double,
         importance: Integer,
         comment: String,
-        time: Calendar,
-        Calendar: Calendar,
+        time: GregorianCalendar,
+        GregorianCalendar: GregorianCalendar,
         entryType: ExpenceEntryType,
         String: billDescription
     }
@@ -36,8 +36,8 @@ public class BillExpenceEntry extends OtherExpenceEntry{
     }
 
     public BillExpenceEntry(Double moneySpent, Integer importance,
-                            String comment, Calendar Calendar, String billDescription) {
-        super(moneySpent, 10, comment, Calendar, billDescription);
+                            String comment, GregorianCalendar GregorianCalendar, String billDescription) {
+        super(moneySpent, 10, comment, GregorianCalendar, billDescription);
         this.entryType = ExpenceEntryType.BILL;
         this.billDescription = billDescription;
     }

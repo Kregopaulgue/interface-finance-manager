@@ -1,6 +1,6 @@
 package ExpenceEntries;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 import HelperTypes.ExpenceEntryType;
 
 /**
@@ -13,8 +13,8 @@ import HelperTypes.ExpenceEntryType;
         moneySpent: Double,
         importance: Integer,
         comment: String,
-        time: Calendar,
-        Calendar: Calendar,
+        time: GregorianCalendar,
+        GregorianCalendar: GregorianCalendar,
         entryType: ExpenceEntryType
     }
  */
@@ -31,8 +31,8 @@ abstract public class ExpenceEntry {
     abstract String getComment();
     abstract void setComment(String comment);
 
-    abstract Calendar getCalendar();
-    abstract void setCalendar(Calendar Calendar);
+    abstract GregorianCalendar getCalendar();
+    abstract void setCalendar(GregorianCalendar GregorianCalendar);
 
     //should
     abstract ExpenceEntryType getEntryType();

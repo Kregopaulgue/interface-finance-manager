@@ -4,7 +4,7 @@ import ExpenceEntries.OtherExpenceEntry;
 import HelperTypes.CombinedEntryType;
 import HelperTypes.ExpenceEntryType;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +20,7 @@ import java.util.List;
         Integer: amountOfEntries,
         Double: allMoneySpent,
         Double averageMoneySpent,
-        Calendar combinedExpenceEntryCalendar,
+        GregorianCalendar combinedExpenceEntryCalendar,
         CombinedEntryType combinedEntryType
     }
 
@@ -33,19 +33,19 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
 
     protected Double allMoneySpent;
     protected Double averageMoneySpent;
-    protected Calendar combinedExpenceEntryCalendar;
+    protected GregorianCalendar combinedExpenceEntryCalendar;
     protected CombinedEntryType combinedEntryType;
 
     public CombinedOtherExpenceEntry(LinkedList<OtherExpenceEntry> otherExpenceEntries) {
         this.otherExpenceEntries = otherExpenceEntries;
         this.amountOfEntries = otherExpenceEntries.size();
 
-        this.combinedExpenceEntryCalendar = Calendar.getInstance();
+        this.combinedExpenceEntryCalendar = new GregorianCalendar();
 
         countAllMoneySpent();
     }
 
-    public CombinedOtherExpenceEntry(LinkedList<OtherExpenceEntry> otherExpenceEntries, Calendar date) {
+    public CombinedOtherExpenceEntry(LinkedList<OtherExpenceEntry> otherExpenceEntries, GregorianCalendar date) {
         this.otherExpenceEntries = otherExpenceEntries;
         this.amountOfEntries = otherExpenceEntries.size();
 
@@ -54,7 +54,7 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
     }
 
     public CombinedOtherExpenceEntry(LinkedList<OtherExpenceEntry> otherExpenceEntries, Integer amountOfEntries,
-                                     Double averageMoneySpent, Calendar combinedExpenceEntryCalendar,
+                                     Double averageMoneySpent, GregorianCalendar combinedExpenceEntryCalendar,
                                      CombinedEntryType combinedEntryType) {
         this.otherExpenceEntries = otherExpenceEntries;
         this.amountOfEntries = amountOfEntries;
@@ -178,12 +178,12 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
     }
 
     @Override
-    public Calendar getExpenceEntriesListCalendar() {
+    public GregorianCalendar getExpenceEntriesListCalendar() {
         return this.combinedExpenceEntryCalendar;
     }
 
     @Override
-    public void setExpenceEntriesListCalendar(Calendar expenceEntriesListCalendar) {
+    public void setExpenceEntriesListCalendar(GregorianCalendar expenceEntriesListCalendar) {
         this.combinedExpenceEntryCalendar = expenceEntriesListCalendar;
     }
 }

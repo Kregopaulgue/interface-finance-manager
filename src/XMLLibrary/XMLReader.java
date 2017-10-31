@@ -17,7 +17,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -25,9 +25,12 @@ import java.util.List;
 /**
  * Created by Master on 23.10.2017.
  */
+
+
+
 public class XMLReader {
 
-    public static List<TotalMonthEntries> readMonthFromXML(Calendar date) throws JAXBException, IOException{
+    public static TotalMonthEntries readMonthFromXML(GregorianCalendar date) throws JAXBException, IOException{
 
         JAXBContext jaxbContext = JAXBContext.newInstance("Generated");
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
@@ -37,54 +40,60 @@ public class XMLReader {
 
         TotalTimeType totalTime = totalTimeTypeJAXBElement.getValue();
 
-        TotalMonthType neededMonth = new TotalMonthType();
-        TotalMonthEntries neededMonthEntry;
+        TotalMonthEntries resultMonth = new TotalMonthEntries();
 
-        ArrayList<TotalMonthType> totalMonthsXMLEntry = new ArrayList<TotalMonthType>(totalTime.getTotalMonth());
+        ArrayList<TotalMonthType> totalXMLMonths = new ArrayList<>(totalTime.getTotalMonth());
 
-        for(TotalMonthType tempMonth : totalMonthsXMLEntry) {
-            DateBeginType currentBeginType = tempMonth.getDateBegin();
+        for(TotalMonthType tempXMLMonth : totalXMLMonths) {
+            Integer beginYear = Integer.valueOf(tempXMLMonth.getDateBegin().getYear());
+            Integer beginMonth = Integer.valueOf(tempXMLMonth.getDateBegin().getMonth());
+            Integer beginDay = Integer.valueOf(tempXMLMonth.getDateBegin().getDay());
 
-            Integer beginYears = Integer.valueOf(currentBeginType.getYear());
-            Integer beginMonth = Integer.valueOf(currentBeginType.getMonth());
-            Integer beginDay = Integer.valueOf(currentBeginType.getDay());
+            GregorianCalendar beginingDate = new GregorianCalendar(beginYear, beginMonth, beginDay);
 
-            GregorianCalendar currentBeginDate = new GregorianCalendar(beginYears, beginMonth, beginDay);
+            Integer endYear = Integer.valueOf(tempXMLMonth.getDateEnd().getYear());
+            Integer endMonth = Integer.valueOf(tempXMLMonth.getDateEnd().getMonth());
+            Integer endDay = Integer.valueOf(tempXMLMonth.getDateEnd().getDay());
 
-            DateEndType currentEndType = tempMonth.getDateEnd();
+            GregorianCalendar endDate = new GregorianCalendar(endYear, endMonth, endDay);
 
-            Integer endYears = Integer.valueOf(currentEndType.getDay());
-            Integer endMonth = Integer.valueOf(currentEndType.getMonth());
-            Integer endDay = Integer.valueOf(currentEndType.getDay());
-
-            GregorianCalendar currentEndDate = new GregorianCalendar(endYears, endMonth, endDay);
-
-            if(currentBeginDate.getTimeInMillis() <= date.getTimeInMillis()
-                    && currentEndDate.getTimeInMillis() >= date.getTimeInMillis()) {
-                neededMonth = tempMonth;
+            if(DateHelper.betweenCompareDates(beginingDate, date, endDate)) {
+                resultMonth = XMLReaderHelpers.convertFromXMLMonth(tempXMLMonth);
             }
-
-            ArrayList<TotalWeekType> totalWeeks = new ArrayList<>(neededMonth.getTotalWeek());
-            ArrayList<ArrayList<TotalDayType>> totalDaysByWeeks = new ArrayList<>();
-            for(TotalWeekType tempTotalWeek : totalWeeks) {
-                totalDaysByWeeks.add(new ArrayList<>(tempTotalWeek.getTotalDay()));
-            }
-
-            ArrayList<ArrayList<TotalDayEntries>> totalDayEntriesByWeeks = new ArrayList<>();
-            for(ArrayList<TotalDayType> tempTotalDays : totalDaysByWeeks) {
-                ArrayList<TotalDayEntries> currentTotalDayEntires = new ArrayList<>();
-                for(TotalDayType tempTotalDay : tempTotalDays) {
-                    ArrayList<ExpenceType> currentSimpleExpences = new ArrayList<>(tempTotalDay.getExpence());
-                    ArrayList<OtherExpenceEntry> currentExpenceEntries = new ArrayList<>()();
-                    currentTotalDayEntires.add(new TotalDayEntries());
-                }
-            }
-            ArrayList<TotalWeekEntries> totalWeekEntries = new ArrayList<>(totalWeeks.size());
-            for(int i = 0; i < totalWeeks.size(); i++) {
-                totalWeekEntries.get(i) = new TotalWeekEntries()
-            }
-
-            neededMonthEntry = new TotalMonthEntries()
         }
+
+        return resultMonth;
     }
+
+    public static TotalWeekEntries readWeekFromXml(GregorianCalendar date) throws JAXBException, IOException{
+        TotalMonthEntries monthToSeekIn = readMonthFromXML(date);
+        TotalWeekEntries neededWeek = new TotalWeekEntries();
+
+        for(TotalWeekEntries tempWeek : monthToSeekIn.getAllWeekEntriesInMonth()) {
+            if(DateHelper.betweenCompareDates(tempWeek.getBeggingDate(), date, tempWeek.getEndDate())) {
+                neededWeek = tempWeek;
+            }
+        }
+        return neededWeek;
+    }
+
+    public static TotalDayEntries readDayFromXml(GregorianCalendar date) throws JAXBException, IOException {
+        TotalWeekEntries weekToSeekIn = readWeekFromXml(date);
+        TotalDayEntries neededDay = new TotalDayEntries();
+
+        for(TotalDayEntries tempDay : weekToSeekIn.getAllDayEntriesInWeek()) {
+            if(tempDay.getDayDate().equals(date)) {
+                neededDay = tempDay;
+            }
+        }
+        return neededDay;
+    }
+
+    public static OtherExpenceEntry readEntryFromXml(GregorianCalendar date, int index)
+            throws JAXBException, IOException{
+        TotalDayEntries dayToSeekIn = readDayFromXml(date);
+        OtherExpenceEntry neededEntry = dayToSeekIn.getSimpleEntries().get(index);
+        return neededEntry;
+    }
+
 }

@@ -3,7 +3,7 @@ package ExpenceEntries;
 import HelperTypes.ExpenceEntryType;
 import HelperTypes.TechnicType;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Created by Master on 20.10.2017.
@@ -15,8 +15,8 @@ import java.util.Calendar;
         moneySpent: Double,
         importance: Integer,
         comment: String,
-        time: Calendar,
-        Calendar: Calendar,
+        time: GregorianCalendar,
+        GregorianCalendar: GregorianCalendar,
         entryType: ExpenceEntryType,
         String: textTechnicType
     }
@@ -28,8 +28,8 @@ public class TechnicExpenceEntry extends OtherExpenceEntry {
     private String textTechnicType = new String("");
 
     public TechnicExpenceEntry(Double moneySpent, Integer importance, String comment,
-                               Calendar Calendar, TechnicType technicType, String textTechnicType) {
-        super(moneySpent, importance, comment, Calendar, textTechnicType);
+                               GregorianCalendar GregorianCalendar, TechnicType technicType, String textTechnicType) {
+        super(moneySpent, importance, comment, GregorianCalendar, textTechnicType);
 
         this.entryType = ExpenceEntryType.TECHNIC;
 

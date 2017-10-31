@@ -5,7 +5,7 @@ import ExpenceEntries.OtherExpenceEntry;
 import HelperInterfaces.GeneralTotalEntryOperations;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 /**
@@ -40,8 +40,8 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
     private LinkedList<OtherExpenceEntry> simpleEntries;
     private LinkedList<CombinedOtherExpenceEntry> combinedEntries;
 
-    private Calendar beggingDate;
-    private Calendar endDate;
+    private GregorianCalendar beggingDate;
+    private GregorianCalendar endDate;
 
     private Integer simpleEntriesAmount;
     private Integer combinedEntriesAmount;
@@ -54,16 +54,22 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     private Double wishedMoneyLimit;
 
-    public TotalWeekEntries(ArrayList<TotalDayEntries> allDayEntriesInWeek, Calendar beggingDate, Calendar endDate) {
+    public TotalWeekEntries() {
+
+    }
+
+    public TotalWeekEntries(ArrayList<TotalDayEntries> allDayEntriesInWeek, GregorianCalendar beggingDate, GregorianCalendar endDate) {
         this.allDayEntriesInWeek = allDayEntriesInWeek;
         this.simpleEntriesAmount = 0;
         for(TotalDayEntries tempDay : allDayEntriesInWeek) {
             this.simpleEntriesAmount += tempDay.getSimpleEntriesAmount();
         }
+        //this.setSimpleEntries();
         this.combinedEntriesAmount = 0;
         for(TotalDayEntries tempDay : allDayEntriesInWeek) {
             this.combinedEntriesAmount += tempDay.getCombinedEntriesAmount();
         }
+        //this.setCombinedEntries();
         this.beggingDate = beggingDate;
         this.endDate = endDate;
     }
@@ -102,19 +108,19 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     @Override
     public LinkedList<OtherExpenceEntry> getSimpleEntries() {
-        this.setSimpleEntries();
         return this.simpleEntries;
     }
 
     public void setSimpleEntries() {
         for(TotalDayEntries tempDay : this.allDayEntriesInWeek) {
-            this.simpleEntries.addAll(tempDay.getSimpleEntries());
+            for(OtherExpenceEntry tempSimpleEntry : tempDay.getSimpleEntries()) {
+                this.simpleEntries.add(tempSimpleEntry);
+            }
         }
     }
 
     @Override
     public LinkedList<CombinedOtherExpenceEntry> getCombinedEntries() {
-        this.setCombinedEntries();
         return this.combinedEntries;
     }
 
@@ -190,19 +196,19 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         this.allDayEntriesInWeek.add(dayEntry);
     }
 
-    public Calendar getBeggingDate() {
+    public GregorianCalendar getBeggingDate() {
         return beggingDate;
     }
 
-    public void setBeggingDate(Calendar beggingDate) {
+    public void setBeggingDate(GregorianCalendar beggingDate) {
         this.beggingDate = beggingDate;
     }
 
-    public Calendar getEndDate() {
+    public GregorianCalendar getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Calendar endDate) {
+    public void setEndDate(GregorianCalendar endDate) {
         this.endDate = endDate;
     }
 }
