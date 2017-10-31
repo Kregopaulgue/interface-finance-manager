@@ -29,7 +29,7 @@ public class ClothExpenceEntry extends OtherExpenceEntry {
     private boolean doYouNeedIt;
 
     public ClothExpenceEntry(Double moneySpent, Integer importance, String comment,
-                             Calendar Calendar, String clothType, String expenceDescription) {
+                             Calendar Calendar, String clothType) {
         super(moneySpent, importance, comment, Calendar, clothType);
 
         this.entryType = ExpenceEntryType.CLOTH;

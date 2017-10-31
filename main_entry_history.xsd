@@ -47,7 +47,7 @@
     <xs:sequence>
       <xs:element type="dateDayType" name="dateDay"/>
       <xs:element type="ExpenceType" name="Expence" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element type="CombinedEntryType" name="CombinedEntry"/>
+      <xs:element type="CombinedEntryType" name="CombinedEntry" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="OtherExpenceEntriesType">

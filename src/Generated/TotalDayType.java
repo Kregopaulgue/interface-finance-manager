@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="dateDay" type="{}dateDayType"/>
  *         &lt;element name="Expence" type="{}ExpenceType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="CombinedEntry" type="{}CombinedEntryType"/>
+ *         &lt;element name="CombinedEntry" type="{}CombinedEntryType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -42,8 +42,8 @@ public class TotalDayType {
     protected DateDayType dateDay;
     @XmlElement(name = "Expence")
     protected List<ExpenceType> expence;
-    @XmlElement(name = "CombinedEntry", required = true)
-    protected CombinedEntryType combinedEntry;
+    @XmlElement(name = "CombinedEntry")
+    protected List<CombinedEntryType> combinedEntry;
 
     /**
      * Gets the value of the dateDay property.
@@ -101,25 +101,30 @@ public class TotalDayType {
     /**
      * Gets the value of the combinedEntry property.
      * 
-     * @return
-     *     possible object is
-     *     {@link CombinedEntryType }
-     *     
-     */
-    public CombinedEntryType getCombinedEntry() {
-        return combinedEntry;
-    }
-
-    /**
-     * Sets the value of the combinedEntry property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the combinedEntry property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CombinedEntryType }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getCombinedEntry().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link CombinedEntryType }
+     * 
+     * 
      */
-    public void setCombinedEntry(CombinedEntryType value) {
-        this.combinedEntry = value;
+    public List<CombinedEntryType> getCombinedEntry() {
+        if (combinedEntry == null) {
+            combinedEntry = new ArrayList<CombinedEntryType>();
+        }
+        return this.combinedEntry;
     }
 
 }

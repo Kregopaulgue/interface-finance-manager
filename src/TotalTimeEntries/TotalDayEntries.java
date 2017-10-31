@@ -58,6 +58,9 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         this.combinedEntries = combinedEntries;
         this.dayDate = Calendar.getInstance();
 
+        this.simpleEntriesAmount = simpleEntries.size();
+        this.combinedEntriesAmount = combinedEntries.size();
+
         countAllMoneySpent();
     }
 
@@ -66,6 +69,9 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         this.simpleEntries = simpleEntries;
         this.combinedEntries = combinedEntries;
         this.dayDate = dayDate;
+
+        this.simpleEntriesAmount = simpleEntries.size();
+        this.combinedEntriesAmount = combinedEntries.size();
 
         countAllMoneySpent();
     }
