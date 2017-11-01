@@ -42,19 +42,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EntertainmnetExpenceType }
+     * Create an instance of {@link DateType }
      * 
      */
-    public EntertainmnetExpenceType createEntertainmnetExpenceType() {
-        return new EntertainmnetExpenceType();
-    }
-
-    /**
-     * Create an instance of {@link ServiceExpenceType }
-     * 
-     */
-    public ServiceExpenceType createServiceExpenceType() {
-        return new ServiceExpenceType();
+    public DateType createDateType() {
+        return new DateType();
     }
 
     /**
@@ -66,6 +58,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TotalDayType }
+     * 
+     */
+    public TotalDayType createTotalDayType() {
+        return new TotalDayType();
+    }
+
+    /**
+     * Create an instance of {@link OtherExpenceEntriesType }
+     * 
+     */
+    public OtherExpenceEntriesType createOtherExpenceEntriesType() {
+        return new OtherExpenceEntriesType();
+    }
+
+    /**
      * Create an instance of {@link TotalMonthType }
      * 
      */
@@ -74,11 +82,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TechnicExpenceType }
+     * Create an instance of {@link DateEndType }
      * 
      */
-    public TechnicExpenceType createTechnicExpenceType() {
-        return new TechnicExpenceType();
+    public DateEndType createDateEndType() {
+        return new DateEndType();
+    }
+
+    /**
+     * Create an instance of {@link DateDayType }
+     * 
+     */
+    public DateDayType createDateDayType() {
+        return new DateDayType();
     }
 
     /**
@@ -90,59 +106,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FoodExpenceType }
+     * Create an instance of {@link DateBeginType }
      * 
      */
-    public FoodExpenceType createFoodExpenceType() {
-        return new FoodExpenceType();
+    public DateBeginType createDateBeginType() {
+        return new DateBeginType();
     }
 
     /**
-     * Create an instance of {@link OtherExpenceType }
+     * Create an instance of {@link ExpenceType }
      * 
      */
-    public OtherExpenceType createOtherExpenceType() {
-        return new OtherExpenceType();
-    }
-
-    /**
-     * Create an instance of {@link DateType }
-     * 
-     */
-    public DateType createDateType() {
-        return new DateType();
-    }
-
-    /**
-     * Create an instance of {@link TotalDayType }
-     * 
-     */
-    public TotalDayType createTotalDayType() {
-        return new TotalDayType();
-    }
-
-    /**
-     * Create an instance of {@link BillExpenceType }
-     * 
-     */
-    public BillExpenceType createBillExpenceType() {
-        return new BillExpenceType();
-    }
-
-    /**
-     * Create an instance of {@link ClothExpenceType }
-     * 
-     */
-    public ClothExpenceType createClothExpenceType() {
-        return new ClothExpenceType();
-    }
-
-    /**
-     * Create an instance of {@link OtherExpenceEntriesType }
-     * 
-     */
-    public OtherExpenceEntriesType createOtherExpenceEntriesType() {
-        return new OtherExpenceEntriesType();
+    public ExpenceType createExpenceType() {
+        return new ExpenceType();
     }
 
     /**

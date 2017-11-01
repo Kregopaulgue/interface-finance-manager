@@ -6,14 +6,23 @@ package HelperTypes;
 public enum FoodType {
 
     //important types (importance from 5 to 10)
-    MAIN_FOOD,
-    WATER,
+    MAIN_FOOD("MAIN_FOOD"),
+    WATER("WATER"),
 
     //unimportant types (importance from 4 to 0)
-    SWEETS,
-    UNIMPORTANT_FOOD,
+    SWEETS("SWEETS"),
+    UNIMPORTANT_FOOD("UNIMPORTANT_FOOD"),
 
     //meens String declaration by hand
-    OTHER
+    OTHER("OTHER");
 
+    private String stringEquivalent;
+
+    FoodType(String stringEquivalent) {
+        this.stringEquivalent = stringEquivalent;
+    }
+
+    String getStringEquivalent() {
+        return stringEquivalent;
+    }
 }

@@ -3,7 +3,7 @@ package ExpenceEntries;
 import HelperTypes.ExpenceEntryType;
 import HelperTypes.TechnicType;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Created by Master on 20.10.2017.
@@ -15,11 +15,10 @@ import java.util.Calendar;
         moneySpent: Double,
         importance: Integer,
         comment: String,
-        time: Calendar,
-        Calendar: Calendar,
+        time: GregorianCalendar,
+        GregorianCalendar: GregorianCalendar,
         entryType: ExpenceEntryType,
-        String: textTechnicType,
-        Double: durability
+        String: textTechnicType
     }
  */
 
@@ -27,30 +26,10 @@ public class TechnicExpenceEntry extends OtherExpenceEntry {
 
     private TechnicType technicType;
     private String textTechnicType = new String("");
-    private Double durability;
-
-    public TechnicExpenceEntry(Double moneySpent, Integer importance,
-                               String comment, TechnicType technicType, String textTechnicType, Double durability) {
-        super(moneySpent, importance, comment);
-
-        this.entryType = ExpenceEntryType.TECHNIC;
-
-        if(technicType == TechnicType.OTHER) {
-            this.technicType = TechnicType.OTHER;
-            this.textTechnicType= textTechnicType;
-        }
-        else
-        {
-            this.technicType = technicType;
-        }
-        this.textTechnicType = textTechnicType;
-        this.durability = durability;
-    }
 
     public TechnicExpenceEntry(Double moneySpent, Integer importance, String comment,
-                               Calendar time, Calendar Calendar, ExpenceEntryType entryType,
-                               TechnicType technicType, String textTechnicType, Double durability) {
-        super(moneySpent, importance, comment, time, Calendar, entryType);
+                               GregorianCalendar GregorianCalendar, TechnicType technicType, String textTechnicType) {
+        super(moneySpent, importance, comment, GregorianCalendar, textTechnicType);
 
         this.entryType = ExpenceEntryType.TECHNIC;
 
@@ -63,7 +42,6 @@ public class TechnicExpenceEntry extends OtherExpenceEntry {
             this.technicType = technicType;
         }
         this.textTechnicType = textTechnicType;
-        this.durability = durability;
     }
 
     public void checkForImportance(TechnicType technicType, Double durability) {
@@ -91,13 +69,5 @@ public class TechnicExpenceEntry extends OtherExpenceEntry {
 
     public void setTextTechnicType(String textTechnicType) {
         this.textTechnicType = textTechnicType;
-    }
-
-    public Double getDurability() {
-        return durability;
-    }
-
-    public void setDurability(Double durability) {
-        this.durability = durability;
     }
 }

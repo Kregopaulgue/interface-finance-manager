@@ -4,7 +4,7 @@ import ExpenceEntries.ExpenceEntry;
 import ExpenceEntries.OtherExpenceEntry;
 import HelperTypes.ExpenceEntryType;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -29,8 +29,8 @@ abstract public class CombinedExpenceEntry {
     abstract OtherExpenceEntry getExpenceEntryByComment(String comment);
     abstract void setExpenceEntryByComment(String comment, OtherExpenceEntry expenceEntry);
 
-    abstract Calendar getExpenceEntriesListCalendar();
-    abstract void setExpenceEntriesListCalendar(Calendar expenceEntriesListCalendar);
+    abstract GregorianCalendar getExpenceEntriesListCalendar();
+    abstract void setExpenceEntriesListCalendar(GregorianCalendar expenceEntriesListCalendar);
 
     abstract Double getAllMoneySpent();
     abstract void countAllMoneySpent();

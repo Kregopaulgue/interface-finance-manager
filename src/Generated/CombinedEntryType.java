@@ -19,7 +19,14 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="OtherExpenceEntries" type="{}OtherExpenceEntriesType"/>
  *         &lt;element name="amountOfEntries" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="allMoneySpent" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="allMoneySpent">
+ *           &lt;simpleType>
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *               &lt;enumeration value="163.29"/>
+ *               &lt;enumeration value="163.210"/>
+ *             &lt;/restriction>
+ *           &lt;/simpleType>
+ *         &lt;/element>
  *         &lt;element name="averageMoneySpent" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="date" type="{}dateType"/>
  *         &lt;element name="combinedEntryType" type="{http://www.w3.org/2001/XMLSchema}string"/>

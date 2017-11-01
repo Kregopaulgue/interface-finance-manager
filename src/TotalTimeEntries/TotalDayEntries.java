@@ -6,6 +6,7 @@ import HelperInterfaces.GeneralTotalEntryOperations;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 /**
@@ -19,7 +20,7 @@ import java.util.LinkedList;
         LinkedList<OtherExpenceEntry>: simpleEntries,
         LinkedList<CombinedExpenceEntry>: combinedEntries,
 
-        Calendar dayDate,
+        GregorianCalendar dayDate,
 
         Integer: simpleEntriesAmount,
         Integer: combinedEntriesAmount,
@@ -37,7 +38,7 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
 
     private LinkedList<OtherExpenceEntry> simpleEntries = new LinkedList<OtherExpenceEntry>();
     private LinkedList<CombinedOtherExpenceEntry> combinedEntries = new LinkedList<CombinedOtherExpenceEntry>();
-    private Calendar dayDate;
+    private GregorianCalendar dayDate;
 
     Double averageMoneySpent;
 
@@ -56,16 +57,22 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
                            LinkedList<CombinedOtherExpenceEntry> combinedEntries) {
         this.simpleEntries = simpleEntries;
         this.combinedEntries = combinedEntries;
-        this.dayDate = Calendar.getInstance();
+        this.dayDate = new GregorianCalendar();
+
+        this.simpleEntriesAmount = simpleEntries.size();
+        this.combinedEntriesAmount = combinedEntries.size();
 
         countAllMoneySpent();
     }
 
     public TotalDayEntries(LinkedList<OtherExpenceEntry> simpleEntries,
-                           LinkedList<CombinedOtherExpenceEntry> combinedEntries, Calendar dayDate) {
+                           LinkedList<CombinedOtherExpenceEntry> combinedEntries, GregorianCalendar dayDate) {
         this.simpleEntries = simpleEntries;
         this.combinedEntries = combinedEntries;
         this.dayDate = dayDate;
+
+        this.simpleEntriesAmount = simpleEntries.size();
+        this.combinedEntriesAmount = combinedEntries.size();
 
         countAllMoneySpent();
     }
@@ -120,11 +127,11 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         this.combinedEntries = combinedEntries;
     }
 
-    public Calendar getDayDate() {
+    public GregorianCalendar getDayDate() {
         return dayDate;
     }
 
-    public void setDayDate(Calendar dayDate) {
+    public void setDayDate(GregorianCalendar dayDate) {
         this.dayDate = dayDate;
     }
 

@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dateType complex type.
+ * <p>Java class for dateBeginType complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="dateType">
+ * &lt;complexType name="dateBeginType">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -29,12 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="day">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *               &lt;enumeration value="1"/>
  *               &lt;enumeration value="23"/>
- *               &lt;enumeration value="24"/>
- *               &lt;enumeration value="9"/>
- *               &lt;enumeration value="10"/>
- *               &lt;enumeration value="5"/>
- *               &lt;enumeration value="6"/>
+ *               &lt;enumeration value="8"/>
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
@@ -47,12 +44,12 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "dateType", propOrder = {
+@XmlType(name = "dateBeginType", propOrder = {
     "year",
     "month",
     "day"
 })
-public class DateType {
+public class DateBeginType {
 
     @XmlElement(required = true)
     protected String year;

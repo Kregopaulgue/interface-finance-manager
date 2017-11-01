@@ -1,6 +1,6 @@
 package ExpenceEntries;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 import HelperTypes.ExpenceEntryType;
 
 /**
@@ -13,8 +13,8 @@ import HelperTypes.ExpenceEntryType;
         moneySpent: Double,
         importance: Integer,
         comment: String,
-        time: Calendar,
-        Calendar: Calendar,
+        time: GregorianCalendar,
+        GregorianCalendar: GregorianCalendar,
         entryType: ExpenceEntryType
     }
  */
@@ -24,9 +24,11 @@ public class OtherExpenceEntry extends ExpenceEntry {
     protected Double moneySpent;
     protected Integer importance;
     protected String comment;
-    protected Calendar time;
-    protected Calendar Calendar;
+    protected GregorianCalendar GregorianCalendar;
     protected ExpenceEntryType entryType;
+    private String expenceDescription;
+
+    public OtherExpenceEntry() {}
 
     public OtherExpenceEntry(Double moneySpent, Integer importance, String comment) {
         this.moneySpent = moneySpent;
@@ -36,14 +38,14 @@ public class OtherExpenceEntry extends ExpenceEntry {
     }
 
     public OtherExpenceEntry(Double moneySpent, Integer importance,
-                             String comment, Calendar time, Calendar Calendar, ExpenceEntryType entryType) {
+                             String comment, GregorianCalendar GregorianCalendar, String expenceDescription) {
         this.entryType = ExpenceEntryType.OTHER;
         this.moneySpent = moneySpent;
         this.importance = importance;
         this.comment = comment;
-        this.time = time;
-        this.Calendar = Calendar;
-        this.entryType = entryType;
+        this.GregorianCalendar = GregorianCalendar;
+        this.entryType = ExpenceEntryType.OTHER;
+        this.expenceDescription = expenceDescription;
     }
 
     @Override
@@ -77,23 +79,13 @@ public class OtherExpenceEntry extends ExpenceEntry {
     }
 
     @Override
-    public Calendar getTime() {
-        return time;
+    public GregorianCalendar getCalendar() {
+        return GregorianCalendar;
     }
 
     @Override
-    public void setTime(Calendar time) {
-        this.time = time;
-    }
-
-    @Override
-    public Calendar getCalendar() {
-        return Calendar;
-    }
-
-    @Override
-    public void setCalendar(Calendar Calendar) {
-        this.Calendar = Calendar;
+    public void setCalendar(GregorianCalendar GregorianCalendar) {
+        this.GregorianCalendar = GregorianCalendar;
     }
 
     @Override
@@ -101,6 +93,15 @@ public class OtherExpenceEntry extends ExpenceEntry {
         return entryType;
     }
 
+    @Override
+    public String toString() {
+        String stringToReturn = "Money spent: " + moneySpent.toString() +
+                              "\nImportance: " + importance.toString() +
+                              "\nDate: " + GregorianCalendar.getTime().toString() +
+                              "\nEntry type: " + entryType.toString() +
+                              "\nEntry description: " + expenceDescription;
+        return stringToReturn;
+    }
     public void setEntryType(ExpenceEntryType entryType) {
         this.entryType = entryType;
     }

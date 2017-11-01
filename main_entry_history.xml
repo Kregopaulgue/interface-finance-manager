@@ -1,151 +1,1262 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TotalMonth>
-	<TotalWeek>
-		<TotalDay>
-			<BillExpence>
-				<moneySpent>54.43</moneySpent>
-				<importance>5</importance>
-				<comment>Some comment</comment>
-				<date>
+<TotalTime>
+	<TotalMonth>
+		<dateBegin>
+			<year>2017</year>
+			<month>9</month>
+			<day>1</day>
+		</dateBegin>
+		<dateEnd>
+			<year>2017</year>
+			<month>9</month>
+			<day>30</day>
+		</dateEnd>
+		<TotalWeek>
+			<dateBegin>
+				<year>2017</year>
+				<month>9</month>
+				<day>23</day>
+			</dateBegin>
+			<dateEnd>
+				<year>2017</year>
+				<month>9</month>
+				<day>30</day>
+			</dateEnd>
+			<TotalDay>
+				<dateDay>
 					<year>2017</year>
 					<month>9</month>
 					<day>23</day>
-				</date>
-				<expenceType>BILL</expenceType>
-				<billDescription>Some description</billDescription>
-			</BillExpence>
+				</dateDay>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>23</day>
+					</date>
+					<expenceType>BILL</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
 
-			<ClothExpence>
-				<moneySpent>54.43</moneySpent>
-				<importance>5</importance>
-				<comment>Some comment</comment>
-				<date>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>23</day>
+					</date>
+					<expenceType>CLOTH</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>23</day>
+					</date>
+					<expenceType>ENTERTAINMENT</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>23</day>
+					</date>
+					<expenceType>FOOD</expenceType>
+					<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>23</day>
+					</date>
+					<expenceType>OTHER</expenceType>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>23</day>
+					</date>
+					<expenceType>SERVICE</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>23</day>
+					</date>
+					<expenceType>TECHNIC</expenceType>
+					<expenceDescription>APPLIANCE</expenceDescription>
+				</Expence>
+
+				<CombinedEntry>
+					<OtherExpenceEntries>
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>23</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>23</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>23</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+					</OtherExpenceEntries>
+					<amountOfEntries>3</amountOfEntries>
+					<allMoneySpent>163.29</allMoneySpent>
+					<averageMoneySpent>54.43</averageMoneySpent>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>23</day>
+					</date>
+					<combinedEntryType>FOODS_BILL</combinedEntryType>
+				</CombinedEntry>
+			</TotalDay>
+			<TotalDay>
+				<dateDay>
 					<year>2017</year>
 					<month>9</month>
-					<day>23</day>
-				</date>
-				<expenceType>CLOTH</expenceType>
-				<clothType>Some description</clothType>
-			</ClothExpence>
+					<day>24</day>
+				</dateDay>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>24</day>
+					</date>
+					<expenceType>BILL</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
 
-			<EntertainmnetExpence>
-				<moneySpent>54.43</moneySpent>
-				<importance>5</importance>
-				<comment>Some comment</comment>
-				<date>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>24</day>
+					</date>
+					<expenceType>CLOTH</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>24</day>
+					</date>
+					<expenceType>ENTERTAINMENT</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>24</day>
+					</date>
+					<expenceType>FOOD</expenceType>
+					<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>24</day>
+					</date>
+					<expenceType>OTHER</expenceType>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>24</day>
+					</date>
+					<expenceType>SERVICE</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>24</day>
+					</date>
+					<expenceType>TECHNIC</expenceType>
+					<expenceDescription>APPLIANCE</expenceDescription>
+				</Expence>
+
+				<CombinedEntry>
+					<OtherExpenceEntries>
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>24</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>24</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>24</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+					</OtherExpenceEntries>
+					<amountOfEntries>3</amountOfEntries>
+					<allMoneySpent>163.29</allMoneySpent>
+					<averageMoneySpent>54.43</averageMoneySpent>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>24</day>
+					</date>
+					<combinedEntryType>FOODS_BILL</combinedEntryType>
+				</CombinedEntry>
+			</TotalDay>
+		</TotalWeek>
+		<TotalWeek>
+			<dateBegin>
+				<year>2017</year>
+				<month>9</month>
+				<day>8</day>
+			</dateBegin>
+			<dateEnd>
+				<year>2017</year>
+				<month>9</month>
+				<day>15</day>
+			</dateEnd>
+			<TotalDay>
+				<dateDay>
 					<year>2017</year>
 					<month>9</month>
-					<day>23</day>
-				</date>
-				<expenceType>ENTERTAINMENT</expenceType>
-				<entertainmentDescription>Some description</entertainmentDescription>
-			</EntertainmnetExpence>
+					<day>9</day>
+				</dateDay>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>9</day>
+					</date>
+					<expenceType>BILL</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
 
-			<FoodExpence>
-				<moneySpent>54.43</moneySpent>
-				<importance>5</importance>
-				<comment>Some comment</comment>
-				<date>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>9</day>
+					</date>
+					<expenceType>CLOTH</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>9</day>
+					</date>
+					<expenceType>ENTERTAINMENT</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>9</day>
+					</date>
+					<expenceType>FOOD</expenceType>
+					<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>9</day>
+					</date>
+					<expenceType>OTHER</expenceType>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>9</day>
+					</date>
+					<expenceType>SERVICE</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>9</day>
+					</date>
+					<expenceType>TECHNIC</expenceType>
+					<expenceDescription>APPLIANCE</expenceDescription>
+				</Expence>
+
+				<CombinedEntry>
+					<OtherExpenceEntries>
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>9</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>9</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>9</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+					</OtherExpenceEntries>
+					<amountOfEntries>3</amountOfEntries>
+					<allMoneySpent>163.29</allMoneySpent>
+					<averageMoneySpent>54.43</averageMoneySpent>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>9</day>
+					</date>
+					<combinedEntryType>FOODS_BILL</combinedEntryType>
+				</CombinedEntry>
+			</TotalDay>
+			<TotalDay>
+				<dateDay>
 					<year>2017</year>
 					<month>9</month>
-					<day>23</day>
-				</date>
-				<expenceType>FOOD</expenceType>
-				<textFoodType>UNIMPORTANT_FOOD</textFoodType>
-			</FoodExpence>
+					<day>10</day>
+				</dateDay>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>10</day>
+					</date>
+					<expenceType>BILL</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
 
-			<OtherExpence>
-				<moneySpent>54.43</moneySpent>
-				<importance>5</importance>
-				<comment>Some comment</comment>
-				<date>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>10</day>
+					</date>
+					<expenceType>CLOTH</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>10</day>
+					</date>
+					<expenceType>ENTERTAINMENT</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>10</day>
+					</date>
+					<expenceType>FOOD</expenceType>
+					<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>10</day>
+					</date>
+					<expenceType>OTHER</expenceType>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>10</day>
+					</date>
+					<expenceType>SERVICE</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>10</day>
+					</date>
+					<expenceType>TECHNIC</expenceType>
+					<expenceDescription>APPLIANCE</expenceDescription>
+				</Expence>
+
+				<CombinedEntry>
+					<OtherExpenceEntries>
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>10</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>10</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>9</month>
+								<day>10</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+					</OtherExpenceEntries>
+					<amountOfEntries>3</amountOfEntries>
+					<allMoneySpent>163.29</allMoneySpent>
+					<averageMoneySpent>54.43</averageMoneySpent>
+					<date>
+						<year>2017</year>
+						<month>9</month>
+						<day>10</day>
+					</date>
+					<combinedEntryType>FOODS_BILL</combinedEntryType>
+				</CombinedEntry>
+			</TotalDay>
+		</TotalWeek>
+	</TotalMonth>
+
+	<TotalMonth>
+		<dateBegin>
+			<year>2017</year>
+			<month>10</month>
+			<day>1</day>
+		</dateBegin>
+		<dateEnd>
+			<year>2017</year>
+			<month>10</month>
+			<day>30</day>
+		</dateEnd>
+		<TotalWeek>
+			<dateBegin>
+				<year>2017</year>
+				<month>10</month>
+				<day>1</day>
+			</dateBegin>
+			<dateEnd>
+				<year>2017</year>
+				<month>10</month>
+				<day>8</day>
+			</dateEnd>
+			<TotalDay>
+				<dateDay>
 					<year>2017</year>
-					<month>9</month>
-					<day>23</day>
-				</date>
-				<expenceType>OTHER</expenceType>
-			</OtherExpence>
+					<month>10</month>
+					<day>5</day>
+				</dateDay>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>5</day>
+					</date>
+					<expenceType>BILL</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
 
-			<ServiceExpence>
-				<moneySpent>54.43</moneySpent>
-				<importance>5</importance>
-				<comment>Some comment</comment>
-				<date>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>5</day>
+					</date>
+					<expenceType>CLOTH</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>5</day>
+					</date>
+					<expenceType>ENTERTAINMENT</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>5</day>
+					</date>
+					<expenceType>FOOD</expenceType>
+					<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>5</day>
+					</date>
+					<expenceType>OTHER</expenceType>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>5</day>
+					</date>
+					<expenceType>SERVICE</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>5</day>
+					</date>
+					<expenceType>TECHNIC</expenceType>
+					<expenceDescription>APPLIANCE</expenceDescription>
+				</Expence>
+
+				<CombinedEntry>
+					<OtherExpenceEntries>
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>5</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>5</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>5</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+					</OtherExpenceEntries>
+					<amountOfEntries>3</amountOfEntries>
+					<allMoneySpent>163.29</allMoneySpent>
+					<averageMoneySpent>54.43</averageMoneySpent>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>5</day>
+					</date>
+					<combinedEntryType>FOODS_BILL</combinedEntryType>
+				</CombinedEntry>
+			</TotalDay>
+			<TotalDay>
+				<dateDay>
 					<year>2017</year>
-					<month>9</month>
-					<day>23</day>
-				</date>
-				<expenceType>SERVICE</expenceType>
-				<serviceDescription>Some description</serviceDescription>
-			</ServiceExpence>
+					<month>10</month>
+					<day>6</day>
+				</dateDay>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>6</day>
+					</date>
+					<expenceType>BILL</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
 
-			<TechnicExpence>
-				<moneySpent>54.43</moneySpent>
-				<importance>5</importance>
-				<comment>Some comment</comment>
-				<date>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>6</day>
+					</date>
+					<expenceType>CLOTH</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>6</day>
+					</date>
+					<expenceType>ENTERTAINMENT</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>6</day>
+					</date>
+					<expenceType>FOOD</expenceType>
+					<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>6</day>
+					</date>
+					<expenceType>OTHER</expenceType>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>6</day>
+					</date>
+					<expenceType>SERVICE</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>6</day>
+					</date>
+					<expenceType>TECHNIC</expenceType>
+					<expenceDescription>APPLIANCE</expenceDescription>
+				</Expence>
+
+				<CombinedEntry>
+					<OtherExpenceEntries>
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>6</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>6</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>6</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+					</OtherExpenceEntries>
+					<amountOfEntries>3</amountOfEntries>
+					<allMoneySpent>163.29</allMoneySpent>
+					<averageMoneySpent>54.43</averageMoneySpent>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>6</day>
+					</date>
+					<combinedEntryType>FOODS_BILL</combinedEntryType>
+				</CombinedEntry>
+			</TotalDay>
+		</TotalWeek>
+		<TotalWeek>
+			<dateBegin>
+				<year>2017</year>
+				<month>10</month>
+				<day>8</day>
+			</dateBegin>
+			<dateEnd>
+				<year>2017</year>
+				<month>10</month>
+				<day>15</day>
+			</dateEnd>
+			<TotalDay>
+				<dateDay>
 					<year>2017</year>
-					<month>9</month>
-					<day>23</day>
-				</date>
-				<expenceType>TECHNIC</expenceType>
-				<textTechnicType>APPLIANCE</textTechnicType>
-			</TechnicExpence>
+					<month>10</month>
+					<day>9</day>
+				</dateDay>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>9</day>
+					</date>
+					<expenceType>BILL</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
 
-			<CombinedEntry>
-				<OtherExpenceEntries>
-					<FoodExpence>
-						<moneySpent>54.43</moneySpent>
-						<importance>5</importance>
-						<comment>Some comment</comment>
-						<date>
-							<year>2017</year>
-							<month>9</month>
-							<day>23</day>
-						</date>
-						<expenceType>FOOD</expenceType>
-						<textFoodType>UNIMPORTANT_FOOD</textFoodType>
-					</FoodExpence>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>9</day>
+					</date>
+					<expenceType>CLOTH</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
 
-					<FoodExpence>
-						<moneySpent>54.43</moneySpent>
-						<importance>5</importance>
-						<comment>Some comment</comment>
-						<date>
-							<year>2017</year>
-							<month>9</month>
-							<day>23</day>
-						</date>
-						<expenceType>FOOD</expenceType>
-						<textFoodType>UNIMPORTANT_FOOD</textFoodType>
-					</FoodExpence>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>9</day>
+					</date>
+					<expenceType>ENTERTAINMENT</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
 
-					<FoodExpence>
-						<moneySpent>54.43</moneySpent>
-						<importance>5</importance>
-						<comment>Some comment</comment>
-						<date>
-							<year>2017</year>
-							<month>9</month>
-							<day>23</day>
-						</date>
-						<expenceType>FOOD</expenceType>
-						<textFoodType>UNIMPORTANT_FOOD</textFoodType>
-					</FoodExpence>
-				</OtherExpenceEntries>
-				<amountOfEntries>3</amountOfEntries>
-				<allMoneySpent>163.29</allMoneySpent>
-				<averageMoneySpent>54.43</averageMoneySpent>
-				<date>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>9</day>
+					</date>
+					<expenceType>FOOD</expenceType>
+					<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>9</day>
+					</date>
+					<expenceType>OTHER</expenceType>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>9</day>
+					</date>
+					<expenceType>SERVICE</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>9</day>
+					</date>
+					<expenceType>TECHNIC</expenceType>
+					<expenceDescription>APPLIANCE</expenceDescription>
+				</Expence>
+
+				<CombinedEntry>
+					<OtherExpenceEntries>
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>9</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>9</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>9</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+					</OtherExpenceEntries>
+					<amountOfEntries>3</amountOfEntries>
+					<allMoneySpent>163.29</allMoneySpent>
+					<averageMoneySpent>54.43</averageMoneySpent>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>9</day>
+					</date>
+					<combinedEntryType>FOODS_BILL</combinedEntryType>
+				</CombinedEntry>
+			</TotalDay>
+			<TotalDay>
+				<dateDay>
 					<year>2017</year>
-					<month>9</month>
-					<day>23</day>
-				</date>
-				<combinedEntryType>FOODS_BILL</combinedEntryType>
-			</CombinedEntry>
-		</TotalDay>
-	</TotalWeek>
-</TotalMonth>
+					<month>10</month>
+					<day>10</day>
+				</dateDay>
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>10</day>
+					</date>
+					<expenceType>BILL</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
 
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>10</day>
+					</date>
+					<expenceType>CLOTH</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>10</day>
+					</date>
+					<expenceType>ENTERTAINMENT</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>10</day>
+					</date>
+					<expenceType>FOOD</expenceType>
+					<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>10</day>
+					</date>
+					<expenceType>OTHER</expenceType>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>10</day>
+					</date>
+					<expenceType>SERVICE</expenceType>
+					<expenceDescription>Some description</expenceDescription>
+				</Expence>
+
+				<Expence>
+					<moneySpent>54.43</moneySpent>
+					<importance>5</importance>
+					<comment>Some comment</comment>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>10</day>
+					</date>
+					<expenceType>TECHNIC</expenceType>
+					<expenceDescription>APPLIANCE</expenceDescription>
+				</Expence>
+
+				<CombinedEntry>
+					<OtherExpenceEntries>
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>10</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>10</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+
+						<Expence>
+							<moneySpent>54.43</moneySpent>
+							<importance>5</importance>
+							<comment>Some comment</comment>
+							<date>
+								<year>2017</year>
+								<month>10</month>
+								<day>10</day>
+							</date>
+							<expenceType>FOOD</expenceType>
+							<expenceDescription>UNIMPORTANT_FOOD</expenceDescription>
+						</Expence>
+					</OtherExpenceEntries>
+					<amountOfEntries>3</amountOfEntries>
+					<allMoneySpent>163.210</allMoneySpent>
+					<averageMoneySpent>54.43</averageMoneySpent>
+					<date>
+						<year>2017</year>
+						<month>10</month>
+						<day>10</day>
+					</date>
+					<combinedEntryType>FOODS_BILL</combinedEntryType>
+				</CombinedEntry>
+			</TotalDay>
+		</TotalWeek>
+	</TotalMonth>
+</TotalTime>
 
 				

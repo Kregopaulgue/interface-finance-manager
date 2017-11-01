@@ -2,7 +2,7 @@ package ExpenceEntries;
 
 import HelperTypes.ExpenceEntryType;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Created by Master on 18.10.2017.
@@ -14,8 +14,8 @@ import java.util.Calendar;
         moneySpent: Double,
         importance: Integer,
         comment: String,
-        time: Calendar,
-        Calendar: Calendar,
+        time: GregorianCalendar,
+        GregorianCalendar: GregorianCalendar,
         entryType: ExpenceEntryType,
         String: clothType
     }
@@ -28,24 +28,23 @@ public class ClothExpenceEntry extends OtherExpenceEntry {
     private boolean doYouWantToBeFashion;
     private boolean doYouNeedIt;
 
-    public ClothExpenceEntry(Double moneySpent, Integer importance, String comment, String clothType,
-                             boolean isClothImportant, boolean doYouWantToBeFashion, boolean doYouNeedIt) {
-
-        super(moneySpent, importance, comment);
+    public ClothExpenceEntry(Double moneySpent, Integer importance, String comment,
+                             GregorianCalendar GregorianCalendar, String clothType) {
+        super(moneySpent, importance, comment, GregorianCalendar, clothType);
 
         this.entryType = ExpenceEntryType.CLOTH;
         this.clothType = clothType;
-        this.isClothImportant = isClothImportant;
-        this.doYouWantToBeFashion = doYouWantToBeFashion;
-        this.doYouNeedIt = doYouNeedIt;
+        this.isClothImportant = true;
+        this.doYouWantToBeFashion = true;
+        this.doYouNeedIt = true;
 
         checkForImportance(isClothImportant, doYouWantToBeFashion, doYouNeedIt);
     }
 
     public ClothExpenceEntry(Double moneySpent, Integer importance, String comment,
-                            Calendar time, Calendar Calendar, ExpenceEntryType entryType, String clothType,
+                             GregorianCalendar GregorianCalendar, String clothType,
                              boolean isClothImportant, boolean doYouWantToBeFashion, boolean doYouNeedIt) {
-        super(moneySpent, importance, comment, time, Calendar, entryType);
+        super(moneySpent, importance, comment, GregorianCalendar, clothType);
 
         this.entryType = ExpenceEntryType.CLOTH;
         this.clothType = clothType;
