@@ -34,8 +34,7 @@ public class DateHelper {
         argumentMonth = Integer.valueOf(month);
         argumentDay = Integer.valueOf(day);
 
-        GregorianCalendar date = new GregorianCalendar(argumentYear, argumentMonth, argumentDay);
-        return date;
+        return new GregorianCalendar(argumentYear, argumentMonth, argumentDay);
 
     }
 

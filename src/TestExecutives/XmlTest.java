@@ -41,7 +41,7 @@ public class XmlTest {
         System.out.println(expence);
         System.out.println("\n---------------------\n");
 
-        XMLWriterHelpers.addEmptyMonthToXml(new GregorianCalendar());
+        XMLWriterHelpers.addFullYearToXml();
     }
 
 }

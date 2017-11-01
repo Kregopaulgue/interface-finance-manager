@@ -37,8 +37,8 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     private ArrayList<TotalDayEntries> allDayEntriesInWeek;
 
-    private LinkedList<OtherExpenceEntry> simpleEntries;
-    private LinkedList<CombinedOtherExpenceEntry> combinedEntries;
+    private LinkedList<OtherExpenceEntry> simpleEntries = new LinkedList<>();
+    private LinkedList<CombinedOtherExpenceEntry> combinedEntries = new LinkedList<>();
 
     private GregorianCalendar beggingDate;
     private GregorianCalendar endDate;
@@ -64,20 +64,22 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         for(TotalDayEntries tempDay : allDayEntriesInWeek) {
             this.simpleEntriesAmount += tempDay.getSimpleEntriesAmount();
         }
-        //this.setSimpleEntries();
+        this.setSimpleEntries();
         this.combinedEntriesAmount = 0;
         for(TotalDayEntries tempDay : allDayEntriesInWeek) {
             this.combinedEntriesAmount += tempDay.getCombinedEntriesAmount();
         }
-        //this.setCombinedEntries();
+        this.setCombinedEntries();
         this.beggingDate = beggingDate;
         this.endDate = endDate;
+        countAllMoneySpent();
+        countAverageMoneySpentByEntries();
     }
 
     @Override
     public void countAllMoneySpent() {
         this.allMoneySpent = 0.0;
-        for(int i = 0; i < 7; i++) {
+        for(int i = 0; i < this.allDayEntriesInWeek.size(); i++) {
             this.allMoneySpent += this.allDayEntriesInWeek.get(i).getAllMoneySpent();
         }
     }
@@ -85,7 +87,7 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
     @Override
     public void countAllMoneySpentSimpleEntries() {
         this.allMoneySpentSimpleEntries = 0.0;
-        for(int i = 0; i < 7; i++) {
+        for(int i = 0; i < this.allDayEntriesInWeek.size(); i++) {
             this.allMoneySpentSimpleEntries += this.allDayEntriesInWeek.get(i).getAllMoneySpentSimpleEntries();
         }
     }
@@ -93,9 +95,13 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
     @Override
     public void countAllMoneySpentCombinedEntries() {
         this.allMoneySpentCombinedEntries = 0.0;
-        for(int i = 0; i < 7; i++) {
+        for(int i = 0; i < this.allDayEntriesInWeek.size(); i++) {
             this.allMoneySpentSimpleEntries += this.allDayEntriesInWeek.get(i).getAllMoneySpentCombinedEntries();
         }
+    }
+
+    public void countAverageMoneySpentByEntries() {
+        this.averageMoneySpent = this.allMoneySpent / (this.simpleEntriesAmount + this.combinedEntriesAmount);
     }
 
     public ArrayList<TotalDayEntries> getAllDayEntriesInWeek() {
@@ -194,6 +200,26 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     public void addDay(TotalDayEntries dayEntry) {
         this.allDayEntriesInWeek.add(dayEntry);
+        countAllMoneySpent();
+        countAverageMoneySpentByEntries();
+        setSimpleEntries();
+        setCombinedEntries();
+    }
+
+    public void deleteDay(TotalDayEntries dayEntry) {
+        this.allDayEntriesInWeek.remove(dayEntry);
+        countAllMoneySpent();
+        countAverageMoneySpentByEntries();
+        setSimpleEntries();
+        setCombinedEntries();
+    }
+
+    public void deleteDay(int index) {
+        this.allDayEntriesInWeek.remove(index);
+        countAllMoneySpent();
+        countAverageMoneySpentByEntries();
+        setSimpleEntries();
+        setCombinedEntries();
     }
 
     public GregorianCalendar getBeggingDate() {

@@ -63,6 +63,7 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         this.combinedEntriesAmount = combinedEntries.size();
 
         countAllMoneySpent();
+        countAverageMoneySpent();
     }
 
     public TotalDayEntries(LinkedList<OtherExpenceEntry> simpleEntries,
@@ -75,6 +76,7 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         this.combinedEntriesAmount = combinedEntries.size();
 
         countAllMoneySpent();
+        countAverageMoneySpent();
     }
 
     @Override
@@ -98,6 +100,10 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         for(CombinedOtherExpenceEntry tempCombinedEntry : this.combinedEntries) {
             this.allMoneySpentSimpleEntries += tempCombinedEntry.getAllMoneySpent();
         }
+    }
+
+    public void countAverageMoneySpent() {
+        this.averageMoneySpent = this.allMoneySpent / (simpleEntriesAmount + combinedEntriesAmount);
     }
 
     @Override
@@ -143,6 +149,46 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         return combinedEntriesAmount;
     }
 
+    public OtherExpenceEntry getMostExpenciveSimpleEntry() {
+        OtherExpenceEntry entryToReturn = this.simpleEntries.get(0);
+        for(int i = 1; i < this.simpleEntriesAmount; i++) {
+            if(this.simpleEntries.get(i).getMoneySpent() < entryToReturn.getMoneySpent()) {
+                entryToReturn = this.simpleEntries.get(i);
+            }
+        }
+        return entryToReturn;
+    }
+
+    public OtherExpenceEntry getLessExpenciveSimpleEntry() {
+        OtherExpenceEntry entryToReturn = this.simpleEntries.get(0);
+        for(int i = 1; i < this.simpleEntriesAmount; i++) {
+            if(this.simpleEntries.get(i).getMoneySpent() > entryToReturn.getMoneySpent()) {
+                entryToReturn = this.simpleEntries.get(i);
+            }
+        }
+        return entryToReturn;
+    }
+
+    public CombinedOtherExpenceEntry getMostExpenciveCombinedEntry() {
+        CombinedOtherExpenceEntry entryToReturn = this.combinedEntries.get(0);
+        for(int i = 1; i < this.simpleEntriesAmount; i++) {
+            if(this.simpleEntries.get(i).getMoneySpent() < entryToReturn.getAllMoneySpent()) {
+                entryToReturn = this.combinedEntries.get(i);
+            }
+        }
+        return entryToReturn;
+    }
+
+    public CombinedOtherExpenceEntry getLessExpenciveCombinedEntry() {
+        CombinedOtherExpenceEntry entryToReturn = this.combinedEntries.get(0);
+        for(int i = 1; i < this.simpleEntriesAmount; i++) {
+            if(this.simpleEntries.get(i).getMoneySpent() > entryToReturn.getAllMoneySpent()) {
+                entryToReturn = this.combinedEntries.get(i);
+            }
+        }
+        return entryToReturn;
+    }
+
     @Override
     public Double getAllMoneySpent() {
         return allMoneySpent;
@@ -156,5 +202,41 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
     @Override
     public Double getAllMoneySpentCombinedEntries() {
         return allMoneySpentCombinedEntries;
+    }
+
+    public void addSimpleEntry(OtherExpenceEntry entryToAdd) {
+        this.simpleEntries.add(entryToAdd);
+        countAllMoneySpent();
+        countAverageMoneySpent();
+    }
+
+    public void deleteSimpleEntry(OtherExpenceEntry entryToDelete) {
+        this.simpleEntries.remove(entryToDelete);
+        countAllMoneySpent();
+        countAverageMoneySpent();
+    }
+
+    public void deleteSimpleEntry(int entryIndex) {
+        this.simpleEntries.remove(entryIndex);
+        countAllMoneySpent();
+        countAverageMoneySpent();
+    }
+
+    public void addCombinedEntry(CombinedOtherExpenceEntry entryToAdd) {
+        this.combinedEntries.add(entryToAdd);
+        countAllMoneySpent();
+        countAverageMoneySpent();
+    }
+
+    public void deleteCombinedEntry(CombinedOtherExpenceEntry entryToDelete) {
+        this.combinedEntries.remove(entryToDelete);
+        countAllMoneySpent();
+        countAverageMoneySpent();
+    }
+
+    public void deleteCombinedEntry(int index) {
+        this.combinedEntries.remove(index);
+        countAllMoneySpent();
+        countAverageMoneySpent();
     }
 }

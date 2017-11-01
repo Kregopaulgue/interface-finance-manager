@@ -1,5 +1,6 @@
 package XMLLibrary;
 
+import CombinedExpenceEntries.CombinedOtherExpenceEntry;
 import ExpenceEntries.ExpenceEntry;
 import ExpenceEntries.FoodExpenceEntry;
 import ExpenceEntries.OtherExpenceEntry;
@@ -94,6 +95,13 @@ public class XMLReader {
         TotalDayEntries dayToSeekIn = readDayFromXml(date);
         OtherExpenceEntry neededEntry = dayToSeekIn.getSimpleEntries().get(index);
         return neededEntry;
+    }
+
+    public static CombinedOtherExpenceEntry readCombinedEntryFromXml(GregorianCalendar date, int index)
+            throws JAXBException, IOException{
+        TotalDayEntries dayToSeekIn = readDayFromXml(date);
+        CombinedOtherExpenceEntry neededCombinedEntry = dayToSeekIn.getCombinedEntries().get(index);
+        return neededCombinedEntry;
     }
 
 }

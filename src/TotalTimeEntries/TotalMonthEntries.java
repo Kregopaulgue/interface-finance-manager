@@ -40,8 +40,8 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
     private ArrayList<TotalDayEntries> allDayEntriesInMonth = new ArrayList<TotalDayEntries>();
     private ArrayList<TotalWeekEntries> allWeekEntriesInMonth = new ArrayList<TotalWeekEntries>();
 
-    private LinkedList<OtherExpenceEntry> simpleEntries;
-    private LinkedList<CombinedOtherExpenceEntry> combinedEntries;
+    private LinkedList<OtherExpenceEntry> simpleEntries = new LinkedList<>();
+    private LinkedList<CombinedOtherExpenceEntry> combinedEntries = new LinkedList<>();
 
     private GregorianCalendar beggingDate;
     private GregorianCalendar endDate;
@@ -67,8 +67,11 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
                 allDayEntriesInMonth.add(tempWeek.getCertainDay(i));
             }
         }
-        //this.simpleEntriesAmount = this.getSimpleEntries().size();
-        //this.combinedEntriesAmount = this.getCombinedEntries().size();
+        countAllMoneySpent();
+        setSimpleEntries();
+        setCombinedEntries();
+        this.simpleEntriesAmount = this.getSimpleEntries().size();
+        this.combinedEntriesAmount = this.getCombinedEntries().size();
         this.beggingDate = beggingDate;
         this.endDate = endDate;
     }
@@ -97,6 +100,10 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         for(int i = 0; i < allDayEntriesInMonth.size(); i++) {
             this.allMoneySpentSimpleEntries += this.allDayEntriesInMonth.get(i).getAllMoneySpentCombinedEntries();
         }
+    }
+
+    public void countAverageMoneySpent(){
+        this.averageMoneySpent = this.allMoneySpent / (this.combinedEntriesAmount + this.simpleEntriesAmount);
     }
 
     public ArrayList<TotalDayEntries> getAllDayEntriesInMonth() {
@@ -185,5 +192,29 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
 
     public void setEndDate(GregorianCalendar endDate) {
         this.endDate = endDate;
+    }
+
+    public void addWeek(TotalWeekEntries weekToAdd) {
+        this.allWeekEntriesInMonth.add(weekToAdd);
+        countAllMoneySpent();
+        countAverageMoneySpent();
+        setSimpleEntries();
+        setCombinedEntries();
+    }
+
+    public void removeWeek(TotalWeekEntries weekToRemove) {
+        this.allWeekEntriesInMonth.remove(weekToRemove);
+        countAllMoneySpent();
+        countAverageMoneySpent();
+        setSimpleEntries();
+        setCombinedEntries();
+    }
+
+    public void removeWeek(int index) {
+        this.allWeekEntriesInMonth.remove(index);
+        countAllMoneySpent();
+        countAverageMoneySpent();
+        setSimpleEntries();
+        setCombinedEntries();
     }
 }
