@@ -1,8 +1,10 @@
 package TotalTimeEntries;
 
 import CombinedExpenceEntries.CombinedOtherExpenceEntry;
+import Exceptions.WeekNotFoundException;
 import ExpenceEntries.OtherExpenceEntry;
 import HelperInterfaces.GeneralTotalEntryOperations;
+import XMLLibrary.DateHelper;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -216,5 +218,45 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         countAverageMoneySpent();
         setSimpleEntries();
         setCombinedEntries();
+    }
+
+    public TotalWeekEntries getCertainWeek(GregorianCalendar date) {
+        TotalWeekEntries neededWeek = new TotalWeekEntries();
+        try {
+            for(TotalWeekEntries tempWeek : this.allWeekEntriesInMonth) {
+                if(DateHelper.betweenCompareDates(tempWeek.getBeggingDate(), date, tempWeek.getEndDate())) {
+                    neededWeek = tempWeek;
+                }
+            }
+            if(neededWeek.equals(new TotalWeekEntries())) {
+                throw new WeekNotFoundException();
+            }
+        }
+        catch(WeekNotFoundException wnfe) {
+            System.out.println(wnfe);
+            System.out.println("Null week is returned");
+        }
+        return neededWeek;
+    }
+
+    public TotalWeekEntries getCertainWeek(int index) {
+
+        TotalWeekEntries returnedTotalWeek = new TotalWeekEntries();
+        try {
+            return this.allWeekEntriesInMonth.get(index);
+        } catch (IndexOutOfBoundsException iofb) {
+            System.out.println("You entered wrong week index");
+            System.out.println("Return null week");
+        }
+
+        return returnedTotalWeek;
+    }
+
+    public void setCertainWeek(TotalWeekEntries weekToSet, int index) {
+        try {
+            this.allWeekEntriesInMonth.set(index, weekToSet);
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("You entered wrong index");
+        }
     }
 }

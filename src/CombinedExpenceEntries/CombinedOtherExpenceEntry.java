@@ -53,6 +53,8 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
         countAllMoneySpent();
     }
 
+    public CombinedOtherExpenceEntry() {}
+
     public CombinedOtherExpenceEntry(LinkedList<OtherExpenceEntry> otherExpenceEntries, Integer amountOfEntries,
                                      Double averageMoneySpent, GregorianCalendar combinedExpenceEntryCalendar,
                                      CombinedEntryType combinedEntryType) {

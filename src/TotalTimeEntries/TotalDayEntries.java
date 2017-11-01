@@ -239,4 +239,44 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         countAllMoneySpent();
         countAverageMoneySpent();
     }
+
+    public OtherExpenceEntry getCertainSimpleEntry(int index) {
+        OtherExpenceEntry entryToReturn = new OtherExpenceEntry();
+        try {
+            entryToReturn = this.simpleEntries.get(index);
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("You entered wrong index");
+            System.out.println("Returning null expence entry");
+        }
+        return entryToReturn;
+    }
+
+    public void setCertainSimpleEntry(int index, OtherExpenceEntry entryToSet) {
+        try {
+            this.simpleEntries.set(index, entryToSet);
+        } catch(IndexOutOfBoundsException ex) {
+            System.out.println("You entered wrong index");
+            System.out.println("Nothing changed");
+        }
+    }
+
+    public CombinedOtherExpenceEntry getCertainCombinedEntry(int index) {
+        CombinedOtherExpenceEntry entryToReturn = new CombinedOtherExpenceEntry();
+        try {
+            entryToReturn = this.combinedEntries.get(index);
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("You entered wrong index");
+            System.out.println("Returning null combined expence entry");
+        }
+        return entryToReturn;
+    }
+
+    public void setCertainCombinedEntry(int index, CombinedOtherExpenceEntry entryToSet) {
+        try {
+            this.combinedEntries.set(index, entryToSet);
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("You entered wrong index");
+            System.out.println("Nothing changed");
+        }
+    }
 }

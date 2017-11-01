@@ -41,6 +41,21 @@ public class XmlTest {
         System.out.println(expence);
         System.out.println("\n---------------------\n");
 
+        ArrayList<TotalMonthEntries> allMonths = XMLReader.readAllFromXml();
+
+        for(TotalMonthEntries tempMonth : allMonths) {
+            System.out.println("\nMonth: ...");
+            for(TotalWeekEntries tempWeek : tempMonth.getAllWeekEntriesInMonth()) {
+                System.out.println("\nWeek: ...");
+                for(TotalDayEntries tempDay : tempWeek.getAllDayEntriesInWeek()) {
+                    System.out.println("\nDay: ...");
+                    for(OtherExpenceEntry tempExpence : tempDay.getSimpleEntries()) {
+                        System.out.println(tempExpence);
+                    }
+                }
+            }
+        }
+
         XMLWriterHelpers.addFullYearToXml();
     }
 

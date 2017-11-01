@@ -31,6 +31,25 @@ import java.util.List;
 
 public class XMLReader {
 
+    public static ArrayList<TotalMonthEntries> readAllFromXml() throws JAXBException, IOException{
+        JAXBContext jaxbContext = JAXBContext.newInstance("Generated");
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+
+        JAXBElement<TotalTimeType> totalTimeTypeJAXBElement =
+                (JAXBElement<TotalTimeType>) unmarshaller.unmarshal(new FileInputStream("main_entry_history.xml"));
+
+        TotalTimeType totalTime = totalTimeTypeJAXBElement.getValue();
+
+        ArrayList<TotalMonthType> allXMLMonths = new ArrayList<>(totalTime.getTotalMonth());
+        ArrayList<TotalMonthEntries> resultMonths = new ArrayList<>();
+
+        for(int i = 0; i < allXMLMonths.size(); i++) {
+            resultMonths.add(XMLReaderHelpers.convertFromXMLMonth(allXMLMonths.get(i)));
+        }
+
+        return resultMonths;
+    }
+
     public static TotalMonthEntries readMonthFromXML(GregorianCalendar date) throws JAXBException, IOException{
 
         JAXBContext jaxbContext = JAXBContext.newInstance("Generated");

@@ -194,10 +194,6 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         this.allDayEntriesInWeek.set(index, totalDayEntry);
     }
 
-    public TotalDayEntries getCertainDay(int index) {
-        return this.allDayEntriesInWeek.get(index);
-    }
-
     public void addDay(TotalDayEntries dayEntry) {
         this.allDayEntriesInWeek.add(dayEntry);
         countAllMoneySpent();
@@ -236,5 +232,16 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     public void setEndDate(GregorianCalendar endDate) {
         this.endDate = endDate;
+    }
+
+    public TotalDayEntries getCertainDay(int index) {
+        TotalDayEntries dayToReturn = new TotalDayEntries();
+        try {
+            dayToReturn = this.allDayEntriesInWeek.get(index);
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("You entered wrong index");
+            System.out.println("Return null day");
+        }
+        return dayToReturn;
     }
 }
