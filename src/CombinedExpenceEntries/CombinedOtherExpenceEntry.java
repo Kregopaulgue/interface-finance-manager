@@ -43,6 +43,7 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
         this.combinedExpenceEntryCalendar = new GregorianCalendar();
 
         countAllMoneySpent();
+        countAverageMoneySpent();
     }
 
     public CombinedOtherExpenceEntry(LinkedList<OtherExpenceEntry> otherExpenceEntries, GregorianCalendar date) {
@@ -51,6 +52,7 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
 
         this.combinedExpenceEntryCalendar = date;
         countAllMoneySpent();
+        countAverageMoneySpent();
     }
 
     public CombinedOtherExpenceEntry() {}
@@ -65,6 +67,7 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
         this.combinedEntryType = combinedEntryType;
 
         countAllMoneySpent();
+        countAverageMoneySpent();
     }
 
     @Override
@@ -187,5 +190,20 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
     @Override
     public void setExpenceEntriesListCalendar(GregorianCalendar expenceEntriesListCalendar) {
         this.combinedExpenceEntryCalendar = expenceEntriesListCalendar;
+    }
+
+    @Override
+    public String toString() {
+        String informationToReturn = new String();
+        informationToReturn +=
+                "\nAll money spent: " + this.allMoneySpent.toString() +
+                "\nAverage money spent: " + this.averageMoneySpent.toString() +
+                "\nDate: " + this.combinedExpenceEntryCalendar.getTime().toString() +
+                "\nEntries amount: " + this.amountOfEntries.toString() +
+                "\n Entries list: ";
+        for(OtherExpenceEntry tempEntry : this.otherExpenceEntries) {
+            informationToReturn += "  " + tempEntry.toString() + "\n";
+        }
+        return informationToReturn;
     }
 }

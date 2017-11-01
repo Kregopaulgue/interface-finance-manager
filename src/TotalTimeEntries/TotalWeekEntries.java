@@ -244,4 +244,13 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         }
         return dayToReturn;
     }
+
+    public Double getAverageMoneySpent() {
+        return averageMoneySpent;
+    }
+
+    @Override
+    public String toString() {
+
+    }
 }

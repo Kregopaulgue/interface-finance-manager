@@ -279,4 +279,26 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
             System.out.println("Nothing changed");
         }
     }
+
+    public Double getAverageMoneySpent() {
+        return averageMoneySpent;
+    }
+
+    public String toString() {
+        String informationToReturn = new String();
+        informationToReturn += "All money spent: " + this.allMoneySpent.toString() +
+                "\nAverage money spent: " + this.averageMoneySpent.toString() +
+                "\nDate: " + getDayDate().getTime().toString() +
+                "\nSimple entries amount: " + this.simpleEntriesAmount.toString() +
+                "\nSimple entries: \n";
+        for(OtherExpenceEntry tempExpence : this.simpleEntries) {
+            informationToReturn += "   " + tempExpence.toString();
+        }
+        informationToReturn += "\nCombined entries amount: " + this.combinedEntriesAmount.toString() +
+                "\nCombined entries: ";
+        for(CombinedOtherExpenceEntry tempEntry : this.combinedEntries) {
+            informationToReturn += "   " + tempEntry.toString();
+        }
+        return informationToReturn;
+    }
 }

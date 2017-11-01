@@ -259,4 +259,8 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
             System.out.println("You entered wrong index");
         }
     }
+
+    public Double getAverageMoneySpent() {
+        return averageMoneySpent;
+    }
 }

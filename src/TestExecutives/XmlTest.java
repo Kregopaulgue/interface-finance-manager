@@ -45,10 +45,14 @@ public class XmlTest {
 
         for(TotalMonthEntries tempMonth : allMonths) {
             System.out.println("\nMonth: ...");
+            System.out.println(tempMonth.getAverageMoneySpent());
             for(TotalWeekEntries tempWeek : tempMonth.getAllWeekEntriesInMonth()) {
                 System.out.println("\nWeek: ...");
+                System.out.println(tempWeek.getAverageMoneySpent());
                 for(TotalDayEntries tempDay : tempWeek.getAllDayEntriesInWeek()) {
                     System.out.println("\nDay: ...");
+                    System.out.println(tempDay);
+                    System.out.println("Most expencive entry: " + tempDay.getMostExpenciveSimpleEntry());
                     for(OtherExpenceEntry tempExpence : tempDay.getSimpleEntries()) {
                         System.out.println(tempExpence);
                     }

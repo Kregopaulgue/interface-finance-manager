@@ -99,9 +99,10 @@ public class OtherExpenceEntry extends ExpenceEntry {
                               "\nImportance: " + importance.toString() +
                               "\nDate: " + GregorianCalendar.getTime().toString() +
                               "\nEntry type: " + entryType.toString() +
-                              "\nEntry description: " + expenceDescription;
+                              "\nEntry description: " + expenceDescription + "\n";
         return stringToReturn;
     }
+
     public void setEntryType(ExpenceEntryType entryType) {
         this.entryType = entryType;
     }
