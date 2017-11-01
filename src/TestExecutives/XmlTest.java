@@ -45,10 +45,10 @@ public class XmlTest {
 
         for(TotalMonthEntries tempMonth : allMonths) {
             System.out.println("\nMonth: ...");
-            System.out.println(tempMonth.getAverageMoneySpent());
+            System.out.println(tempMonth);
             for(TotalWeekEntries tempWeek : tempMonth.getAllWeekEntriesInMonth()) {
                 System.out.println("\nWeek: ...");
-                System.out.println(tempWeek.getAverageMoneySpent());
+                System.out.println(tempWeek);
                 for(TotalDayEntries tempDay : tempWeek.getAllDayEntriesInWeek()) {
                     System.out.println("\nDay: ...");
                     System.out.println(tempDay);

@@ -251,6 +251,16 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     @Override
     public String toString() {
-
+        String informationToReturn = new String();
+        informationToReturn += "All money spent: " + this.allMoneySpent.toString() +
+                "\nAverage money spent: " + this.averageMoneySpent.toString() +
+                "\nDate: " + this.beggingDate.getTime().toString() + " -- " + this.endDate.getTime().toString() +
+                "\nDays amount: " + this.getAllDayEntriesInWeek().size() +
+                "\nDays list: ";
+        for(TotalDayEntries tempDay : this.getAllDayEntriesInWeek()) {
+            informationToReturn += "   " + tempDay.toString();
+        }
+        informationToReturn += "\n";
+        return informationToReturn;
     }
 }

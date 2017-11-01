@@ -76,6 +76,7 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         this.combinedEntriesAmount = this.getCombinedEntries().size();
         this.beggingDate = beggingDate;
         this.endDate = endDate;
+        countAverageMoneySpent();
     }
 
     //to write constructor for dayEntries array
@@ -263,4 +264,20 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
     public Double getAverageMoneySpent() {
         return averageMoneySpent;
     }
+
+    @Override
+    public String toString() {
+        String informationToReturn = new String();
+        informationToReturn += "All money spent: " + this.allMoneySpent.toString() +
+                "\nAverage money spent: " + this.averageMoneySpent.toString() +
+                "\nDate: " + this.beggingDate.getTime().toString() + " -- " + this.endDate.getTime().toString() +
+                "\nWeeks amount: " + this.getAllWeekEntriesInMonth().size() +
+                "\nWeeks list: ";
+        for(TotalWeekEntries tempWeek : this.getAllWeekEntriesInMonth()) {
+            informationToReturn += "   " + tempWeek.toString();
+        }
+        informationToReturn += "\n";
+        return informationToReturn;
+    }
+
 }

@@ -1,6 +1,10 @@
 package XMLLibrary;
 
 import CombinedExpenceEntries.CombinedOtherExpenceEntry;
+import Exceptions.DayNotFoundException;
+import Exceptions.ExpenceNotFoundException;
+import Exceptions.MonthNotFoundException;
+import Exceptions.WeekNotFoundException;
 import ExpenceEntries.ExpenceEntry;
 import ExpenceEntries.FoodExpenceEntry;
 import ExpenceEntries.OtherExpenceEntry;
@@ -64,22 +68,30 @@ public class XMLReader {
 
         ArrayList<TotalMonthType> totalXMLMonths = new ArrayList<>(totalTime.getTotalMonth());
 
-        for(TotalMonthType tempXMLMonth : totalXMLMonths) {
-            Integer beginYear = Integer.valueOf(tempXMLMonth.getDateBegin().getYear());
-            Integer beginMonth = Integer.valueOf(tempXMLMonth.getDateBegin().getMonth());
-            Integer beginDay = Integer.valueOf(tempXMLMonth.getDateBegin().getDay());
+        try {
+            for(TotalMonthType tempXMLMonth : totalXMLMonths) {
+                Integer beginYear = Integer.valueOf(tempXMLMonth.getDateBegin().getYear());
+                Integer beginMonth = Integer.valueOf(tempXMLMonth.getDateBegin().getMonth());
+                Integer beginDay = Integer.valueOf(tempXMLMonth.getDateBegin().getDay());
 
-            GregorianCalendar beginingDate = new GregorianCalendar(beginYear, beginMonth, beginDay);
+                GregorianCalendar beginingDate = new GregorianCalendar(beginYear, beginMonth, beginDay);
 
-            Integer endYear = Integer.valueOf(tempXMLMonth.getDateEnd().getYear());
-            Integer endMonth = Integer.valueOf(tempXMLMonth.getDateEnd().getMonth());
-            Integer endDay = Integer.valueOf(tempXMLMonth.getDateEnd().getDay());
+                Integer endYear = Integer.valueOf(tempXMLMonth.getDateEnd().getYear());
+                Integer endMonth = Integer.valueOf(tempXMLMonth.getDateEnd().getMonth());
+                Integer endDay = Integer.valueOf(tempXMLMonth.getDateEnd().getDay());
 
-            GregorianCalendar endDate = new GregorianCalendar(endYear, endMonth, endDay);
+                GregorianCalendar endDate = new GregorianCalendar(endYear, endMonth, endDay);
 
-            if(DateHelper.betweenCompareDates(beginingDate, date, endDate)) {
-                resultMonth = XMLReaderHelpers.convertFromXMLMonth(tempXMLMonth);
+                if(DateHelper.betweenCompareDates(beginingDate, date, endDate)) {
+                    resultMonth = XMLReaderHelpers.convertFromXMLMonth(tempXMLMonth);
+                }
             }
+            if(resultMonth.equals(new TotalMonthEntries())) {
+                throw new MonthNotFoundException();
+            }
+        } catch(MonthNotFoundException ex) {
+            System.out.println("Can't find month u're looking for");
+            System.out.println("Return null month");
         }
 
         return resultMonth;
@@ -89,11 +101,20 @@ public class XMLReader {
         TotalMonthEntries monthToSeekIn = readMonthFromXML(date);
         TotalWeekEntries neededWeek = new TotalWeekEntries();
 
-        for(TotalWeekEntries tempWeek : monthToSeekIn.getAllWeekEntriesInMonth()) {
-            if(DateHelper.betweenCompareDates(tempWeek.getBeggingDate(), date, tempWeek.getEndDate())) {
-                neededWeek = tempWeek;
+        try {
+            for(TotalWeekEntries tempWeek : monthToSeekIn.getAllWeekEntriesInMonth()) {
+                if(DateHelper.betweenCompareDates(tempWeek.getBeggingDate(), date, tempWeek.getEndDate())) {
+                    neededWeek = tempWeek;
+                }
             }
+            if(neededWeek.equals(new TotalWeekEntries())) {
+                throw new WeekNotFoundException();
+            }
+        } catch (WeekNotFoundException ex) {
+            System.out.println("Can't find week you need");
+            System.out.println("Return null week");
         }
+
         return neededWeek;
     }
 
@@ -101,25 +122,51 @@ public class XMLReader {
         TotalWeekEntries weekToSeekIn = readWeekFromXml(date);
         TotalDayEntries neededDay = new TotalDayEntries();
 
-        for(TotalDayEntries tempDay : weekToSeekIn.getAllDayEntriesInWeek()) {
-            if(tempDay.getDayDate().equals(date)) {
-                neededDay = tempDay;
+        try {
+            for(TotalDayEntries tempDay : weekToSeekIn.getAllDayEntriesInWeek()) {
+                if(tempDay.getDayDate().equals(date)) {
+                    neededDay = tempDay;
+                }
             }
+            if(neededDay.equals(new TotalDayEntries())) {
+                throw new DayNotFoundException();
+            }
+        } catch (DayNotFoundException ex) {
+            System.out.println("Can't find day you need");
+            System.out.println("Return null day");
         }
+
         return neededDay;
     }
 
     public static OtherExpenceEntry readEntryFromXml(GregorianCalendar date, int index)
             throws JAXBException, IOException{
-        TotalDayEntries dayToSeekIn = readDayFromXml(date);
-        OtherExpenceEntry neededEntry = dayToSeekIn.getSimpleEntries().get(index);
+
+        OtherExpenceEntry neededEntry = new OtherExpenceEntry();
+
+        try {
+            TotalDayEntries dayToSeekIn = readDayFromXml(date);
+            neededEntry = dayToSeekIn.getSimpleEntries().get(index);
+        } catch(IndexOutOfBoundsException ex) {
+            System.out.println("Expence entry you need is not found or index is wrong");
+            System.out.println("Return null entry");
+        }
+
         return neededEntry;
     }
 
     public static CombinedOtherExpenceEntry readCombinedEntryFromXml(GregorianCalendar date, int index)
             throws JAXBException, IOException{
         TotalDayEntries dayToSeekIn = readDayFromXml(date);
-        CombinedOtherExpenceEntry neededCombinedEntry = dayToSeekIn.getCombinedEntries().get(index);
+        CombinedOtherExpenceEntry neededCombinedEntry = new CombinedOtherExpenceEntry();
+
+        try {
+            neededCombinedEntry = dayToSeekIn.getCombinedEntries().get(index);
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("Combined entry you need not found");
+            System.out.println("Returned null entry");
+        }
+
         return neededCombinedEntry;
     }
 

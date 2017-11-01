@@ -5,7 +5,7 @@ package Exceptions;
  */
 public class ExpenceNotFoundException extends Exception {
 
-    ExpenceNotFoundException() {}
+    public ExpenceNotFoundException() {}
 
     public String toString() {
         return "Exception[Expence entry not found]";

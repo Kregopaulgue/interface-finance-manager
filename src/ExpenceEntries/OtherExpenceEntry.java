@@ -1,6 +1,9 @@
 package ExpenceEntries;
 
 import java.util.GregorianCalendar;
+
+import Exceptions.WrongImportanceInputException;
+import Exceptions.WrongMoneyInputException;
 import HelperTypes.ExpenceEntryType;
 
 /**
@@ -31,8 +34,29 @@ public class OtherExpenceEntry extends ExpenceEntry {
     public OtherExpenceEntry() {}
 
     public OtherExpenceEntry(Double moneySpent, Integer importance, String comment) {
-        this.moneySpent = moneySpent;
-        this.importance = importance;
+
+        try {
+            this.moneySpent = moneySpent;
+            if(moneySpent <= 0) {
+                throw new WrongMoneyInputException();
+            }
+        } catch(WrongMoneyInputException ex) {
+            System.out.println("Wrong money input");
+            System.out.println("Its set to 0");
+            this.moneySpent = 1.0;
+        }
+
+        try {
+            this.importance = importance;
+            if(importance < 0) {
+                throw new WrongImportanceInputException();
+            }
+        } catch (WrongImportanceInputException ex) {
+            System.out.println("Wrong importance input");
+            System.out.println("Its set to 0");
+            this.importance = 0;
+        }
+
         this.comment = comment;
         this.entryType = ExpenceEntryType.OTHER;
     }
@@ -40,8 +64,27 @@ public class OtherExpenceEntry extends ExpenceEntry {
     public OtherExpenceEntry(Double moneySpent, Integer importance,
                              String comment, GregorianCalendar GregorianCalendar, String expenceDescription) {
         this.entryType = ExpenceEntryType.OTHER;
+        try {
+            if(moneySpent <= 0) {
+                throw new WrongMoneyInputException();
+            }
+        } catch(WrongMoneyInputException ex) {
+            System.out.println("Wrong money input");
+            System.out.println("Its set to 0");
+            this.moneySpent = 1.0;
+        }
         this.moneySpent = moneySpent;
-        this.importance = importance;
+
+        try {
+            this.importance = importance;
+            if(importance < 0) {
+                throw new WrongImportanceInputException();
+            }
+        } catch (WrongImportanceInputException ex) {
+            System.out.println("Wrong importance input");
+            System.out.println("Its set to 0");
+            this.importance = 0;
+        }
         this.comment = comment;
         this.GregorianCalendar = GregorianCalendar;
         this.entryType = ExpenceEntryType.OTHER;
