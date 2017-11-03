@@ -29,7 +29,7 @@
 					<day>23</day>
 				</dateDay>
 				<Expence>
-					<moneySpent>54.43</moneySpent>
+					<moneySpent>-54.43</moneySpent>
 					<importance>5</importance>
 					<comment>Some comment</comment>
 					<date>

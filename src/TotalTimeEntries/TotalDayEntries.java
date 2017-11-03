@@ -152,7 +152,7 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
     public OtherExpenceEntry getMostExpenciveSimpleEntry() {
         OtherExpenceEntry entryToReturn = this.simpleEntries.get(0);
         for(int i = 1; i < this.simpleEntriesAmount; i++) {
-            if(this.simpleEntries.get(i).getMoneySpent() < entryToReturn.getMoneySpent()) {
+            if(this.simpleEntries.get(i).getMoneySpent() > entryToReturn.getMoneySpent()) {
                 entryToReturn = this.simpleEntries.get(i);
             }
         }
@@ -162,7 +162,7 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
     public OtherExpenceEntry getLessExpenciveSimpleEntry() {
         OtherExpenceEntry entryToReturn = this.simpleEntries.get(0);
         for(int i = 1; i < this.simpleEntriesAmount; i++) {
-            if(this.simpleEntries.get(i).getMoneySpent() > entryToReturn.getMoneySpent()) {
+            if(this.simpleEntries.get(i).getMoneySpent() < entryToReturn.getMoneySpent()) {
                 entryToReturn = this.simpleEntries.get(i);
             }
         }
@@ -184,6 +184,26 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         for(int i = 1; i < this.simpleEntriesAmount; i++) {
             if(this.simpleEntries.get(i).getMoneySpent() > entryToReturn.getAllMoneySpent()) {
                 entryToReturn = this.combinedEntries.get(i);
+            }
+        }
+        return entryToReturn;
+    }
+
+    public OtherExpenceEntry getMostImportantSimpleEntry() {
+        OtherExpenceEntry entryToReturn = this.simpleEntries.get(0);
+        for(int i = 1; i < this.simpleEntriesAmount; i++) {
+            if(this.simpleEntries.get(i).getImportance() > entryToReturn.getImportance()) {
+                entryToReturn = this.simpleEntries.get(i);
+            }
+        }
+        return entryToReturn;
+    }
+
+    public OtherExpenceEntry getLessImportantSimpleEntry() {
+        OtherExpenceEntry entryToReturn = this.simpleEntries.get(0);
+        for(int i = 1; i < this.simpleEntriesAmount; i++) {
+            if(this.simpleEntries.get(i).getImportance() < entryToReturn.getImportance()) {
+                entryToReturn = this.simpleEntries.get(i);
             }
         }
         return entryToReturn;

@@ -43,7 +43,7 @@ public class XMLWriterHelpers {
         GregorianCalendar current = new GregorianCalendar(2017, 10, 30);
         //fix current date getting
 
-        Integer currentYear = current.getTime().getYear() + 1900;
+        Integer currentYear = current.getTime().getYear();
         Integer currentMonth = current.getTime().getMonth();
         Integer currentDay = current.getTime().getDay();
 

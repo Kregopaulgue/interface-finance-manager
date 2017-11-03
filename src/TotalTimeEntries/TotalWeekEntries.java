@@ -263,4 +263,24 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         informationToReturn += "\n";
         return informationToReturn;
     }
+
+    public TotalDayEntries getMostExpenciveDay() {
+        TotalDayEntries entryToReturn = this.allDayEntriesInWeek.get(0);
+        for(int i = 1; i < this.allDayEntriesInWeek.size(); i++) {
+            if(this.allDayEntriesInWeek.get(i).getAllMoneySpent() > entryToReturn.getAllMoneySpent()) {
+                entryToReturn = this.allDayEntriesInWeek.get(i);
+            }
+        }
+        return entryToReturn;
+    }
+
+    public TotalDayEntries getLessExpenciveDay() {
+        TotalDayEntries entryToReturn = this.allDayEntriesInWeek.get(0);
+        for(int i = 1; i < this.allDayEntriesInWeek.size(); i++) {
+            if(this.allDayEntriesInWeek.get(i).getAllMoneySpent() < entryToReturn.getAllMoneySpent()) {
+                entryToReturn = this.allDayEntriesInWeek.get(i);
+            }
+        }
+        return entryToReturn;
+    }
 }

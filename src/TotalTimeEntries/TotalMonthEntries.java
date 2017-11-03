@@ -280,4 +280,23 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         return informationToReturn;
     }
 
+    public TotalWeekEntries getMostExpenciveWeek() {
+        TotalWeekEntries entryToReturn = this.allWeekEntriesInMonth.get(0);
+        for(int i = 1; i < this.allWeekEntriesInMonth.size(); i++) {
+            if(this.allWeekEntriesInMonth.get(i).getAllMoneySpent() > entryToReturn.getAllMoneySpent()) {
+                entryToReturn = this.allWeekEntriesInMonth.get(i);
+            }
+        }
+        return entryToReturn;
+    }
+
+    public TotalWeekEntries getLessExpenciveWeek() {
+        TotalWeekEntries entryToReturn = this.allWeekEntriesInMonth.get(0);
+        for(int i = 1; i < this.allWeekEntriesInMonth.size(); i++) {
+            if(this.allWeekEntriesInMonth.get(i).getAllMoneySpent() < entryToReturn.getAllMoneySpent()) {
+                entryToReturn = this.allWeekEntriesInMonth.get(i);
+            }
+        }
+        return entryToReturn;
+    }
 }

@@ -64,19 +64,19 @@ public class OtherExpenceEntry extends ExpenceEntry {
     public OtherExpenceEntry(Double moneySpent, Integer importance,
                              String comment, GregorianCalendar GregorianCalendar, String expenceDescription) {
         this.entryType = ExpenceEntryType.OTHER;
+        this.moneySpent = moneySpent;
         try {
             if(moneySpent <= 0) {
                 throw new WrongMoneyInputException();
             }
         } catch(WrongMoneyInputException ex) {
-            System.out.println("Wrong money input");
-            System.out.println("Its set to 0");
+            System.out.println("!WARNING !WARNING\nWrong money input\n");
+            System.out.println("Its set to 1");
             this.moneySpent = 1.0;
         }
-        this.moneySpent = moneySpent;
 
+        this.importance = importance;
         try {
-            this.importance = importance;
             if(importance < 0) {
                 throw new WrongImportanceInputException();
             }
