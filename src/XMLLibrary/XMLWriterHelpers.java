@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.GregorianCalendar;
 
@@ -24,9 +25,9 @@ public class XMLWriterHelpers {
     final static Integer SECOND_LAST_DAY = 31;
     final static Integer FEBRUARY_LAST_DAY = 28;
 
-    final static Integer[] FIRST_LAST_DAY_MONTHS = {3, 5, 8, 10};
-    final static Integer[] SECOND_LAST_DAY_MONTHS = {0, 2, 4, 6, 7, 9, 11};
-    final static Integer FEBRUARY_INDEX = 1;
+    final static Integer[] FIRST_LAST_DAY_MONTHS = {4, 6, 9, 11};
+    final static Integer[] SECOND_LAST_DAY_MONTHS = {1, 3, 5, 7, 8, 10, 12};
+    final static Integer FEBRUARY_INDEX = 2;
 
     final static Integer[] WEEK_BEGIN_AND_END_DAYS = {1, 7, 8, 14, 15, 21, 22, 28};
 
@@ -35,35 +36,10 @@ public class XMLWriterHelpers {
 
     public static void addFullYearToXml() throws JAXBException, IOException{
 
-        JAXBContext jaxbContext = JAXBContext.newInstance("Generated");
-        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-
-        TotalTimeType totalTime = new TotalTimeType();
-        Date curr = new Date();
-        GregorianCalendar current = new GregorianCalendar(2017, 10, 30);
-        //fix current date getting
-
-        Integer currentYear = current.getTime().getYear();
-        Integer currentMonth = current.getTime().getMonth();
-        Integer currentDay = current.getTime().getDay();
-
-        TotalMonthType[] totalMonths = new TotalMonthType[12];
-        for(int i = 0; i < totalMonths.length; i++) {
-            totalMonths[i] = createEmptyMonth(new GregorianCalendar(currentYear, i, currentDay));
-            totalTime.getTotalMonth().add(totalMonths[i]);
-        }
-
-        try {
-            javax.xml.bind.Marshaller marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(marshaller.JAXB_FORMATTED_OUTPUT,
-                    Boolean.TRUE);
-            marshaller.marshal(totalTime, new FileWriter("test_output.xml"));
-        } catch (JAXBException | IOException e) {
-            e.printStackTrace();
-        }
+        addEmptyMonthToXml(LocalDate.of(2017, 1, 1));
     }
 
-    public static void addEmptyMonthToXml(GregorianCalendar date) throws JAXBException, FileNotFoundException{
+    public static void addEmptyMonthToXml(LocalDate date) throws JAXBException, FileNotFoundException{
 
         JAXBContext jaxbContext = JAXBContext.newInstance("Generated");
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
@@ -82,10 +58,10 @@ public class XMLWriterHelpers {
         }
     }
 
-    public static TotalMonthType createEmptyMonth(GregorianCalendar date) {
+    public static TotalMonthType createEmptyMonth(LocalDate date) {
         TotalMonthType newMonth = new TotalMonthType();
-        Integer year = date.getTime().getYear();
-        Integer month = date.getTime().getMonth();
+        Integer year = date.getYear();
+        Integer month = date.getMonth().getValue();
 
         DateBeginType dateBegin = new DateBeginType();
         dateBegin.setDay(FIRST_DAY.toString());
@@ -112,8 +88,8 @@ public class XMLWriterHelpers {
 
         if(month.equals(FEBRUARY_INDEX)) {
             for(int i = 0; i < AMOUNT_OF_WEEKS_IN_FEBRUARY; i++) {
-                GregorianCalendar firstWeekDay = new GregorianCalendar(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2]);
-                GregorianCalendar secondWeekDay = new GregorianCalendar(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2 + 1]);
+                LocalDate firstWeekDay = LocalDate.of(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2]);
+                LocalDate secondWeekDay = LocalDate.of(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2 + 1]);
                 newMonth.getTotalWeek().add(createEmptyWeek(firstWeekDay, secondWeekDay));
             }
         }
@@ -124,11 +100,11 @@ public class XMLWriterHelpers {
         return newMonth;
     }
 
-    public static TotalWeekType createEmptyWeek(GregorianCalendar firstDate, GregorianCalendar secondDate) {
+    public static TotalWeekType createEmptyWeek(LocalDate firstDate, LocalDate secondDate) {
         TotalWeekType newWeek = new TotalWeekType();
-        Integer beginYear = firstDate.getTime().getYear();
-        Integer beginMonth = firstDate.getTime().getMonth();
-        Integer beginDay = firstDate.getTime().getDay();
+        Integer beginYear = firstDate.getYear();
+        Integer beginMonth = firstDate.getMonth().getValue();
+        Integer beginDay = firstDate.getDayOfMonth();
 
         DateBeginType dateBegin = new DateBeginType();
         dateBegin.setDay(beginDay.toString());
@@ -139,9 +115,9 @@ public class XMLWriterHelpers {
 
         DateEndType dateEnd = new DateEndType();
 
-        Integer endYear = secondDate.getTime().getYear();
-        Integer endMonth = secondDate.getTime().getMonth();
-        Integer endDay = secondDate.getTime().getDay();
+        Integer endYear = secondDate.getYear();
+        Integer endMonth = secondDate.getMonth().getValue();
+        Integer endDay = secondDate.getDayOfMonth();
 
         dateEnd.setMonth(endMonth.toString());
         dateEnd.setYear(endYear.toString());
@@ -150,21 +126,21 @@ public class XMLWriterHelpers {
         newWeek.setDateEnd(dateEnd);
 
         for(int loopDay = beginDay; loopDay <= endDay; loopDay++) {
-            newWeek.getTotalDay().add(createEmptyDay(new GregorianCalendar(beginYear, beginMonth, loopDay)));
+            newWeek.getTotalDay().add(createEmptyDay(LocalDate.of(beginYear, beginMonth, loopDay)));
         }
 
         return newWeek;
     }
 
-    public static TotalDayType createEmptyDay(GregorianCalendar date) {
+    public static TotalDayType createEmptyDay(LocalDate date) {
 
         TotalDayType newDay = new TotalDayType();
 
         DateDayType dateDay = new DateDayType();
 
-        Integer year = date.getTime().getYear();
-        Integer month = date.getTime().getMonth();
-        Integer day = date.getTime().getDay();
+        Integer year = date.getYear();
+        Integer month = date.getMonth().getValue();
+        Integer day = date.getDayOfMonth();
 
         dateDay.setYear(year.toString());
         dateDay.setMonth(month.toString());
@@ -175,17 +151,17 @@ public class XMLWriterHelpers {
 
     public static void addWeeksToMonth(TotalMonthType totalMonth, Integer year, Integer month) {
         for(int i = 0; i < AMOUNT_OF_WEEKS - 1; i++) {
-            GregorianCalendar firstWeekDay = new GregorianCalendar(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2]);
-            GregorianCalendar secondWeekDay = new GregorianCalendar(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2 + 1]);
+            LocalDate firstWeekDay = LocalDate.of(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2]);
+            LocalDate secondWeekDay = LocalDate.of(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2 + 1]);
             totalMonth.getTotalWeek().add(createEmptyWeek(firstWeekDay, secondWeekDay));
         }
-        GregorianCalendar firstWeekDay = new GregorianCalendar(year, month, 29);
-        GregorianCalendar secondWeekDay;
+        LocalDate firstWeekDay = LocalDate.of(year, month, 29);
+        LocalDate secondWeekDay;
         if(totalMonth.getDateEnd().getDay().equals("30")) {
-            secondWeekDay = new GregorianCalendar(year, month, 30);
+            secondWeekDay = LocalDate.of(year, month, 30);
         }
         else {
-            secondWeekDay = new GregorianCalendar(year, month, 31);
+            secondWeekDay = LocalDate.of(year, month, 31);
         }
         totalMonth.getTotalWeek().add(createEmptyWeek(firstWeekDay, secondWeekDay));
     }

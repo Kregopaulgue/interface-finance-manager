@@ -4,6 +4,7 @@ import CombinedExpenceEntries.CombinedOtherExpenceEntry;
 import ExpenceEntries.OtherExpenceEntry;
 import HelperInterfaces.GeneralTotalEntryOperations;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -38,9 +39,9 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
 
     private LinkedList<OtherExpenceEntry> simpleEntries = new LinkedList<OtherExpenceEntry>();
     private LinkedList<CombinedOtherExpenceEntry> combinedEntries = new LinkedList<CombinedOtherExpenceEntry>();
-    private GregorianCalendar dayDate;
+    private LocalDate dayDate;
 
-    Double averageMoneySpent;
+    private Double averageMoneySpent;
 
     private Integer simpleEntriesAmount;
     private Integer combinedEntriesAmount;
@@ -57,7 +58,7 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
                            LinkedList<CombinedOtherExpenceEntry> combinedEntries) {
         this.simpleEntries = simpleEntries;
         this.combinedEntries = combinedEntries;
-        this.dayDate = new GregorianCalendar();
+        this.dayDate = LocalDate.now();
 
         this.simpleEntriesAmount = simpleEntries.size();
         this.combinedEntriesAmount = combinedEntries.size();
@@ -67,7 +68,7 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
     }
 
     public TotalDayEntries(LinkedList<OtherExpenceEntry> simpleEntries,
-                           LinkedList<CombinedOtherExpenceEntry> combinedEntries, GregorianCalendar dayDate) {
+                           LinkedList<CombinedOtherExpenceEntry> combinedEntries, LocalDate dayDate) {
         this.simpleEntries = simpleEntries;
         this.combinedEntries = combinedEntries;
         this.dayDate = dayDate;
@@ -133,11 +134,11 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         this.combinedEntries = combinedEntries;
     }
 
-    public GregorianCalendar getDayDate() {
+    public LocalDate getDayDate() {
         return dayDate;
     }
 
-    public void setDayDate(GregorianCalendar dayDate) {
+    public void setDayDate(LocalDate dayDate) {
         this.dayDate = dayDate;
     }
 
@@ -308,7 +309,7 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         String informationToReturn = new String();
         informationToReturn += "All money spent: " + this.allMoneySpent.toString() +
                 "\nAverage money spent: " + this.averageMoneySpent.toString() +
-                "\nDate: " + getDayDate().getTime().toString() +
+                "\nDate: " + getDayDate().toString() +
                 "\nSimple entries amount: " + this.simpleEntriesAmount.toString() +
                 "\nSimple entries: \n";
         for(OtherExpenceEntry tempExpence : this.simpleEntries) {

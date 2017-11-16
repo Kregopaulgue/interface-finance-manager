@@ -4,6 +4,7 @@ import CombinedExpenceEntries.CombinedOtherExpenceEntry;
 import ExpenceEntries.OtherExpenceEntry;
 import HelperInterfaces.GeneralTotalEntryOperations;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
@@ -40,13 +41,13 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
     private LinkedList<OtherExpenceEntry> simpleEntries = new LinkedList<>();
     private LinkedList<CombinedOtherExpenceEntry> combinedEntries = new LinkedList<>();
 
-    private GregorianCalendar beggingDate;
-    private GregorianCalendar endDate;
+    private LocalDate beggingDate;
+    private LocalDate endDate;
 
     private Integer simpleEntriesAmount;
     private Integer combinedEntriesAmount;
 
-    Double averageMoneySpent;
+    private Double averageMoneySpent;
 
     private Double allMoneySpent;
     private Double allMoneySpentSimpleEntries;
@@ -58,7 +59,7 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     }
 
-    public TotalWeekEntries(ArrayList<TotalDayEntries> allDayEntriesInWeek, GregorianCalendar beggingDate, GregorianCalendar endDate) {
+    public TotalWeekEntries(ArrayList<TotalDayEntries> allDayEntriesInWeek, LocalDate beggingDate, LocalDate endDate) {
         this.allDayEntriesInWeek = allDayEntriesInWeek;
         this.simpleEntriesAmount = 0;
         for(TotalDayEntries tempDay : allDayEntriesInWeek) {
@@ -218,19 +219,19 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         setCombinedEntries();
     }
 
-    public GregorianCalendar getBeggingDate() {
+    public LocalDate getBeggingDate() {
         return beggingDate;
     }
 
-    public void setBeggingDate(GregorianCalendar beggingDate) {
+    public void setBeggingDate(LocalDate beggingDate) {
         this.beggingDate = beggingDate;
     }
 
-    public GregorianCalendar getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(GregorianCalendar endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -254,7 +255,7 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         String informationToReturn = new String();
         informationToReturn += "All money spent: " + this.allMoneySpent.toString() +
                 "\nAverage money spent: " + this.averageMoneySpent.toString() +
-                "\nDate: " + this.beggingDate.getTime().toString() + " -- " + this.endDate.getTime().toString() +
+                "\nDate: " + this.beggingDate.toString() + " -- " + this.endDate.toString() +
                 "\nDays amount: " + this.getAllDayEntriesInWeek().size() +
                 "\nDays list: ";
         for(TotalDayEntries tempDay : this.getAllDayEntriesInWeek()) {

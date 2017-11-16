@@ -3,6 +3,7 @@ package ExpenceEntries;
 import HelperTypes.ExpenceEntryType;
 import HelperTypes.FoodType;
 
+import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
 /**
@@ -41,7 +42,7 @@ public class FoodExpenceEntry extends OtherExpenceEntry {
         chechForImportance(foodType, importance);
     }
 
-    public FoodExpenceEntry(Double moneySpent, Integer importance, String comment, GregorianCalendar GregorianCalendar,
+    public FoodExpenceEntry(Double moneySpent, Integer importance, String comment, LocalDate GregorianCalendar,
                             FoodType foodType, String textFoodType) {
         super(moneySpent, importance, comment, GregorianCalendar, textFoodType);
 

@@ -2,6 +2,7 @@ package ExpenceEntries;
 
 import HelperTypes.ExpenceEntryType;
 
+import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
 /**
@@ -29,7 +30,7 @@ public class ClothExpenceEntry extends OtherExpenceEntry {
     private boolean doYouNeedIt;
 
     public ClothExpenceEntry(Double moneySpent, Integer importance, String comment,
-                             GregorianCalendar GregorianCalendar, String clothType) {
+                             LocalDate GregorianCalendar, String clothType) {
         super(moneySpent, importance, comment, GregorianCalendar, clothType);
 
         this.entryType = ExpenceEntryType.CLOTH;
@@ -42,7 +43,7 @@ public class ClothExpenceEntry extends OtherExpenceEntry {
     }
 
     public ClothExpenceEntry(Double moneySpent, Integer importance, String comment,
-                             GregorianCalendar GregorianCalendar, String clothType,
+                             LocalDate GregorianCalendar, String clothType,
                              boolean isClothImportant, boolean doYouWantToBeFashion, boolean doYouNeedIt) {
         super(moneySpent, importance, comment, GregorianCalendar, clothType);
 

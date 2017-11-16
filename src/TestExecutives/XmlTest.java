@@ -19,6 +19,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -33,7 +34,7 @@ public class XmlTest {
     }
 
     public static void main(String[] args) throws JAXBException, IOException {
-        TotalMonthEntries firstMonth = XMLReader.readMonthFromXML(new GregorianCalendar(2017, 9, 10));
+        TotalMonthEntries firstMonth = XMLReader.readMonthFromXML(LocalDate.of(2017, 9, 10));
         ArrayList<TotalDayEntries> firstMonthDays = firstMonth.getAllDayEntriesInMonth();
 
         for(TotalDayEntries tempDayEntry : firstMonthDays) {
@@ -42,7 +43,7 @@ public class XmlTest {
             }
         }
 
-        OtherExpenceEntry expence = XMLReader.readEntryFromXml(new GregorianCalendar(2017, 9, 10), 0);
+        OtherExpenceEntry expence = XMLReader.readEntryFromXml(LocalDate.of(2017, 9, 10), 0);
         print("\n---------------------\n");
         print(expence.toString());
         print("\n---------------------\n");
@@ -132,7 +133,7 @@ public class XmlTest {
                 print("exiting...");
                 break;
             }
-            GregorianCalendar dateToFind = new GregorianCalendar(Integer.valueOf(year), Integer.valueOf(month),
+            LocalDate dateToFind = LocalDate.of(Integer.valueOf(year), Integer.valueOf(month),
                     Integer.valueOf(day));
 
             print("Reading certain month...");

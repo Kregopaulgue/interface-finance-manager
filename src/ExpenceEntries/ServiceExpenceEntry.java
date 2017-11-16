@@ -2,6 +2,7 @@ package ExpenceEntries;
 
 import HelperTypes.ExpenceEntryType;
 
+import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
 /**
@@ -35,7 +36,7 @@ public class ServiceExpenceEntry extends OtherExpenceEntry {
     }
 
     public ServiceExpenceEntry(Double moneySpent, Integer importance,
-                               String comment, GregorianCalendar GregorianCalendar, String serviceDescription) {
+                               String comment, LocalDate GregorianCalendar, String serviceDescription) {
 
         super(moneySpent, importance, comment, GregorianCalendar, serviceDescription);
         this.entryType = ExpenceEntryType.SERVICE;
