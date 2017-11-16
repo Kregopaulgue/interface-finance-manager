@@ -22,6 +22,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.GregorianCalendar;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -54,7 +55,7 @@ public class XMLReader {
         return resultMonths;
     }
 
-    public static TotalMonthEntries readMonthFromXML(GregorianCalendar date) throws JAXBException, IOException{
+    public static TotalMonthEntries readMonthFromXML(LocalDate date) throws JAXBException, IOException{
 
         JAXBContext jaxbContext = JAXBContext.newInstance("Generated");
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
@@ -74,13 +75,13 @@ public class XMLReader {
                 Integer beginMonth = Integer.valueOf(tempXMLMonth.getDateBegin().getMonth());
                 Integer beginDay = Integer.valueOf(tempXMLMonth.getDateBegin().getDay());
 
-                GregorianCalendar beginingDate = new GregorianCalendar(beginYear, beginMonth, beginDay);
+                LocalDate beginingDate = LocalDate.of(beginYear, beginMonth, beginDay);
 
                 Integer endYear = Integer.valueOf(tempXMLMonth.getDateEnd().getYear());
                 Integer endMonth = Integer.valueOf(tempXMLMonth.getDateEnd().getMonth());
                 Integer endDay = Integer.valueOf(tempXMLMonth.getDateEnd().getDay());
 
-                GregorianCalendar endDate = new GregorianCalendar(endYear, endMonth, endDay);
+                LocalDate endDate = LocalDate.of(endYear, endMonth, endDay);
 
                 if(DateHelper.betweenCompareDates(beginingDate, date, endDate)) {
                     resultMonth = XMLReaderHelpers.convertFromXMLMonth(tempXMLMonth);
@@ -97,7 +98,7 @@ public class XMLReader {
         return resultMonth;
     }
 
-    public static TotalWeekEntries readWeekFromXml(GregorianCalendar date) throws JAXBException, IOException{
+    public static TotalWeekEntries readWeekFromXml(LocalDate date) throws JAXBException, IOException{
         TotalMonthEntries monthToSeekIn = readMonthFromXML(date);
         TotalWeekEntries neededWeek = new TotalWeekEntries();
 
@@ -118,7 +119,7 @@ public class XMLReader {
         return neededWeek;
     }
 
-    public static TotalDayEntries readDayFromXml(GregorianCalendar date) throws JAXBException, IOException {
+    public static TotalDayEntries readDayFromXml(LocalDate date) throws JAXBException, IOException {
         TotalWeekEntries weekToSeekIn = readWeekFromXml(date);
         TotalDayEntries neededDay = new TotalDayEntries();
 
@@ -139,7 +140,7 @@ public class XMLReader {
         return neededDay;
     }
 
-    public static OtherExpenceEntry readEntryFromXml(GregorianCalendar date, int index)
+    public static OtherExpenceEntry readEntryFromXml(LocalDate date, int index)
             throws JAXBException, IOException{
 
         OtherExpenceEntry neededEntry = new OtherExpenceEntry();
@@ -155,7 +156,7 @@ public class XMLReader {
         return neededEntry;
     }
 
-    public static CombinedOtherExpenceEntry readCombinedEntryFromXml(GregorianCalendar date, int index)
+    public static CombinedOtherExpenceEntry readCombinedEntryFromXml(LocalDate date, int index)
             throws JAXBException, IOException{
         TotalDayEntries dayToSeekIn = readDayFromXml(date);
         CombinedOtherExpenceEntry neededCombinedEntry = new CombinedOtherExpenceEntry();

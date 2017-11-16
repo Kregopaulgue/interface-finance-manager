@@ -10,6 +10,7 @@ import TotalTimeEntries.TotalDayEntries;
 import TotalTimeEntries.TotalMonthEntries;
 import TotalTimeEntries.TotalWeekEntries;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.GregorianCalendar;
@@ -31,7 +32,7 @@ public class XMLReaderHelpers {
         month = Integer.valueOf(expenceEntry.getDate().getMonth());
         day = Integer.valueOf(expenceEntry.getDate().getDay());
 
-        GregorianCalendar date = new GregorianCalendar(year, month, day);
+        LocalDate date = LocalDate.of(year, month, day);
         ExpenceEntryType currentExpenceType = ExpenceEntryType.valueOf(expenceEntry.getExpenceType());
 
         String specialTypeDescription = expenceEntry.getExpenceDescription();
@@ -87,7 +88,7 @@ public class XMLReaderHelpers {
         month = Integer.valueOf(totalDay.getDateDay().getMonth());
         day = Integer.valueOf(totalDay.getDateDay().getDay());
 
-        GregorianCalendar date = new GregorianCalendar(year, month, day);
+        LocalDate date = LocalDate.of(year, month, day);
 
         LinkedList<OtherExpenceEntry> convertedSimpleExpences = new LinkedList<>();
         LinkedList<CombinedOtherExpenceEntry> convertedCombinedExpences = new LinkedList<>();
@@ -114,14 +115,14 @@ public class XMLReaderHelpers {
         beginingMonth = Integer.valueOf(totalWeek.getDateBegin().getMonth());
         beginingDay = Integer.valueOf(totalWeek.getDateBegin().getDay());
 
-        GregorianCalendar beginingDate = new GregorianCalendar(beginingYear, beginingMonth, beginingDay);
+        LocalDate beginingDate = LocalDate.of(beginingYear, beginingMonth, beginingDay);
 
         Integer endYear, endMonth, endDay;
         endYear = Integer.valueOf(totalWeek.getDateEnd().getYear());
         endMonth = Integer.valueOf(totalWeek.getDateEnd().getMonth());
         endDay = Integer.valueOf(totalWeek.getDateEnd().getDay());
 
-        GregorianCalendar endDate = new GregorianCalendar(endYear, endMonth, endDay);
+        LocalDate endDate = LocalDate.of(endYear, endMonth, endDay);
 
         ArrayList<TotalDayEntries> entriesInWeek = new ArrayList<>();
         ArrayList<TotalDayType> xmlDaysInWeek = new ArrayList<>(totalWeek.getTotalDay());
@@ -141,14 +142,14 @@ public class XMLReaderHelpers {
         beginingMonth = Integer.valueOf(totalMonth.getDateBegin().getMonth());
         beginingDay = Integer.valueOf(totalMonth.getDateBegin().getDay());
 
-        GregorianCalendar beginingDate = new GregorianCalendar(beginingYear, beginingMonth, beginingDay);
+        LocalDate beginingDate = LocalDate.of(beginingYear, beginingMonth, beginingDay);
 
         Integer endYear, endMonth, endDay;
         endYear = Integer.valueOf(totalMonth.getDateEnd().getYear());
         endMonth = Integer.valueOf(totalMonth.getDateEnd().getMonth());
         endDay = Integer.valueOf(totalMonth.getDateEnd().getDay());
 
-        GregorianCalendar endDate = new GregorianCalendar(endYear, endMonth, endDay);
+        LocalDate endDate = LocalDate.of(endYear, endMonth, endDay);
 
         ArrayList<TotalWeekEntries> weekEntries = new ArrayList<>();
         ArrayList<TotalWeekType> weekXmlEntries = new ArrayList<>(totalMonth.getTotalWeek());
