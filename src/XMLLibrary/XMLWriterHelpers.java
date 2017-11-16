@@ -35,32 +35,7 @@ public class XMLWriterHelpers {
 
     public static void addFullYearToXml() throws JAXBException, IOException{
 
-        JAXBContext jaxbContext = JAXBContext.newInstance("Generated");
-        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-
-        TotalTimeType totalTime = new TotalTimeType();
-        Date curr = new Date();
-        GregorianCalendar current = new GregorianCalendar(2017, 10, 30);
-        //fix current date getting
-
-        Integer currentYear = current.getTime().getYear();
-        Integer currentMonth = current.getTime().getMonth();
-        Integer currentDay = current.getTime().getDay();
-
-        TotalMonthType[] totalMonths = new TotalMonthType[12];
-        for(int i = 0; i < totalMonths.length; i++) {
-            totalMonths[i] = createEmptyMonth(new GregorianCalendar(currentYear, i, currentDay));
-            totalTime.getTotalMonth().add(totalMonths[i]);
-        }
-
-        try {
-            javax.xml.bind.Marshaller marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(marshaller.JAXB_FORMATTED_OUTPUT,
-                    Boolean.TRUE);
-            marshaller.marshal(totalTime, new FileWriter("test_output.xml"));
-        } catch (JAXBException | IOException e) {
-            e.printStackTrace();
-        }
+        addEmptyMonthToXml(new GregorianCalendar(2017, 0, 1));
     }
 
     public static void addEmptyMonthToXml(GregorianCalendar date) throws JAXBException, FileNotFoundException{
