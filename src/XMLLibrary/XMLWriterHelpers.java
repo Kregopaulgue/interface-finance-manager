@@ -146,6 +146,8 @@ public class XMLWriterHelpers {
         dateDay.setMonth(month);
         dateDay.setDay(day);
 
+        newDay.setDateDay(dateDay);
+
         return newDay;
     }
 
