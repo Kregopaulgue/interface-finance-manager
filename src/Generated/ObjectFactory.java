@@ -4,7 +4,6 @@ package Generated;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.namespace.QName;
 
 
@@ -22,7 +21,6 @@ import javax.xml.namespace.QName;
  * provided in this class.
  * 
  */
-@XmlRootElement
 @XmlRegistry
 public class ObjectFactory {
 

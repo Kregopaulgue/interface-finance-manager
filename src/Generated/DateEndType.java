@@ -1,7 +1,11 @@
 
 package Generated;
 
-import javax.xml.bind.annotation.*;
+import java.math.BigInteger;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -14,9 +18,9 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="year" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="month" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="day" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="year" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="month" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="day" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -25,7 +29,6 @@ import javax.xml.bind.annotation.*;
  * 
  * 
  */
-@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dateEndType", propOrder = {
     "year",
@@ -35,21 +38,21 @@ import javax.xml.bind.annotation.*;
 public class DateEndType {
 
     @XmlElement(required = true)
-    protected String year;
+    protected BigInteger year;
     @XmlElement(required = true)
-    protected String month;
+    protected BigInteger month;
     @XmlElement(required = true)
-    protected String day;
+    protected BigInteger day;
 
     /**
      * Gets the value of the year property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public String getYear() {
+    public BigInteger getYear() {
         return year;
     }
 
@@ -58,10 +61,10 @@ public class DateEndType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public void setYear(String value) {
+    public void setYear(BigInteger value) {
         this.year = value;
     }
 
@@ -70,10 +73,10 @@ public class DateEndType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public String getMonth() {
+    public BigInteger getMonth() {
         return month;
     }
 
@@ -82,10 +85,10 @@ public class DateEndType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public void setMonth(String value) {
+    public void setMonth(BigInteger value) {
         this.month = value;
     }
 
@@ -94,10 +97,10 @@ public class DateEndType {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public String getDay() {
+    public BigInteger getDay() {
         return day;
     }
 
@@ -106,10 +109,10 @@ public class DateEndType {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public void setDay(String value) {
+    public void setDay(BigInteger value) {
         this.day = value;
     }
 
