@@ -222,7 +222,7 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         setCombinedEntries();
     }
 
-    public TotalWeekEntries getCertainWeek(GregorianCalendar date) {
+    public TotalWeekEntries getCertainWeek(LocalDate date) {
         TotalWeekEntries neededWeek = new TotalWeekEntries();
         try {
             for(TotalWeekEntries tempWeek : this.allWeekEntriesInMonth) {
