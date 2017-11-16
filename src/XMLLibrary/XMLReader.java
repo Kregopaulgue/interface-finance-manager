@@ -116,6 +116,7 @@ public class XMLReader {
             System.out.println("Return null week");
         }
 
+        LocalDate sdate;
         return neededWeek;
     }
 
