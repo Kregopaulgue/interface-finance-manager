@@ -1,7 +1,6 @@
 
 package Generated;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -19,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="OtherExpenceEntries" type="{}OtherExpenceEntriesType"/>
- *         &lt;element name="amountOfEntries" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="amountOfEntries" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="allMoneySpent" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="averageMoneySpent" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="date" type="{}dateType"/>
@@ -45,8 +44,7 @@ public class CombinedEntryType {
 
     @XmlElement(name = "OtherExpenceEntries", required = true)
     protected OtherExpenceEntriesType otherExpenceEntries;
-    @XmlElement(required = true)
-    protected BigInteger amountOfEntries;
+    protected int amountOfEntries;
     protected double allMoneySpent;
     protected double averageMoneySpent;
     @XmlElement(required = true)
@@ -81,24 +79,16 @@ public class CombinedEntryType {
     /**
      * Gets the value of the amountOfEntries property.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
      */
-    public BigInteger getAmountOfEntries() {
+    public int getAmountOfEntries() {
         return amountOfEntries;
     }
 
     /**
      * Sets the value of the amountOfEntries property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
      */
-    public void setAmountOfEntries(BigInteger value) {
+    public void setAmountOfEntries(int value) {
         this.amountOfEntries = value;
     }
 
