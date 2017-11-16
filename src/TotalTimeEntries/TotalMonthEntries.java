@@ -6,6 +6,7 @@ import ExpenceEntries.OtherExpenceEntry;
 import HelperInterfaces.GeneralTotalEntryOperations;
 import XMLLibrary.DateHelper;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
@@ -45,13 +46,13 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
     private LinkedList<OtherExpenceEntry> simpleEntries = new LinkedList<>();
     private LinkedList<CombinedOtherExpenceEntry> combinedEntries = new LinkedList<>();
 
-    private GregorianCalendar beggingDate;
-    private GregorianCalendar endDate;
+    private LocalDate beggingDate;
+    private LocalDate endDate;
 
     private Integer simpleEntriesAmount;
     private Integer combinedEntriesAmount;
 
-    Double averageMoneySpent;
+    private Double averageMoneySpent;
 
     private Double allMoneySpent;
     private Double allMoneySpentSimpleEntries;
@@ -62,7 +63,7 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
 
     public TotalMonthEntries() {}
 
-    public TotalMonthEntries(ArrayList<TotalWeekEntries> weekEntries, GregorianCalendar beggingDate, GregorianCalendar endDate) {
+    public TotalMonthEntries(ArrayList<TotalWeekEntries> weekEntries, LocalDate beggingDate, LocalDate endDate) {
         this.allWeekEntriesInMonth = weekEntries;
         for(TotalWeekEntries tempWeek : weekEntries) {
             for(int i = 0; i < weekEntries.size(); i++) {
@@ -181,19 +182,19 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         this.wishedMoneyLimit = wishedMoneyLimit;
     }
 
-    public GregorianCalendar getBeggingDate() {
-        return beggingDate;
-    }
-
-    public void setBeggingDate(GregorianCalendar beggingDate) {
+    public void setBeggingDate(LocalDate beggingDate) {
         this.beggingDate = beggingDate;
     }
 
-    public GregorianCalendar getEndDate() {
+    public LocalDate getBeggingDate() {
+        return beggingDate;
+    }
+
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(GregorianCalendar endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -270,7 +271,7 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         String informationToReturn = new String();
         informationToReturn += "All money spent: " + this.allMoneySpent.toString() +
                 "\nAverage money spent: " + this.averageMoneySpent.toString() +
-                "\nDate: " + this.beggingDate.getTime().toString() + " -- " + this.endDate.getTime().toString() +
+                "\nDate: " + this.beggingDate.toString() + " -- " + this.endDate.toString() +
                 "\nWeeks amount: " + this.getAllWeekEntriesInMonth().size() +
                 "\nWeeks list: ";
         for(TotalWeekEntries tempWeek : this.getAllWeekEntriesInMonth()) {
