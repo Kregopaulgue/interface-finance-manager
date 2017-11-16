@@ -71,15 +71,15 @@ public class XMLReader {
 
         try {
             for(TotalMonthType tempXMLMonth : totalXMLMonths) {
-                Integer beginYear = Integer.valueOf(tempXMLMonth.getDateBegin().getYear());
-                Integer beginMonth = Integer.valueOf(tempXMLMonth.getDateBegin().getMonth());
-                Integer beginDay = Integer.valueOf(tempXMLMonth.getDateBegin().getDay());
+                Integer beginYear = tempXMLMonth.getDateBegin().getYear();
+                Integer beginMonth = tempXMLMonth.getDateBegin().getMonth();
+                Integer beginDay = tempXMLMonth.getDateBegin().getDay();
 
                 LocalDate beginingDate = LocalDate.of(beginYear, beginMonth, beginDay);
 
-                Integer endYear = Integer.valueOf(tempXMLMonth.getDateEnd().getYear());
-                Integer endMonth = Integer.valueOf(tempXMLMonth.getDateEnd().getMonth());
-                Integer endDay = Integer.valueOf(tempXMLMonth.getDateEnd().getDay());
+                Integer endYear = tempXMLMonth.getDateEnd().getYear();
+                Integer endMonth = tempXMLMonth.getDateEnd().getMonth();
+                Integer endDay = tempXMLMonth.getDateEnd().getDay();
 
                 LocalDate endDate = LocalDate.of(endYear, endMonth, endDay);
 

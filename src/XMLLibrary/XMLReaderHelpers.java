@@ -23,14 +23,14 @@ public class XMLReaderHelpers {
 
     public static OtherExpenceEntry convertFromXMLSimpleEntry(ExpenceType expenceEntry) {
 
-        Double allMoneySpent = Double.valueOf(expenceEntry.getMoneySpent());
+        Double allMoneySpent = expenceEntry.getMoneySpent();
         String comment = expenceEntry.getComment();
-        Integer importance = Integer.valueOf(expenceEntry.getImportance());
+        Integer importance = expenceEntry.getImportance();
 
         Integer year, month, day;
-        year = Integer.valueOf(expenceEntry.getDate().getYear());
-        month = Integer.valueOf(expenceEntry.getDate().getMonth());
-        day = Integer.valueOf(expenceEntry.getDate().getDay());
+        year = expenceEntry.getDate().getYear();
+        month = expenceEntry.getDate().getMonth();
+        day = expenceEntry.getDate().getDay();
 
         LocalDate date = LocalDate.of(year, month, day);
         ExpenceEntryType currentExpenceType = ExpenceEntryType.valueOf(expenceEntry.getExpenceType());
@@ -77,16 +77,15 @@ public class XMLReaderHelpers {
             expencesList.add(entryToAdd);
         }
 
-        CombinedOtherExpenceEntry combinedEntryToReturn = new CombinedOtherExpenceEntry(expencesList);
-        return combinedEntryToReturn;
+        return new CombinedOtherExpenceEntry(expencesList);
     }
 
     public static TotalDayEntries convertFromXMLDay(TotalDayType totalDay) {
 
         Integer year, month, day;
-        year = Integer.valueOf(totalDay.getDateDay().getYear());
-        month = Integer.valueOf(totalDay.getDateDay().getMonth());
-        day = Integer.valueOf(totalDay.getDateDay().getDay());
+        year = totalDay.getDateDay().getYear();
+        month = totalDay.getDateDay().getMonth();
+        day = totalDay.getDateDay().getDay();
 
         LocalDate date = LocalDate.of(year, month, day);
 
@@ -104,23 +103,21 @@ public class XMLReaderHelpers {
             convertedCombinedExpences.add(convertFromXMLCombinedEntry(tempCombinedExpence));
         }
 
-        TotalDayEntries totalDayEntryToReturn = new TotalDayEntries(convertedSimpleExpences,
-                convertedCombinedExpences, date);
-        return totalDayEntryToReturn;
+        return new TotalDayEntries(convertedSimpleExpences, convertedCombinedExpences, date);
     }
 
     public static TotalWeekEntries converFromXMLWeek(TotalWeekType totalWeek) {
         Integer beginingYear, beginingMonth, beginingDay;
-        beginingYear = Integer.valueOf(totalWeek.getDateBegin().getYear());
-        beginingMonth = Integer.valueOf(totalWeek.getDateBegin().getMonth());
-        beginingDay = Integer.valueOf(totalWeek.getDateBegin().getDay());
+        beginingYear = totalWeek.getDateBegin().getYear();
+        beginingMonth = totalWeek.getDateBegin().getMonth();
+        beginingDay = totalWeek.getDateBegin().getDay();
 
         LocalDate beginingDate = LocalDate.of(beginingYear, beginingMonth, beginingDay);
 
         Integer endYear, endMonth, endDay;
-        endYear = Integer.valueOf(totalWeek.getDateEnd().getYear());
-        endMonth = Integer.valueOf(totalWeek.getDateEnd().getMonth());
-        endDay = Integer.valueOf(totalWeek.getDateEnd().getDay());
+        endYear = totalWeek.getDateEnd().getYear();
+        endMonth = totalWeek.getDateEnd().getMonth();
+        endDay = totalWeek.getDateEnd().getDay();
 
         LocalDate endDate = LocalDate.of(endYear, endMonth, endDay);
 
@@ -138,16 +135,16 @@ public class XMLReaderHelpers {
 
     public static TotalMonthEntries convertFromXMLMonth(TotalMonthType totalMonth) {
         Integer beginingYear, beginingMonth, beginingDay;
-        beginingYear = Integer.valueOf(totalMonth.getDateBegin().getYear());
-        beginingMonth = Integer.valueOf(totalMonth.getDateBegin().getMonth());
-        beginingDay = Integer.valueOf(totalMonth.getDateBegin().getDay());
+        beginingYear = totalMonth.getDateBegin().getYear();
+        beginingMonth = totalMonth.getDateBegin().getMonth();
+        beginingDay = totalMonth.getDateBegin().getDay();
 
         LocalDate beginingDate = LocalDate.of(beginingYear, beginingMonth, beginingDay);
 
         Integer endYear, endMonth, endDay;
-        endYear = Integer.valueOf(totalMonth.getDateEnd().getYear());
-        endMonth = Integer.valueOf(totalMonth.getDateEnd().getMonth());
-        endDay = Integer.valueOf(totalMonth.getDateEnd().getDay());
+        endYear = totalMonth.getDateEnd().getYear();
+        endMonth = totalMonth.getDateEnd().getMonth();
+        endDay = totalMonth.getDateEnd().getDay();
 
         LocalDate endDate = LocalDate.of(endYear, endMonth, endDay);
 
@@ -158,7 +155,6 @@ public class XMLReaderHelpers {
             weekEntries.add(converFromXMLWeek(tempXmlWeek));
         }
 
-        TotalMonthEntries totalMonthToReturn = new TotalMonthEntries(weekEntries, beginingDate, endDate);
-        return totalMonthToReturn;
+        return new TotalMonthEntries(weekEntries, beginingDate, endDate);
     }
 }
