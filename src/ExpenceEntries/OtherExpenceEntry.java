@@ -1,5 +1,6 @@
 package ExpenceEntries;
 
+import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
 import Exceptions.WrongImportanceInputException;
@@ -27,7 +28,7 @@ public class OtherExpenceEntry extends ExpenceEntry {
     protected Double moneySpent;
     protected Integer importance;
     protected String comment;
-    protected GregorianCalendar GregorianCalendar;
+    protected LocalDate GregorianCalendar;
     protected ExpenceEntryType entryType;
     private String expenceDescription;
 
@@ -62,7 +63,7 @@ public class OtherExpenceEntry extends ExpenceEntry {
     }
 
     public OtherExpenceEntry(Double moneySpent, Integer importance,
-                             String comment, GregorianCalendar GregorianCalendar, String expenceDescription) {
+                             String comment, LocalDate GregorianCalendar, String expenceDescription) {
         this.entryType = ExpenceEntryType.OTHER;
         this.moneySpent = moneySpent;
         try {
@@ -122,12 +123,12 @@ public class OtherExpenceEntry extends ExpenceEntry {
     }
 
     @Override
-    public GregorianCalendar getCalendar() {
+    public LocalDate getCalendar() {
         return GregorianCalendar;
     }
 
     @Override
-    public void setCalendar(GregorianCalendar GregorianCalendar) {
+    public void setCalendar(LocalDate GregorianCalendar) {
         this.GregorianCalendar = GregorianCalendar;
     }
 
@@ -140,7 +141,7 @@ public class OtherExpenceEntry extends ExpenceEntry {
     public String toString() {
         String stringToReturn = "Money spent: " + moneySpent.toString() +
                               "\nImportance: " + importance.toString() +
-                              "\nDate: " + GregorianCalendar.getTime().toString() +
+                              "\nDate: " + GregorianCalendar.toString() +
                               "\nEntry type: " + entryType.toString() +
                               "\nEntry description: " + expenceDescription + "\n";
         return stringToReturn;

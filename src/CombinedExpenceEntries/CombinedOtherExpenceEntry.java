@@ -7,6 +7,7 @@ import HelperTypes.ExpenceEntryType;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
+import java.time.*;
 
 /**
  * Created by Master on 20.10.2017.
@@ -33,20 +34,20 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
 
     protected Double allMoneySpent;
     protected Double averageMoneySpent;
-    protected GregorianCalendar combinedExpenceEntryCalendar;
+    protected LocalDate combinedExpenceEntryCalendar;
     protected CombinedEntryType combinedEntryType;
 
     public CombinedOtherExpenceEntry(LinkedList<OtherExpenceEntry> otherExpenceEntries) {
         this.otherExpenceEntries = otherExpenceEntries;
         this.amountOfEntries = otherExpenceEntries.size();
 
-        this.combinedExpenceEntryCalendar = new GregorianCalendar();
+        this.combinedExpenceEntryCalendar = LocalDate.now();
 
         countAllMoneySpent();
         countAverageMoneySpent();
     }
 
-    public CombinedOtherExpenceEntry(LinkedList<OtherExpenceEntry> otherExpenceEntries, GregorianCalendar date) {
+    public CombinedOtherExpenceEntry(LinkedList<OtherExpenceEntry> otherExpenceEntries, LocalDate date) {
         this.otherExpenceEntries = otherExpenceEntries;
         this.amountOfEntries = otherExpenceEntries.size();
 
@@ -58,7 +59,7 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
     public CombinedOtherExpenceEntry() {}
 
     public CombinedOtherExpenceEntry(LinkedList<OtherExpenceEntry> otherExpenceEntries, Integer amountOfEntries,
-                                     Double averageMoneySpent, GregorianCalendar combinedExpenceEntryCalendar,
+                                     Double averageMoneySpent, LocalDate combinedExpenceEntryCalendar,
                                      CombinedEntryType combinedEntryType) {
         this.otherExpenceEntries = otherExpenceEntries;
         this.amountOfEntries = amountOfEntries;
@@ -183,12 +184,12 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
     }
 
     @Override
-    public GregorianCalendar getExpenceEntriesListCalendar() {
+    public LocalDate getExpenceEntriesListCalendar() {
         return this.combinedExpenceEntryCalendar;
     }
 
     @Override
-    public void setExpenceEntriesListCalendar(GregorianCalendar expenceEntriesListCalendar) {
+    public void setExpenceEntriesListCalendar(LocalDate expenceEntriesListCalendar) {
         this.combinedExpenceEntryCalendar = expenceEntriesListCalendar;
     }
 
@@ -198,7 +199,7 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
         informationToReturn +=
                 "\nAll money spent: " + this.allMoneySpent.toString() +
                 "\nAverage money spent: " + this.averageMoneySpent.toString() +
-                "\nDate: " + this.combinedExpenceEntryCalendar.getTime().toString() +
+                "\nDate: " + this.combinedExpenceEntryCalendar.toString() +
                 "\nEntries amount: " + this.amountOfEntries.toString() +
                 "\n Entries list: ";
         for(OtherExpenceEntry tempEntry : this.otherExpenceEntries) {
