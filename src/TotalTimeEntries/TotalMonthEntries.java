@@ -4,6 +4,7 @@ import CombinedExpenceEntries.CombinedOtherExpenceEntry;
 import Exceptions.WeekNotFoundException;
 import ExpenceEntries.OtherExpenceEntry;
 import HelperInterfaces.GeneralTotalEntryOperations;
+import WorkWithEntryData.WorkWithEntryData;
 import XMLLibrary.DateHelper;
 
 import java.time.LocalDate;
@@ -54,7 +55,7 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
 
     private Double averageMoneySpent;
 
-    private Double allMoneySpent;
+    private Double allMoneySpent = 0.0;
     private Double allMoneySpentSimpleEntries;
     private Double allMoneySpentCombinedEntries;
 
@@ -64,20 +65,28 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
     public TotalMonthEntries() {}
 
     public TotalMonthEntries(ArrayList<TotalWeekEntries> weekEntries, LocalDate beggingDate, LocalDate endDate) {
+        boolean worthAddingEntries = WorkWithEntryData.getAllMoneySpentWeeks(weekEntries) != 0.0;
+
         this.allWeekEntriesInMonth = weekEntries;
         for(TotalWeekEntries tempWeek : weekEntries) {
             for(int i = 0; i < weekEntries.size(); i++) {
                 allDayEntriesInMonth.add(tempWeek.getCertainDay(i));
             }
         }
-        countAllMoneySpent();
-        setSimpleEntries();
-        setCombinedEntries();
+
+        if(worthAddingEntries) {
+            countAllMoneySpent();
+            setSimpleEntries();
+            setCombinedEntries();
+        }
         this.simpleEntriesAmount = this.getSimpleEntries().size();
         this.combinedEntriesAmount = this.getCombinedEntries().size();
         this.beggingDate = beggingDate;
         this.endDate = endDate;
-        countAverageMoneySpent();
+
+        if(worthAddingEntries) {
+            countAverageMoneySpent();
+        }
     }
 
     //to write constructor for dayEntries array

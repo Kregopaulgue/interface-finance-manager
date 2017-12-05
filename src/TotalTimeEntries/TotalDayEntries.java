@@ -46,7 +46,7 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
     private Integer simpleEntriesAmount;
     private Integer combinedEntriesAmount;
 
-    private Double allMoneySpent;
+    private Double allMoneySpent = 0.0;
     private Double allMoneySpentSimpleEntries;
     private Double allMoneySpentCombinedEntries;
 
@@ -63,8 +63,10 @@ public class TotalDayEntries implements GeneralTotalEntryOperations{
         this.simpleEntriesAmount = simpleEntries.size();
         this.combinedEntriesAmount = combinedEntries.size();
 
-        countAllMoneySpent();
-        countAverageMoneySpent();
+        if(simpleEntries.size() != 0 || combinedEntries.size() != 0) {
+            countAllMoneySpent();
+            countAverageMoneySpent();
+        }
     }
 
     public TotalDayEntries(LinkedList<OtherExpenceEntry> simpleEntries,

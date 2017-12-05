@@ -147,7 +147,6 @@ public class XMLWriterHelpers {
         dateDay.setDay(day);
 
         newDay.setDateDay(dateDay);
-
         return newDay;
     }
 

@@ -36,12 +36,12 @@ import java.util.List;
 
 public class XMLReader {
 
-    public static ArrayList<TotalMonthEntries> readAllFromXml() throws JAXBException, IOException{
+    public static ArrayList<TotalMonthEntries> readAllFromXml(String fileWay) throws JAXBException, IOException{
         JAXBContext jaxbContext = JAXBContext.newInstance("Generated");
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
         JAXBElement<TotalTimeType> totalTimeTypeJAXBElement =
-                (JAXBElement<TotalTimeType>) unmarshaller.unmarshal(new FileInputStream("main_entry_history.xml"));
+                (JAXBElement<TotalTimeType>) unmarshaller.unmarshal(new FileInputStream(fileWay));
 
         TotalTimeType totalTime = totalTimeTypeJAXBElement.getValue();
 

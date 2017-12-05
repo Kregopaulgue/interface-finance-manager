@@ -48,7 +48,7 @@ public class XmlTest {
         print(expence.toString());
         print("\n---------------------\n");
 
-        ArrayList<TotalMonthEntries> allMonths = XMLReader.readAllFromXml();
+        ArrayList<TotalMonthEntries> allMonths = XMLReader.readAllFromXml("main_entry_history.xml");
 
         for(TotalMonthEntries tempMonth : allMonths) {
             print("\nMonth: ...");
