@@ -33,10 +33,12 @@ public class FoodExpenceEntry extends OtherExpenceEntry {
         super(moneySpent, importance, comment);
         this.entryType = ExpenceEntryType.FOOD;
         this.foodType = foodType;
+        expenceDescription = foodType.toString();
 
         if(this.foodType == FoodType.OTHER) {
             this.foodType = FoodType.OTHER;
             this.textFoodType = textFoodType;
+            expenceDescription = FoodType.OTHER.toString();
         }
 
         chechForImportance(foodType, importance);
@@ -48,9 +50,11 @@ public class FoodExpenceEntry extends OtherExpenceEntry {
 
         this.foodType = foodType;
         this.entryType = ExpenceEntryType.FOOD;
+        expenceDescription = foodType.toString();
         if(this.foodType == FoodType.OTHER) {
             this.foodType = FoodType.OTHER;
             this.textFoodType = textFoodType;
+            expenceDescription = FoodType.OTHER.toString();
         }
 
         chechForImportance(foodType, importance);

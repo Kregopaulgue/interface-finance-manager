@@ -6,6 +6,10 @@ import ExpenceEntries.*;
 import HelperTypes.ExpenceEntryType;
 import HelperTypes.FoodType;
 import HelperTypes.TechnicType;
+import TotalTimeEntries.TotalDayEntries;
+import TotalTimeEntries.TotalMonthEntries;
+import TotalTimeEntries.TotalWeekEntries;
+import XMLLibrary.DateHelper;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,8 +28,8 @@ import java.util.ResourceBundle;
  */
 public class Edit implements Initializable{
 
-    public OtherExpenceEntry entryToEdit;
-    public OtherExpenceEntry entryToAdd;
+    public static OtherExpenceEntry entryToEdit;
+    public static OtherExpenceEntry entryToAdd;
 
     @FXML TextArea descriptionField;
     @FXML TextField moneySpentTextField, importanceTextField;
@@ -138,11 +142,9 @@ public class Edit implements Initializable{
             Stage stage = (Stage) sendButton.getScene().getWindow();
             stage.close();
         }
+        this.entryToAdd = returnedEntry;
         Stage stage = (Stage) sendButton.getScene().getWindow();
         stage.close();
     }
-
-
-
 
 }

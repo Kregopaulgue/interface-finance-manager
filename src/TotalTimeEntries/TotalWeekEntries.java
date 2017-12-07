@@ -35,7 +35,7 @@ import java.util.LinkedList;
         }
 */
 
-public class TotalWeekEntries implements GeneralTotalEntryOperations {
+public class TotalWeekEntries extends TotalTimeEntry {
 
     private ArrayList<TotalDayEntries> allDayEntriesInWeek;
 
@@ -258,8 +258,7 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         return averageMoneySpent;
     }
 
-    @Override
-    public String toString() {
+    public String getInfo() {
         String informationToReturn = new String();
         informationToReturn += "All money spent: " + this.allMoneySpent.toString() +
                 "\nAverage money spent: " + this.averageMoneySpent.toString() +
@@ -271,6 +270,11 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         }
         informationToReturn += "\n";
         return informationToReturn;
+    }
+
+    @Override
+    public String toString() {
+        return this.beggingDate.toString() + " - " + this.endDate.toString();
     }
 
     public TotalDayEntries getMostExpenciveDay() {

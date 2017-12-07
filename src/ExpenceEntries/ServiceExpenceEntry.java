@@ -33,6 +33,7 @@ public class ServiceExpenceEntry extends OtherExpenceEntry {
         super(moneySpent, importance, comment);
         this.entryType = ExpenceEntryType.SERVICE;
         this.serviceDescription = serviceDescription;
+        this.expenceDescription = serviceDescription;
     }
 
     public ServiceExpenceEntry(Double moneySpent, Integer importance,
@@ -41,7 +42,7 @@ public class ServiceExpenceEntry extends OtherExpenceEntry {
         super(moneySpent, importance, comment, GregorianCalendar, serviceDescription);
         this.entryType = ExpenceEntryType.SERVICE;
         this.serviceDescription = serviceDescription;
-
+        this.expenceDescription = serviceDescription;
     }
 
     public String getServiceDescription() {

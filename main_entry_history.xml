@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TotalTime>
+<totalTimeType>
 	<TotalMonth>
 		<dateBegin>
 			<year>2017</year>
@@ -1257,6 +1257,6 @@
 			</TotalDay>
 		</TotalWeek>
 	</TotalMonth>
-</TotalTime>
+</totalTimeType>
 
 				

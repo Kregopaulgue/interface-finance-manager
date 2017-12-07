@@ -36,11 +36,13 @@ public class TechnicExpenceEntry extends OtherExpenceEntry {
 
         if(technicType == TechnicType.OTHER) {
             this.technicType = TechnicType.OTHER;
-            this.textTechnicType= textTechnicType;
+            this.textTechnicType = textTechnicType;
+            this.expenceDescription = TechnicType.OTHER.toString();
         }
         else
         {
             this.technicType = technicType;
+            this.expenceDescription = technicType.toString();
         }
         this.textTechnicType = textTechnicType;
     }

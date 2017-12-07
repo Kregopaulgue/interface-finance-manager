@@ -40,10 +40,7 @@ public class XMLReader {
         JAXBContext jaxbContext = JAXBContext.newInstance("Generated");
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
-        JAXBElement<TotalTimeType> totalTimeTypeJAXBElement =
-                (JAXBElement<TotalTimeType>) unmarshaller.unmarshal(new FileInputStream(fileWay));
-
-        TotalTimeType totalTime = totalTimeTypeJAXBElement.getValue();
+        TotalTimeType totalTime = (TotalTimeType) unmarshaller.unmarshal(new FileInputStream(fileWay));
 
         ArrayList<TotalMonthType> allXMLMonths = new ArrayList<>(totalTime.getTotalMonth());
         ArrayList<TotalMonthEntries> resultMonths = new ArrayList<>();

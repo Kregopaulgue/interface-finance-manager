@@ -3,14 +3,22 @@ package TotalTimeEntries;
 import CombinedExpenceEntries.CombinedOtherExpenceEntry;
 import Exceptions.WeekNotFoundException;
 import ExpenceEntries.OtherExpenceEntry;
+import Generated.DateBeginType;
+import Generated.DateEndType;
+import Generated.TotalMonthType;
 import HelperInterfaces.GeneralTotalEntryOperations;
 import WorkWithEntryData.WorkWithEntryData;
 import XMLLibrary.DateHelper;
+import XMLLibrary.XMLReaderHelpers;
+import XMLLibrary.XMLWriterHelpers;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
+
+import static XMLLibrary.XMLWriterHelpers.*;
 
 /**
  * Created by Master on 23.10.2017.
@@ -39,7 +47,7 @@ import java.util.LinkedList;
 
  */
 
-public class TotalMonthEntries implements GeneralTotalEntryOperations {
+public class TotalMonthEntries extends TotalTimeEntry {
 
     private ArrayList<TotalDayEntries> allDayEntriesInMonth = new ArrayList<TotalDayEntries>();
     private ArrayList<TotalWeekEntries> allWeekEntriesInMonth = new ArrayList<TotalWeekEntries>();
@@ -63,6 +71,59 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
 
 
     public TotalMonthEntries() {}
+
+    public TotalMonthEntries(LocalDate date) {
+        Integer year = date.getYear();
+        Integer month = date.getMonth().getValue();
+
+        LocalDate dateBegin = LocalDate.of(year, month, XMLWriterHelpers.FIRST_DAY);
+
+        this.beggingDate = dateBegin;
+
+        LocalDate dateEnd;
+
+        if(Arrays.asList(XMLWriterHelpers.FIRST_LAST_DAY_MONTHS).contains(month)) {
+            dateEnd = LocalDate.of(year, month, XMLWriterHelpers.FIRST_DAY);
+        }
+        else if(month.equals(FEBRUARY_INDEX)) {
+            dateEnd = LocalDate.of(year, month, XMLWriterHelpers.FIRST_LAST_DAY);
+        }
+        else {
+            dateEnd = LocalDate.of(year, month, XMLWriterHelpers.SECOND_LAST_DAY);
+        }
+
+        this.endDate = dateEnd;
+
+        if(month.equals(FEBRUARY_INDEX)) {
+            for(int i = 0; i < AMOUNT_OF_WEEKS_IN_FEBRUARY; i++) {
+                LocalDate firstWeekDay = LocalDate.of(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2]);
+                LocalDate secondWeekDay = LocalDate.of(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2 + 1]);
+                this.addWeek(XMLReaderHelpers.converFromXMLWeek(createEmptyWeek(firstWeekDay, secondWeekDay)));
+            }
+        }
+        else {
+            for(int i = 0; i < AMOUNT_OF_WEEKS - 1; i++) {
+                LocalDate firstWeekDay = LocalDate.of(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2]);
+                LocalDate secondWeekDay = LocalDate.of(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2 + 1]);
+                this.addWeek(XMLReaderHelpers.converFromXMLWeek(createEmptyWeek(firstWeekDay, secondWeekDay)));
+            }
+            LocalDate firstWeekDay = LocalDate.of(year, month, 29);
+            LocalDate secondWeekDay;
+            if(getEndDate().getDayOfMonth() == 30) {
+                secondWeekDay = LocalDate.of(year, month, 30);
+            }
+            else {
+                secondWeekDay = LocalDate.of(year, month, 31);
+            }
+            this.addWeek(XMLReaderHelpers.converFromXMLWeek(createEmptyWeek(firstWeekDay, secondWeekDay)));
+
+            for(TotalWeekEntries tempWeek : this.allWeekEntriesInMonth) {
+                for(int i = 0; i < tempWeek.getAllDayEntriesInWeek().size(); i++) {
+                    allDayEntriesInMonth.add(tempWeek.getCertainDay(i));
+                }
+            }
+        }
+    }
 
     public TotalMonthEntries(ArrayList<TotalWeekEntries> weekEntries, LocalDate beggingDate, LocalDate endDate) {
         boolean worthAddingEntries = WorkWithEntryData.getAllMoneySpentWeeks(weekEntries) != 0.0;
@@ -209,10 +270,12 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
 
     public void addWeek(TotalWeekEntries weekToAdd) {
         this.allWeekEntriesInMonth.add(weekToAdd);
-        countAllMoneySpent();
-        countAverageMoneySpent();
-        setSimpleEntries();
-        setCombinedEntries();
+        if(weekToAdd.getAllMoneySpent() != 0) {
+            countAllMoneySpent();
+            countAverageMoneySpent();
+            setSimpleEntries();
+            setCombinedEntries();
+        }
     }
 
     public void removeWeek(TotalWeekEntries weekToRemove) {
@@ -275,8 +338,7 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         return averageMoneySpent;
     }
 
-    @Override
-    public String toString() {
+    public String getInfo() {
         String informationToReturn = new String();
         informationToReturn += "All money spent: " + this.allMoneySpent.toString() +
                 "\nAverage money spent: " + this.averageMoneySpent.toString() +
@@ -288,6 +350,11 @@ public class TotalMonthEntries implements GeneralTotalEntryOperations {
         }
         informationToReturn += "\n";
         return informationToReturn;
+    }
+
+    @Override
+    public String toString() {
+        return this.endDate.getMonth().toString();
     }
 
     public TotalWeekEntries getMostExpenciveWeek() {
