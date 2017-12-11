@@ -36,14 +36,11 @@ import java.util.List;
 
 public class XMLReader {
 
-    public static ArrayList<TotalMonthEntries> readAllFromXml() throws JAXBException, IOException{
+    public static ArrayList<TotalMonthEntries> readAllFromXml(String fileWay) throws JAXBException, IOException{
         JAXBContext jaxbContext = JAXBContext.newInstance("Generated");
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
-        JAXBElement<TotalTimeType> totalTimeTypeJAXBElement =
-                (JAXBElement<TotalTimeType>) unmarshaller.unmarshal(new FileInputStream("main_entry_history.xml"));
-
-        TotalTimeType totalTime = totalTimeTypeJAXBElement.getValue();
+        TotalTimeType totalTime = (TotalTimeType) unmarshaller.unmarshal(new FileInputStream(fileWay));
 
         ArrayList<TotalMonthType> allXMLMonths = new ArrayList<>(totalTime.getTotalMonth());
         ArrayList<TotalMonthEntries> resultMonths = new ArrayList<>();
@@ -71,15 +68,15 @@ public class XMLReader {
 
         try {
             for(TotalMonthType tempXMLMonth : totalXMLMonths) {
-                Integer beginYear = Integer.valueOf(tempXMLMonth.getDateBegin().getYear());
-                Integer beginMonth = Integer.valueOf(tempXMLMonth.getDateBegin().getMonth());
-                Integer beginDay = Integer.valueOf(tempXMLMonth.getDateBegin().getDay());
+                Integer beginYear = tempXMLMonth.getDateBegin().getYear();
+                Integer beginMonth = tempXMLMonth.getDateBegin().getMonth();
+                Integer beginDay = tempXMLMonth.getDateBegin().getDay();
 
                 LocalDate beginingDate = LocalDate.of(beginYear, beginMonth, beginDay);
 
-                Integer endYear = Integer.valueOf(tempXMLMonth.getDateEnd().getYear());
-                Integer endMonth = Integer.valueOf(tempXMLMonth.getDateEnd().getMonth());
-                Integer endDay = Integer.valueOf(tempXMLMonth.getDateEnd().getDay());
+                Integer endYear = tempXMLMonth.getDateEnd().getYear();
+                Integer endMonth = tempXMLMonth.getDateEnd().getMonth();
+                Integer endDay = tempXMLMonth.getDateEnd().getDay();
 
                 LocalDate endDate = LocalDate.of(endYear, endMonth, endDay);
 

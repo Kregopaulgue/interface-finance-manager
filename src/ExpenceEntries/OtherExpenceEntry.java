@@ -30,7 +30,7 @@ public class OtherExpenceEntry extends ExpenceEntry {
     protected String comment;
     protected LocalDate GregorianCalendar;
     protected ExpenceEntryType entryType;
-    private String expenceDescription;
+    protected String expenceDescription;
 
     public OtherExpenceEntry() {}
 
@@ -91,6 +91,9 @@ public class OtherExpenceEntry extends ExpenceEntry {
         this.entryType = ExpenceEntryType.OTHER;
         this.expenceDescription = expenceDescription;
     }
+
+    @Override
+    public String getSpecialDescription() {return this.expenceDescription;}
 
     @Override
     public Double getMoneySpent() {

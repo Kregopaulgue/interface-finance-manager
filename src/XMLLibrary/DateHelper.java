@@ -40,37 +40,38 @@ public class DateHelper {
     }
 
     public static LocalDate beginDateFromXMLMonth(TotalMonthType xmlMonth) {
-        String year = xmlMonth.getDateBegin().getYear();
-        String month = xmlMonth.getDateBegin().getMonth();
-        String day = xmlMonth.getDateBegin().getDay();
-        return dateFromStringYearMonthDay(year, month, day);
+        int year = xmlMonth.getDateBegin().getYear();
+        int month = xmlMonth.getDateBegin().getMonth();
+        int day = xmlMonth.getDateBegin().getDay();
+        return LocalDate.of(year, month, day);
     }
 
     public static LocalDate endDateFromXMLMonth(TotalMonthType xmlMonth) {
-        String year = xmlMonth.getDateEnd().getYear();
-        String month = xmlMonth.getDateEnd().getMonth();
-        String day = xmlMonth.getDateEnd().getDay();
-        return dateFromStringYearMonthDay(year, month, day);
+        int year = xmlMonth.getDateEnd().getYear();
+        int month = xmlMonth.getDateEnd().getMonth();
+        int day = xmlMonth.getDateEnd().getDay();
+        return LocalDate.of(year, month, day);
     }
 
     public static LocalDate beginDateFromXMLWeek(TotalWeekType xmlWeek) {
-        String year = xmlWeek.getDateBegin().getYear();
-        String month = xmlWeek.getDateBegin().getMonth();
-        String day = xmlWeek.getDateBegin().getDay();
-        return dateFromStringYearMonthDay(year, month, day);
+        int year = xmlWeek.getDateBegin().getYear();
+        int month = xmlWeek.getDateBegin().getMonth();
+        int day = xmlWeek.getDateBegin().getDay();
+        return LocalDate.of(year, month, day);
     }
 
     public static LocalDate endDateFromXMLWeek(TotalWeekType xmlWeek) {
-        String year = xmlWeek.getDateEnd().getYear();
-        String month = xmlWeek.getDateEnd().getMonth();
-        String day = xmlWeek.getDateEnd().getDay();
-        return dateFromStringYearMonthDay(year, month, day);
+        int year = xmlWeek.getDateEnd().getYear();
+        int month = xmlWeek.getDateEnd().getMonth();
+        int day = xmlWeek.getDateEnd().getDay();
+        return LocalDate.of(year, month, day);
     }
 
     public static LocalDate dateFromXMLDay(TotalDayType xmlDay) {
-        String year = xmlDay.getDateDay().getYear();
-        String month = xmlDay.getDateDay().getMonth();
-        String day = xmlDay.getDateDay().getDay();
-        return dateFromStringYearMonthDay(year, month, day);
+        int year = xmlDay.getDateDay().getYear();
+        int month = xmlDay.getDateDay().getMonth();
+        int day = xmlDay.getDateDay().getDay();
+        return LocalDate.of(year, month, day);
     }
+
 }

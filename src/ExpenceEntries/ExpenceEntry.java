@@ -23,6 +23,8 @@ import HelperTypes.ExpenceEntryType;
 
 abstract public class ExpenceEntry {
 
+    abstract String getSpecialDescription();
+
     abstract Double getMoneySpent();
     abstract void setMoneySpent(Double moneySpent);
 

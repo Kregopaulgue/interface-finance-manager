@@ -3,17 +3,17 @@
   <xs:element name="TotalTime" type="TotalTimeType"/>
   <xs:complexType name="dateType">
     <xs:sequence>
-      <xs:element type="xs:string" name="year"/>
-      <xs:element type="xs:string" name="month"/>
-      <xs:element type="xs:string" name="day"/>
+      <xs:element type="xs:int" name="year"/>
+      <xs:element type="xs:int" name="month"/>
+      <xs:element type="xs:int" name="day"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="CombinedEntryType">
     <xs:sequence>
       <xs:element type="OtherExpenceEntriesType" name="OtherExpenceEntries"/>
-      <xs:element type="xs:string" name="amountOfEntries"/>
-      <xs:element type="xs:string" name="allMoneySpent"/>
-      <xs:element type="xs:string" name="averageMoneySpent"/>
+      <xs:element type="xs:int" name="amountOfEntries"/>
+      <xs:element type="xs:double" name="allMoneySpent"/>
+      <xs:element type="xs:double" name="averageMoneySpent"/>
       <xs:element type="dateType" name="date"/>
       <xs:element type="xs:string" name="combinedEntryType"/>
     </xs:sequence>
@@ -39,16 +39,16 @@
   </xs:complexType>
   <xs:complexType name="dateEndType">
     <xs:sequence>
-      <xs:element type="xs:string" name="year"/>
-      <xs:element type="xs:string" name="month"/>
-      <xs:element type="xs:string" name="day"/>
+      <xs:element type="xs:int" name="year"/>
+      <xs:element type="xs:int" name="month"/>
+      <xs:element type="xs:int" name="day"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="dateDayType">
     <xs:sequence>
-      <xs:element type="xs:string" name="year"/>
-      <xs:element type="xs:string" name="month"/>
-      <xs:element type="xs:string" name="day"/>
+      <xs:element type="xs:int" name="year"/>
+      <xs:element type="xs:int" name="month"/>
+      <xs:element type="xs:int" name="day"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="TotalTimeType">
@@ -65,15 +65,15 @@
   </xs:complexType>
   <xs:complexType name="dateBeginType">
     <xs:sequence>
-      <xs:element type="xs:string" name="year"/>
-      <xs:element type="xs:string" name="month"/>
-      <xs:element type="xs:string" name="day"/>
+      <xs:element type="xs:int" name="year"/>
+      <xs:element type="xs:int" name="month"/>
+      <xs:element type="xs:int" name="day"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ExpenceType">
     <xs:sequence>
-      <xs:element type="xs:string" name="moneySpent"/>
-      <xs:element type="xs:string" name="importance"/>
+      <xs:element type="xs:double" name="moneySpent"/>
+      <xs:element type="xs:int" name="importance"/>
       <xs:element type="xs:string" name="comment"/>
       <xs:element type="dateType" name="date"/>
       <xs:element name="expenceType">

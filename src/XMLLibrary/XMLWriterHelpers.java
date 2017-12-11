@@ -20,19 +20,19 @@ import java.util.GregorianCalendar;
  */
 public class XMLWriterHelpers {
 
-    final static Integer FIRST_DAY = 1;
-    final static Integer FIRST_LAST_DAY = 30;
-    final static Integer SECOND_LAST_DAY = 31;
-    final static Integer FEBRUARY_LAST_DAY = 28;
+    final public static Integer FIRST_DAY = 1;
+    final public static Integer FIRST_LAST_DAY = 30;
+    final public static Integer SECOND_LAST_DAY = 31;
+    final public static Integer FEBRUARY_LAST_DAY = 28;
 
-    final static Integer[] FIRST_LAST_DAY_MONTHS = {4, 6, 9, 11};
-    final static Integer[] SECOND_LAST_DAY_MONTHS = {1, 3, 5, 7, 8, 10, 12};
-    final static Integer FEBRUARY_INDEX = 2;
+    final public static Integer[] FIRST_LAST_DAY_MONTHS = {4, 6, 9, 11};
+    final public static Integer[] SECOND_LAST_DAY_MONTHS = {1, 3, 5, 7, 8, 10, 12};
+    final public static Integer FEBRUARY_INDEX = 2;
 
-    final static Integer[] WEEK_BEGIN_AND_END_DAYS = {1, 7, 8, 14, 15, 21, 22, 28};
+    final public static Integer[] WEEK_BEGIN_AND_END_DAYS = {1, 7, 8, 14, 15, 21, 22, 28};
 
-    final static Integer AMOUNT_OF_WEEKS = 5;
-    final static Integer AMOUNT_OF_WEEKS_IN_FEBRUARY = 4;
+    final public static Integer AMOUNT_OF_WEEKS = 5;
+    final public static Integer AMOUNT_OF_WEEKS_IN_FEBRUARY = 4;
 
     public static void addFullYearToXml() throws JAXBException, IOException{
 
@@ -64,25 +64,25 @@ public class XMLWriterHelpers {
         Integer month = date.getMonth().getValue();
 
         DateBeginType dateBegin = new DateBeginType();
-        dateBegin.setDay(FIRST_DAY.toString());
-        dateBegin.setMonth(month.toString());
-        dateBegin.setYear(year.toString());
+        dateBegin.setDay(FIRST_DAY);
+        dateBegin.setMonth(month);
+        dateBegin.setYear(year);
 
         newMonth.setDateBegin(dateBegin);
 
         DateEndType dateEnd = new DateEndType();
 
         if(Arrays.asList(FIRST_LAST_DAY_MONTHS).contains(month)) {
-            dateEnd.setDay(FIRST_LAST_DAY.toString());
+            dateEnd.setDay(FIRST_LAST_DAY);
         }
         else if(month.equals(FEBRUARY_INDEX)) {
-            dateEnd.setDay(FEBRUARY_LAST_DAY.toString());
+            dateEnd.setDay(FEBRUARY_LAST_DAY);
         }
         else {
-            dateEnd.setDay(SECOND_LAST_DAY.toString());
+            dateEnd.setDay(SECOND_LAST_DAY);
         }
-        dateEnd.setMonth(month.toString());
-        dateEnd.setYear(year.toString());
+        dateEnd.setMonth(month);
+        dateEnd.setYear(year);
 
         newMonth.setDateEnd(dateEnd);
 
@@ -107,9 +107,9 @@ public class XMLWriterHelpers {
         Integer beginDay = firstDate.getDayOfMonth();
 
         DateBeginType dateBegin = new DateBeginType();
-        dateBegin.setDay(beginDay.toString());
-        dateBegin.setMonth(beginMonth.toString());
-        dateBegin.setYear(beginYear.toString());
+        dateBegin.setDay(beginDay);
+        dateBegin.setMonth(beginMonth);
+        dateBegin.setYear(beginYear);
 
         newWeek.setDateBegin(dateBegin);
 
@@ -119,9 +119,9 @@ public class XMLWriterHelpers {
         Integer endMonth = secondDate.getMonth().getValue();
         Integer endDay = secondDate.getDayOfMonth();
 
-        dateEnd.setMonth(endMonth.toString());
-        dateEnd.setYear(endYear.toString());
-        dateEnd.setDay(endDay.toString());
+        dateEnd.setMonth(endMonth);
+        dateEnd.setYear(endYear);
+        dateEnd.setDay(endDay);
 
         newWeek.setDateEnd(dateEnd);
 
@@ -142,12 +142,15 @@ public class XMLWriterHelpers {
         Integer month = date.getMonth().getValue();
         Integer day = date.getDayOfMonth();
 
-        dateDay.setYear(year.toString());
-        dateDay.setMonth(month.toString());
-        dateDay.setDay(day.toString());
+        dateDay.setYear(year);
+        dateDay.setMonth(month);
+        dateDay.setDay(day);
 
+        newDay.setDateDay(dateDay);
         return newDay;
     }
+
+
 
     public static void addWeeksToMonth(TotalMonthType totalMonth, Integer year, Integer month) {
         for(int i = 0; i < AMOUNT_OF_WEEKS - 1; i++) {
@@ -157,12 +160,29 @@ public class XMLWriterHelpers {
         }
         LocalDate firstWeekDay = LocalDate.of(year, month, 29);
         LocalDate secondWeekDay;
-        if(totalMonth.getDateEnd().getDay().equals("30")) {
+        if(totalMonth.getDateEnd().getDay() == 30) {
             secondWeekDay = LocalDate.of(year, month, 30);
         }
         else {
             secondWeekDay = LocalDate.of(year, month, 31);
         }
         totalMonth.getTotalWeek().add(createEmptyWeek(firstWeekDay, secondWeekDay));
+    }
+
+    public static void addWeeksToMonthEntries(TotalMonthEntries totalMonth, Integer year, Integer month) {
+        for(int i = 0; i < AMOUNT_OF_WEEKS - 1; i++) {
+            LocalDate firstWeekDay = LocalDate.of(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2]);
+            LocalDate secondWeekDay = LocalDate.of(year, month, WEEK_BEGIN_AND_END_DAYS[i * 2 + 1]);
+            totalMonth.addWeek(XMLReaderHelpers.converFromXMLWeek(createEmptyWeek(firstWeekDay, secondWeekDay)));
+        }
+        LocalDate firstWeekDay = LocalDate.of(year, month, 29);
+        LocalDate secondWeekDay;
+        if(totalMonth.getEndDate().getDayOfMonth() == 30) {
+            secondWeekDay = LocalDate.of(year, month, 30);
+        }
+        else {
+            secondWeekDay = LocalDate.of(year, month, 31);
+        }
+        totalMonth.addWeek(XMLReaderHelpers.converFromXMLWeek(createEmptyWeek(firstWeekDay, secondWeekDay)));
     }
 }

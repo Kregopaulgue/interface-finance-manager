@@ -1,7 +1,10 @@
 
 package Generated;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -14,8 +17,8 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="moneySpent" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="importance" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="moneySpent" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="importance" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="date" type="{}dateType"/>
  *         &lt;element name="expenceType">
@@ -40,7 +43,6 @@ import javax.xml.bind.annotation.*;
  * 
  * 
  */
-@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ExpenceType", propOrder = {
     "moneySpent",
@@ -52,10 +54,8 @@ import javax.xml.bind.annotation.*;
 })
 public class ExpenceType {
 
-    @XmlElement(required = true)
-    protected String moneySpent;
-    @XmlElement(required = true)
-    protected String importance;
+    protected double moneySpent;
+    protected int importance;
     @XmlElement(required = true)
     protected String comment;
     @XmlElement(required = true)
@@ -67,48 +67,32 @@ public class ExpenceType {
     /**
      * Gets the value of the moneySpent property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getMoneySpent() {
+    public double getMoneySpent() {
         return moneySpent;
     }
 
     /**
      * Sets the value of the moneySpent property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setMoneySpent(String value) {
+    public void setMoneySpent(double value) {
         this.moneySpent = value;
     }
 
     /**
      * Gets the value of the importance property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getImportance() {
+    public int getImportance() {
         return importance;
     }
 
     /**
      * Sets the value of the importance property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setImportance(String value) {
+    public void setImportance(int value) {
         this.importance = value;
     }
 

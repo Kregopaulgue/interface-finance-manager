@@ -1,7 +1,10 @@
 
 package Generated;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -15,9 +18,9 @@ import javax.xml.bind.annotation.*;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="OtherExpenceEntries" type="{}OtherExpenceEntriesType"/>
- *         &lt;element name="amountOfEntries" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="allMoneySpent" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="averageMoneySpent" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="amountOfEntries" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="allMoneySpent" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="averageMoneySpent" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="date" type="{}dateType"/>
  *         &lt;element name="combinedEntryType" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
@@ -28,7 +31,6 @@ import javax.xml.bind.annotation.*;
  * 
  * 
  */
-@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CombinedEntryType", propOrder = {
     "otherExpenceEntries",
@@ -42,12 +44,9 @@ public class CombinedEntryType {
 
     @XmlElement(name = "OtherExpenceEntries", required = true)
     protected OtherExpenceEntriesType otherExpenceEntries;
-    @XmlElement(required = true)
-    protected String amountOfEntries;
-    @XmlElement(required = true)
-    protected String allMoneySpent;
-    @XmlElement(required = true)
-    protected String averageMoneySpent;
+    protected int amountOfEntries;
+    protected double allMoneySpent;
+    protected double averageMoneySpent;
     @XmlElement(required = true)
     protected DateType date;
     @XmlElement(required = true)
@@ -80,72 +79,48 @@ public class CombinedEntryType {
     /**
      * Gets the value of the amountOfEntries property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getAmountOfEntries() {
+    public int getAmountOfEntries() {
         return amountOfEntries;
     }
 
     /**
      * Sets the value of the amountOfEntries property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setAmountOfEntries(String value) {
+    public void setAmountOfEntries(int value) {
         this.amountOfEntries = value;
     }
 
     /**
      * Gets the value of the allMoneySpent property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getAllMoneySpent() {
+    public double getAllMoneySpent() {
         return allMoneySpent;
     }
 
     /**
      * Sets the value of the allMoneySpent property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setAllMoneySpent(String value) {
+    public void setAllMoneySpent(double value) {
         this.allMoneySpent = value;
     }
 
     /**
      * Gets the value of the averageMoneySpent property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getAverageMoneySpent() {
+    public double getAverageMoneySpent() {
         return averageMoneySpent;
     }
 
     /**
      * Sets the value of the averageMoneySpent property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setAverageMoneySpent(String value) {
+    public void setAverageMoneySpent(double value) {
         this.averageMoneySpent = value;
     }
 

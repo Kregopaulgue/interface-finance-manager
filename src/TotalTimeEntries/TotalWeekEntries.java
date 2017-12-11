@@ -3,6 +3,7 @@ package TotalTimeEntries;
 import CombinedExpenceEntries.CombinedOtherExpenceEntry;
 import ExpenceEntries.OtherExpenceEntry;
 import HelperInterfaces.GeneralTotalEntryOperations;
+import WorkWithEntryData.WorkWithEntryData;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ import java.util.LinkedList;
         }
 */
 
-public class TotalWeekEntries implements GeneralTotalEntryOperations {
+public class TotalWeekEntries extends TotalTimeEntry {
 
     private ArrayList<TotalDayEntries> allDayEntriesInWeek;
 
@@ -49,7 +50,7 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
 
     private Double averageMoneySpent;
 
-    private Double allMoneySpent;
+    private Double allMoneySpent = 0.0;
     private Double allMoneySpentSimpleEntries;
     private Double allMoneySpentCombinedEntries;
 
@@ -60,21 +61,28 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
     }
 
     public TotalWeekEntries(ArrayList<TotalDayEntries> allDayEntriesInWeek, LocalDate beggingDate, LocalDate endDate) {
+        boolean worthAddingEntries = WorkWithEntryData.getAllMoneySpentDays(allDayEntriesInWeek) != 0.0;
         this.allDayEntriesInWeek = allDayEntriesInWeek;
         this.simpleEntriesAmount = 0;
         for(TotalDayEntries tempDay : allDayEntriesInWeek) {
             this.simpleEntriesAmount += tempDay.getSimpleEntriesAmount();
         }
-        this.setSimpleEntries();
+        if(worthAddingEntries) {
+            this.setSimpleEntries();
+        }
         this.combinedEntriesAmount = 0;
         for(TotalDayEntries tempDay : allDayEntriesInWeek) {
             this.combinedEntriesAmount += tempDay.getCombinedEntriesAmount();
         }
-        this.setCombinedEntries();
+        if(worthAddingEntries) {
+            this.setCombinedEntries();
+        }
         this.beggingDate = beggingDate;
         this.endDate = endDate;
-        countAllMoneySpent();
-        countAverageMoneySpentByEntries();
+        if(worthAddingEntries) {
+            countAllMoneySpent();
+            countAverageMoneySpentByEntries();
+        }
     }
 
     @Override
@@ -250,8 +258,7 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         return averageMoneySpent;
     }
 
-    @Override
-    public String toString() {
+    public String getInfo() {
         String informationToReturn = new String();
         informationToReturn += "All money spent: " + this.allMoneySpent.toString() +
                 "\nAverage money spent: " + this.averageMoneySpent.toString() +
@@ -263,6 +270,11 @@ public class TotalWeekEntries implements GeneralTotalEntryOperations {
         }
         informationToReturn += "\n";
         return informationToReturn;
+    }
+
+    @Override
+    public String toString() {
+        return this.beggingDate.toString() + " - " + this.endDate.toString();
     }
 
     public TotalDayEntries getMostExpenciveDay() {

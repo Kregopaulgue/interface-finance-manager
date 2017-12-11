@@ -38,6 +38,7 @@ public class ClothExpenceEntry extends OtherExpenceEntry {
         this.isClothImportant = true;
         this.doYouWantToBeFashion = true;
         this.doYouNeedIt = true;
+        this.expenceDescription = clothType;
 
         checkForImportance(isClothImportant, doYouWantToBeFashion, doYouNeedIt);
     }
