@@ -39,8 +39,6 @@ public class ClothExpenceEntry extends OtherExpenceEntry {
         this.doYouWantToBeFashion = true;
         this.doYouNeedIt = true;
         this.expenceDescription = clothType;
-
-        checkForImportance(isClothImportant, doYouWantToBeFashion, doYouNeedIt);
     }
 
     public ClothExpenceEntry(Double moneySpent, Integer importance, String comment,
@@ -52,56 +50,6 @@ public class ClothExpenceEntry extends OtherExpenceEntry {
         this.clothType = clothType;
         this.isClothImportant = isClothImportant;
         this.doYouWantToBeFashion = doYouWantToBeFashion;
-        this.doYouNeedIt = doYouNeedIt;
-
-        checkForImportance(isClothImportant, doYouWantToBeFashion, doYouNeedIt);
-    }
-
-    public void checkForImportance(boolean isClothImportant,
-                                   boolean doYouWantToBeFashion, boolean doYouNeedIt) {
-        if(isClothImportant == false) {
-            this.doYouNeedIt = false;
-            this.doYouWantToBeFashion = false;
-
-            System.out.println("Importance is too high for this cloth");
-            System.out.println("By default it is set to 0");
-
-            this.importance = 0;
-        }
-        else if(isClothImportant && doYouNeedIt && doYouWantToBeFashion) {
-            this.importance = 0;
-        }
-    }
-
-    public String getClothType() {
-        return clothType;
-    }
-
-    public void setClothType(String clothType) {
-        this.clothType = clothType;
-    }
-
-    public boolean isClothImportant() {
-        return isClothImportant;
-    }
-
-    public void setClothImportant(boolean clothImportant) {
-        isClothImportant = clothImportant;
-    }
-
-    public boolean isDoYouWantToBeFashion() {
-        return doYouWantToBeFashion;
-    }
-
-    public void setDoYouWantToBeFashion(boolean doYouWantToBeFashion) {
-        this.doYouWantToBeFashion = doYouWantToBeFashion;
-    }
-
-    public boolean isDoYouNeedIt() {
-        return doYouNeedIt;
-    }
-
-    public void setDoYouNeedIt(boolean doYouNeedIt) {
         this.doYouNeedIt = doYouNeedIt;
     }
 }

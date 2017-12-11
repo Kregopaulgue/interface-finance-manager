@@ -66,8 +66,6 @@ public class FoodExpenceEntry extends OtherExpenceEntry {
                 || this.foodType == FoodType.SWEETS) {
 
             if(importance > 4) {
-                //System.out.println("Importance is too high for this product");
-                //System.out.println("By default it is set to 4");
                 this.importance = 4;
             }
             else {

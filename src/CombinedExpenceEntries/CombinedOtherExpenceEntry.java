@@ -26,7 +26,7 @@ import java.time.*;
     }
 
  */
-public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
+public class CombinedOtherExpenceEntry{
 
     private LinkedList<OtherExpenceEntry> otherExpenceEntries;
 
@@ -71,27 +71,23 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
         countAverageMoneySpent();
     }
 
-    @Override
     public Double getAverageMoneySpent() {
         return this.averageMoneySpent;
     }
 
-    @Override
     public Double getAllMoneySpent() {
         return this.allMoneySpent;
     }
 
-    @Override
+
     public Integer getAmountOfEntries() {
         return this.amountOfEntries;
     }
 
-    @Override
     public void countAverageMoneySpent() {
         this.averageMoneySpent = this.allMoneySpent / this.amountOfEntries;
     }
 
-    @Override
     public void countAllMoneySpent() {
         this.allMoneySpent = 0.0;
         for(OtherExpenceEntry tempEntry : otherExpenceEntries) {
@@ -99,33 +95,27 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
         }
     }
 
-    @Override
     public List<OtherExpenceEntry> getExpenceEntriesList() {
         return this.otherExpenceEntries;
     }
-    
-    @Override
+
     public void setExpenceEntriesList(List<OtherExpenceEntry> expenceEntryList){
         this.otherExpenceEntries = (LinkedList) expenceEntryList;
     }
 
-    @Override
     public void addEntry(OtherExpenceEntry expenceEntry){
         this.otherExpenceEntries.add(expenceEntry);
     }
 
-    @Override
     public void removeEntry(OtherExpenceEntry expenceEntry) {
         this.otherExpenceEntries.remove(expenceEntry);
     }
 
-    @Override
     public void removeEntryByIndex(Integer index) {
         this.otherExpenceEntries.remove((int)index);
     }
 
     //this may cause problems
-    @Override
     public void removeEntryByComment(String comment) {
 
         for(OtherExpenceEntry expenceEntry : otherExpenceEntries) {
@@ -136,7 +126,6 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
 
     }
 
-    @Override
     public void removeAllEntriesOfType(ExpenceEntryType expenceEntryType) {
 
         for(OtherExpenceEntry expenceEntry : otherExpenceEntries) {
@@ -147,17 +136,14 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
 
     }
 
-    @Override
     public OtherExpenceEntry getExpenceEntryByIndex(Integer index) {
         return this.otherExpenceEntries.get(index);
     }
 
-    @Override
     public void setExpenceEntryByIndex(OtherExpenceEntry expenceEntry, Integer index) {
         this.otherExpenceEntries.set(index, expenceEntry);
     }
 
-    @Override
     public OtherExpenceEntry getExpenceEntryByComment(String comment) {
 
         for(OtherExpenceEntry expenceEntry : otherExpenceEntries) {
@@ -171,7 +157,6 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
         return this.otherExpenceEntries.get(0);
     }
 
-    @Override
     public void setExpenceEntryByComment(String comment, OtherExpenceEntry expenceEntry) {
 
         for(int i = 0; i < this.amountOfEntries; i++) {
@@ -183,17 +168,14 @@ public class CombinedOtherExpenceEntry extends CombinedExpenceEntry{
 
     }
 
-    @Override
     public LocalDate getExpenceEntriesListCalendar() {
         return this.combinedExpenceEntryCalendar;
     }
 
-    @Override
     public void setExpenceEntriesListCalendar(LocalDate expenceEntriesListCalendar) {
         this.combinedExpenceEntryCalendar = expenceEntriesListCalendar;
     }
 
-    @Override
     public String toString() {
         String informationToReturn = new String();
         informationToReturn +=

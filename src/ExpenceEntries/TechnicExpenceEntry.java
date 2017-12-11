@@ -47,17 +47,6 @@ public class TechnicExpenceEntry extends OtherExpenceEntry {
         this.textTechnicType = textTechnicType;
     }
 
-    public void checkForImportance(TechnicType technicType, Double durability) {
-
-        if(technicType == TechnicType.GAMING_HARDWARE) {
-
-            System.out.println("Importance is too high for this technic");
-            System.out.println("By default it is set to 0");
-            this.importance = 0;
-        }
-
-    }
-
     public TechnicType getTechnicType() {
         return technicType;
     }
