@@ -50,14 +50,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CombinedEntryType }
-     * 
-     */
-    public CombinedEntryType createCombinedEntryType() {
-        return new CombinedEntryType();
-    }
-
-    /**
      * Create an instance of {@link TotalDayType }
      * 
      */

@@ -1,6 +1,5 @@
 package XMLLibrary;
 
-import CombinedExpenceEntries.CombinedOtherExpenceEntry;
 import ExpenceEntries.*;
 import Generated.*;
 import HelperTypes.ExpenceEntryType;
@@ -12,9 +11,7 @@ import TotalTimeEntries.TotalWeekEntries;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.GregorianCalendar;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  * Created by Master on 25.10.2017.
@@ -68,18 +65,6 @@ public class XMLReaderHelpers {
         return returnedEntry;
     }
 
-    public static CombinedOtherExpenceEntry convertFromXMLCombinedEntry(CombinedEntryType combinedEntry) {
-        ArrayList<ExpenceType> xmlExpencesList = new ArrayList<>(combinedEntry.getOtherExpenceEntries().getExpence());
-        LinkedList<OtherExpenceEntry> expencesList = new LinkedList<>();
-
-        for(ExpenceType xmlExpence : xmlExpencesList) {
-            OtherExpenceEntry entryToAdd = convertFromXMLSimpleEntry(xmlExpence);
-            expencesList.add(entryToAdd);
-        }
-
-        return new CombinedOtherExpenceEntry(expencesList);
-    }
-
     public static TotalDayEntries convertFromXMLDay(TotalDayType totalDay) {
 
         Integer year, month, day;
@@ -89,21 +74,16 @@ public class XMLReaderHelpers {
 
         LocalDate date = LocalDate.of(year, month, day);
 
-        LinkedList<OtherExpenceEntry> convertedSimpleExpences = new LinkedList<>();
-        LinkedList<CombinedOtherExpenceEntry> convertedCombinedExpences = new LinkedList<>();
+        ArrayList<OtherExpenceEntry> convertedSimpleExpences = new ArrayList<>();
 
         ArrayList<ExpenceType> xmlDayExpences = new ArrayList<>(totalDay.getExpence());
-        ArrayList<CombinedEntryType> xmlDayCombinedEntry = new ArrayList<>(totalDay.getCombinedEntry());
 
         for(ExpenceType tempExpence : xmlDayExpences) {
             convertedSimpleExpences.add(convertFromXMLSimpleEntry(tempExpence));
         }
 
-        for(CombinedEntryType tempCombinedExpence : xmlDayCombinedEntry) {
-            convertedCombinedExpences.add(convertFromXMLCombinedEntry(tempCombinedExpence));
-        }
 
-        return new TotalDayEntries(convertedSimpleExpences, convertedCombinedExpences, date);
+        return new TotalDayEntries(convertedSimpleExpences, date);
     }
 
     public static TotalWeekEntries converFromXMLWeek(TotalWeekType totalWeek) {

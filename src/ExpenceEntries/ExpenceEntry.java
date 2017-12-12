@@ -8,18 +8,6 @@ import HelperTypes.ExpenceEntryType;
  * Created by Master on 11.10.2017.
  */
 
-/*
-    Abstract ExpenceEntry:
-    {
-        moneySpent: Double,
-        importance: Integer,
-        comment: String,
-        time: GregorianCalendar,
-        GregorianCalendar: GregorianCalendar,
-        entryType: ExpenceEntryType
-    }
- */
-
 
 abstract public class ExpenceEntry {
 

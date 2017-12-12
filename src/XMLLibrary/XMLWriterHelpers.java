@@ -26,18 +26,12 @@ public class XMLWriterHelpers {
     final public static Integer FEBRUARY_LAST_DAY = 28;
 
     final public static Integer[] FIRST_LAST_DAY_MONTHS = {4, 6, 9, 11};
-    final public static Integer[] SECOND_LAST_DAY_MONTHS = {1, 3, 5, 7, 8, 10, 12};
     final public static Integer FEBRUARY_INDEX = 2;
 
     final public static Integer[] WEEK_BEGIN_AND_END_DAYS = {1, 7, 8, 14, 15, 21, 22, 28};
 
     final public static Integer AMOUNT_OF_WEEKS = 5;
     final public static Integer AMOUNT_OF_WEEKS_IN_FEBRUARY = 4;
-
-    public static void addFullYearToXml() throws JAXBException, IOException{
-
-        addEmptyMonthToXml(LocalDate.of(2017, 1, 1));
-    }
 
     public static void addEmptyMonthToXml(LocalDate date) throws JAXBException, FileNotFoundException{
 

@@ -21,7 +21,6 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="dateDay" type="{}dateDayType"/>
  *         &lt;element name="Expence" type="{}ExpenceType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="CombinedEntry" type="{}CombinedEntryType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,8 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TotalDayType", propOrder = {
     "dateDay",
-    "expence",
-    "combinedEntry"
+    "expence"
 })
 public class TotalDayType {
 
@@ -42,8 +40,6 @@ public class TotalDayType {
     protected DateDayType dateDay;
     @XmlElement(name = "Expence")
     protected List<ExpenceType> expence;
-    @XmlElement(name = "CombinedEntry")
-    protected List<CombinedEntryType> combinedEntry;
 
     /**
      * Gets the value of the dateDay property.
@@ -96,35 +92,6 @@ public class TotalDayType {
             expence = new ArrayList<ExpenceType>();
         }
         return this.expence;
-    }
-
-    /**
-     * Gets the value of the combinedEntry property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the combinedEntry property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCombinedEntry().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link CombinedEntryType }
-     * 
-     * 
-     */
-    public List<CombinedEntryType> getCombinedEntry() {
-        if (combinedEntry == null) {
-            combinedEntry = new ArrayList<CombinedEntryType>();
-        }
-        return this.combinedEntry;
     }
 
 }

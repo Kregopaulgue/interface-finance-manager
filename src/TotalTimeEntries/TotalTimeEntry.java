@@ -1,104 +1,63 @@
 package TotalTimeEntries;
 
-import CombinedExpenceEntries.CombinedOtherExpenceEntry;
 import ExpenceEntries.OtherExpenceEntry;
 
-import java.util.LinkedList;
+import javax.print.attribute.standard.MediaSize;
+import java.util.ArrayList;
+import java.util.ArrayList;
 
 /**
  * Created by Master on 06.12.2017.
  */
 public class TotalTimeEntry {
 
-    protected LinkedList<OtherExpenceEntry> simpleEntries = new LinkedList<OtherExpenceEntry>();
-    protected LinkedList<CombinedOtherExpenceEntry> combinedEntries = new LinkedList<CombinedOtherExpenceEntry>();
-
-    protected Double averageMoneySpent;
-
-    protected Integer simpleEntriesAmount;
-    protected Integer combinedEntriesAmount;
-
+    protected ArrayList<OtherExpenceEntry> simpleEntries = new ArrayList<>();
+    protected Double averageMoneySpent = 0.0;
+    protected Integer entriesAmount = 0;
     protected Double allMoneySpent = 0.0;
-    protected Double allMoneySpentSimpleEntries;
-    protected Double allMoneySpentCombinedEntries;
-
-    protected Double wishedMoneyLimit;
 
     public TotalTimeEntry(){}
 
-    public TotalTimeEntry(LinkedList<OtherExpenceEntry> simpleEntries,
-                          LinkedList<CombinedOtherExpenceEntry> combinedEntries) {
+    public TotalTimeEntry(ArrayList<OtherExpenceEntry> simpleEntries) {
         this.simpleEntries = simpleEntries;
-        this.combinedEntries = combinedEntries;
 
-        this.simpleEntriesAmount = simpleEntries.size();
-        this.combinedEntriesAmount = combinedEntries.size();
+        this.entriesAmount = simpleEntries.size();
 
-        if(simpleEntries.size() != 0 || combinedEntries.size() != 0) {
+        if(simpleEntries.size() != 0) {
             countAllMoneySpent();
             countAverageMoneySpent();
         }
     }
 
     public void countAllMoneySpent() {
-        countAllMoneySpentSimpleEntries();
-        countAllMoneySpentCombinedEntries();
-        this.allMoneySpent = this.allMoneySpentCombinedEntries + this.allMoneySpentSimpleEntries;
-    }
-
-    public void countAllMoneySpentSimpleEntries() {
-        this.allMoneySpentSimpleEntries = 0.0;
         for(OtherExpenceEntry tempEntry : this.simpleEntries) {
-            this.allMoneySpentSimpleEntries += tempEntry.getMoneySpent();
-        }
-    }
-
-    public void countAllMoneySpentCombinedEntries() {
-        this.allMoneySpentCombinedEntries = 0.0;
-        for(CombinedOtherExpenceEntry tempCombinedEntry : this.combinedEntries) {
-            this.allMoneySpentSimpleEntries += tempCombinedEntry.getAllMoneySpent();
+            this.allMoneySpent += tempEntry.getMoneySpent();
         }
     }
 
     public void countAverageMoneySpent() {
-        this.averageMoneySpent = this.allMoneySpent / (simpleEntriesAmount + combinedEntriesAmount);
+        this.averageMoneySpent = this.allMoneySpent / entriesAmount;
     }
 
-    public Double getWishedMoneyLimit() {
-        return wishedMoneyLimit;
-    }
-
-    public void setWishedMoneyLimit(Double wishedMoneyLimit) {
-        this.wishedMoneyLimit = wishedMoneyLimit;
-    }
-
-    public LinkedList<OtherExpenceEntry> getSimpleEntries() {
+    public ArrayList<OtherExpenceEntry> getSimpleEntries() {
         return simpleEntries;
     }
 
-    public void setSimpleEntries(LinkedList<OtherExpenceEntry> simpleEntries) {
+    public void setSimpleEntries(ArrayList<OtherExpenceEntry> simpleEntries) {
         this.simpleEntries = simpleEntries;
     }
 
-    public LinkedList<CombinedOtherExpenceEntry> getCombinedEntries() {
-        return combinedEntries;
-    }
-
-    public void setCombinedEntries(LinkedList<CombinedOtherExpenceEntry> combinedEntries) {
-        this.combinedEntries = combinedEntries;
-    }
-
     public Integer getSimpleEntriesAmount() {
-        return simpleEntriesAmount;
+        return entriesAmount;
     }
 
-    public Integer getCombinedEntriesAmount() {
-        return combinedEntriesAmount;
+    public int getCertainCimpleEntryIndexByObject(OtherExpenceEntry entry) {
+        return this.simpleEntries.indexOf(entry);
     }
 
     public OtherExpenceEntry getMostExpenciveSimpleEntry() {
         OtherExpenceEntry entryToReturn = this.simpleEntries.get(0);
-        for(int i = 1; i < this.simpleEntriesAmount; i++) {
+        for(int i = 1; i < this.entriesAmount; i++) {
             if(this.simpleEntries.get(i).getMoneySpent() > entryToReturn.getMoneySpent()) {
                 entryToReturn = this.simpleEntries.get(i);
             }
@@ -108,7 +67,7 @@ public class TotalTimeEntry {
 
     public OtherExpenceEntry getLessExpenciveSimpleEntry() {
         OtherExpenceEntry entryToReturn = this.simpleEntries.get(0);
-        for(int i = 1; i < this.simpleEntriesAmount; i++) {
+        for(int i = 1; i < this.entriesAmount; i++) {
             if(this.simpleEntries.get(i).getMoneySpent() < entryToReturn.getMoneySpent()) {
                 entryToReturn = this.simpleEntries.get(i);
             }
@@ -116,29 +75,9 @@ public class TotalTimeEntry {
         return entryToReturn;
     }
 
-    public CombinedOtherExpenceEntry getMostExpenciveCombinedEntry() {
-        CombinedOtherExpenceEntry entryToReturn = this.combinedEntries.get(0);
-        for(int i = 1; i < this.simpleEntriesAmount; i++) {
-            if(this.simpleEntries.get(i).getMoneySpent() < entryToReturn.getAllMoneySpent()) {
-                entryToReturn = this.combinedEntries.get(i);
-            }
-        }
-        return entryToReturn;
-    }
-
-    public CombinedOtherExpenceEntry getLessExpenciveCombinedEntry() {
-        CombinedOtherExpenceEntry entryToReturn = this.combinedEntries.get(0);
-        for(int i = 1; i < this.simpleEntriesAmount; i++) {
-            if(this.simpleEntries.get(i).getMoneySpent() > entryToReturn.getAllMoneySpent()) {
-                entryToReturn = this.combinedEntries.get(i);
-            }
-        }
-        return entryToReturn;
-    }
-
     public OtherExpenceEntry getMostImportantSimpleEntry() {
         OtherExpenceEntry entryToReturn = this.simpleEntries.get(0);
-        for(int i = 1; i < this.simpleEntriesAmount; i++) {
+        for(int i = 1; i < this.entriesAmount; i++) {
             if(this.simpleEntries.get(i).getImportance() > entryToReturn.getImportance()) {
                 entryToReturn = this.simpleEntries.get(i);
             }
@@ -148,7 +87,7 @@ public class TotalTimeEntry {
 
     public OtherExpenceEntry getLessImportantSimpleEntry() {
         OtherExpenceEntry entryToReturn = this.simpleEntries.get(0);
-        for(int i = 1; i < this.simpleEntriesAmount; i++) {
+        for(int i = 1; i < this.entriesAmount; i++) {
             if(this.simpleEntries.get(i).getImportance() < entryToReturn.getImportance()) {
                 entryToReturn = this.simpleEntries.get(i);
             }
@@ -158,14 +97,6 @@ public class TotalTimeEntry {
 
     public Double getAllMoneySpent() {
         return allMoneySpent;
-    }
-
-    public Double getAllMoneySpentSimpleEntries() {
-        return allMoneySpentSimpleEntries;
-    }
-
-    public Double getAllMoneySpentCombinedEntries() {
-        return allMoneySpentCombinedEntries;
     }
 
     public void addSimpleEntry(OtherExpenceEntry entryToAdd) {
@@ -182,24 +113,6 @@ public class TotalTimeEntry {
 
     public void deleteSimpleEntry(int entryIndex) {
         this.simpleEntries.remove(entryIndex);
-        countAllMoneySpent();
-        countAverageMoneySpent();
-    }
-
-    public void addCombinedEntry(CombinedOtherExpenceEntry entryToAdd) {
-        this.combinedEntries.add(entryToAdd);
-        countAllMoneySpent();
-        countAverageMoneySpent();
-    }
-
-    public void deleteCombinedEntry(CombinedOtherExpenceEntry entryToDelete) {
-        this.combinedEntries.remove(entryToDelete);
-        countAllMoneySpent();
-        countAverageMoneySpent();
-    }
-
-    public void deleteCombinedEntry(int index) {
-        this.combinedEntries.remove(index);
         countAllMoneySpent();
         countAverageMoneySpent();
     }
@@ -224,26 +137,6 @@ public class TotalTimeEntry {
         }
     }
 
-    public CombinedOtherExpenceEntry getCertainCombinedEntry(int index) {
-        CombinedOtherExpenceEntry entryToReturn = new CombinedOtherExpenceEntry();
-        try {
-            entryToReturn = this.combinedEntries.get(index);
-        } catch (IndexOutOfBoundsException ex) {
-            System.out.println("You entered wrong index");
-            System.out.println("Returning null combined expence entry");
-        }
-        return entryToReturn;
-    }
-
-    public void setCertainCombinedEntry(int index, CombinedOtherExpenceEntry entryToSet) {
-        try {
-            this.combinedEntries.set(index, entryToSet);
-        } catch (IndexOutOfBoundsException ex) {
-            System.out.println("You entered wrong index");
-            System.out.println("Nothing changed");
-        }
-    }
-
     public Double getAverageMoneySpent() {
         return averageMoneySpent;
     }
@@ -252,15 +145,10 @@ public class TotalTimeEntry {
         String informationToReturn = new String();
         informationToReturn += "All money spent: " + this.allMoneySpent.toString() +
                 "\nAverage money spent: " + this.averageMoneySpent.toString() +
-                "\nSimple entries amount: " + this.simpleEntriesAmount.toString() +
-                "\nSimple entries: \n";
+                "\nEntries amount: " + this.entriesAmount.toString() +
+                "\nEntries: \n";
         for(OtherExpenceEntry tempExpence : this.simpleEntries) {
             informationToReturn += "   " + tempExpence.toString();
-        }
-        informationToReturn += "\nCombined entries amount: " + this.combinedEntriesAmount.toString() +
-                "\nCombined entries: ";
-        for(CombinedOtherExpenceEntry tempEntry : this.combinedEntries) {
-            informationToReturn += "   " + tempEntry.toString();
         }
         return informationToReturn;
     }

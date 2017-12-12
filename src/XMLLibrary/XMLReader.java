@@ -1,16 +1,10 @@
 package XMLLibrary;
 
-import CombinedExpenceEntries.CombinedOtherExpenceEntry;
 import Exceptions.DayNotFoundException;
-import Exceptions.ExpenceNotFoundException;
 import Exceptions.MonthNotFoundException;
 import Exceptions.WeekNotFoundException;
-import ExpenceEntries.ExpenceEntry;
-import ExpenceEntries.FoodExpenceEntry;
 import ExpenceEntries.OtherExpenceEntry;
 import Generated.*;
-import HelperTypes.ExpenceEntryType;
-import HelperTypes.FoodType;
 import TotalTimeEntries.TotalDayEntries;
 import TotalTimeEntries.TotalMonthEntries;
 import TotalTimeEntries.TotalWeekEntries;
@@ -20,13 +14,9 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.GregorianCalendar;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.List;
 
 /**
  * Created by Master on 23.10.2017.
@@ -152,21 +142,6 @@ public class XMLReader {
         }
 
         return neededEntry;
-    }
-
-    public static CombinedOtherExpenceEntry readCombinedEntryFromXml(LocalDate date, int index)
-            throws JAXBException, IOException{
-        TotalDayEntries dayToSeekIn = readDayFromXml(date);
-        CombinedOtherExpenceEntry neededCombinedEntry = new CombinedOtherExpenceEntry();
-
-        try {
-            neededCombinedEntry = dayToSeekIn.getCombinedEntries().get(index);
-        } catch (IndexOutOfBoundsException ex) {
-            System.out.println("Combined entry you need not found");
-            System.out.println("Returned null entry");
-        }
-
-        return neededCombinedEntry;
     }
 
 }

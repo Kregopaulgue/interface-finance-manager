@@ -25,8 +25,9 @@
               <menus>
                 <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
                   <items>
+                        <MenuItem fx:id="fileNew" mnemonicParsing="false" onAction="#doNew" text="New" />
+                        <MenuItem fx:id="fileSave" mnemonicParsing="false" onAction="#doSave" text="Save" />
                     <MenuItem fx:id="fileOpen" mnemonicParsing="false" onAction="#doOpen" text="Open" />
-                        <MenuItem fx:id="fileSave" mnemonicParsing="false" text="Save" />
                         <MenuItem fx:id="fileSaveAs" mnemonicParsing="false" onAction="#doSaveAs" text="Save As" />
                         <MenuItem fx:id="fileClose" mnemonicParsing="false" text="Close" />
                   </items>
@@ -34,11 +35,21 @@
                 <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
                   <items>
                     <MenuItem fx:id="editAddEntry" mnemonicParsing="false" onAction="#doAdd" text="Add Entry" />
-                        <MenuItem fx:id="editAddCombinedEntry" mnemonicParsing="false" text="Add Combined  Entry" />
+                        <MenuItem fx:id="editEditEntry" mnemonicParsing="false" onAction="#doEdit" text="Edit Entry" />
+                        <MenuItem fx:id="editDeleteEntry" mnemonicParsing="false" onAction="#doDeleteEntry" text="Delete Entry" />
+                        <MenuItem fx:id="editAddFullYear" mnemonicParsing="false" onAction="#doAddFullYear" text="Add Full Year" />
                         <MenuItem fx:id="editAddCurrentMonth" mnemonicParsing="false" onAction="#doAddCurrentMonth" text="Add Current Month" />
-                        <MenuItem fx:id="editDeleteSelected" mnemonicParsing="false" onAction="#doDeleteSelected" text="Delete Selected" />
+                        <MenuItem fx:id="editDeleteSelected" mnemonicParsing="false" onAction="#doDeleteSelected" text="Delete Selected Time" />
                   </items>
                 </Menu>
+                  <Menu fx:id="findMenu" mnemonicParsing="false" text="Find">
+                     <items>
+                        <MenuItem fx:id="findMostImportant" mnemonicParsing="false" onAction="#getMostImportantEntryInfo" text="Most Important Entry" />
+                        <MenuItem fx:id="findLessImportant" mnemonicParsing="false" onAction="#getLessImportantEntryInfo" text="Less Important Entry" />
+                        <MenuItem fx:id="findMostExpensive" mnemonicParsing="false" onAction="#getMostExpensiveEntryInfo" text="Most Expensive Entry" />
+                        <MenuItem fx:id="findLessExpensive" mnemonicParsing="false" onAction="#getLessExpensiveEntryInfo" text="Less Expensive Entry" />
+                     </items>
+                  </Menu>
                 <Menu fx:id="aboutMenu" mnemonicParsing="false" text="Help">
                   <items>
                     <MenuItem fx:id="helpHowToUse" mnemonicParsing="false" text="How To Use" />
@@ -49,7 +60,7 @@
             </MenuBar>
             <AnchorPane layoutY="27.0" prefHeight="466.0" prefWidth="192.0">
                <children>
-                  <TreeView fx:id="timeTreeView" prefHeight="241.0" prefWidth="200.0" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="3.0">
+                  <TreeView fx:id="timeTreeView" prefHeight="244.0" prefWidth="207.0" AnchorPane.bottomAnchor="219.0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="3.0">
                      <opaqueInsets>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </opaqueInsets>
@@ -57,13 +68,14 @@
                         <Insets bottom="3.0" />
                      </padding></TreeView>
                   <Separator layoutY="275.0" prefHeight="18.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" />
-                  <DatePicker layoutX="13.0" layoutY="250.0" prefHeight="18.0" prefWidth="174.0" AnchorPane.leftAnchor="10.0">
+                  <DatePicker layoutX="3.0" layoutY="250.0" prefHeight="25.0" prefWidth="154.0" AnchorPane.leftAnchor="3.0">
                      <opaqueInsets>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </opaqueInsets>
                   </DatePicker>
-                  <TreeView fx:id="entriesTreeView" layoutX="4.0" layoutY="293.0" prefHeight="136.0" prefWidth="192.0" />
+                  <TreeView fx:id="entriesTreeView" layoutX="4.0" layoutY="293.0" prefHeight="142.0" prefWidth="207.0" />
                   <Button fx:id="getEntries" layoutX="60.0" layoutY="440.0" mnemonicParsing="false" onAction="#doGetEntries" text="Get Entries" />
+                  <Button fx:id="findByDate" layoutX="161.0" layoutY="250.0" mnemonicParsing="false" text="Find" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="497.0" layoutY="27.0" prefHeight="466.0" prefWidth="284.0">
@@ -84,21 +96,23 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </opaqueInsets>
                   </Separator>
-                  <Button fx:id="paintTotal" layoutY="294.0" mnemonicParsing="false" onAction="#doPaintTotalSum" text="Paint Total Money Diagram" />
-                  <Button fx:id="paintAverage" layoutY="327.0" mnemonicParsing="false" onAction="#doPaintAverageMoney" text="Paint Average Money Diagram" />
+                  <Button fx:id="paintTotal" layoutX="23.0" layoutY="297.0" mnemonicParsing="false" onAction="#doPaintTotalSum" text="Paint Total Money Diagram" />
+                  <Button fx:id="paintAverage" layoutX="23.0" layoutY="332.0" mnemonicParsing="false" onAction="#doPaintAverageMoney" text="Paint Average Money Diagram" />
+                  <Button fx:id="paintTotalSelected" layoutX="23.0" layoutY="368.0" mnemonicParsing="false" onAction="#doPaintTotalSumForSelected" text="Paint Total Money Diagram For Selected" />
+                  <Button fx:id="paintAverageSelected" layoutX="23.0" layoutY="409.0" mnemonicParsing="false" onAction="#doPaintAverageMoneyForSelected" text="Paint Average Money Diagram For Selected" />
+                  <Separator layoutX="11.0" orientation="VERTICAL" prefHeight="281.0" prefWidth="6.0" AnchorPane.topAnchor="0.0" />
+                  <Separator layoutX="11.0" layoutY="210.0" orientation="VERTICAL" prefHeight="260.0" prefWidth="6.0" AnchorPane.bottomAnchor="-4.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="200.0" layoutY="27.0" prefHeight="466.0" prefWidth="293.0">
+            <AnchorPane layoutX="200.0" layoutY="27.0" prefHeight="466.0" prefWidth="298.0">
                <children>
                   <Separator layoutY="283.0" prefHeight="3.0" prefWidth="297.0" />
-                  <Separator orientation="VERTICAL" prefHeight="281.0" prefWidth="2.0" AnchorPane.topAnchor="0.0" />
-                  <Separator layoutX="280.0" orientation="VERTICAL" prefHeight="281.0" prefWidth="6.0" AnchorPane.topAnchor="0.0" />
-                  <TextArea fx:id="timeInfoTextArea" layoutX="6.0" prefHeight="244.0" prefWidth="272.0" AnchorPane.bottomAnchor="222.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="0.0" />
-                  <Separator layoutY="276.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" />
-                  <Separator layoutX="280.0" layoutY="276.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" />
-                  <Button fx:id="getTimeInfo" layoutX="15.0" layoutY="254.0" mnemonicParsing="false" onAction="#getSelectedTimeInfo" prefHeight="25.0" prefWidth="254.0" text="Get Selected Time Info" />
-                  <TextArea fx:id="entryInfoTextArea" layoutX="14.0" layoutY="294.0" prefHeight="136.0" prefWidth="254.0" />
-                  <Button fx:id="getEntryInfo" layoutX="14.0" layoutY="440.0" mnemonicParsing="false" onAction="#getSelectedEntryInfo" prefHeight="25.0" prefWidth="254.0" text="Get Selected Entry Info" />
+                  <Separator layoutX="11.0" orientation="VERTICAL" prefHeight="281.0" prefWidth="2.0" AnchorPane.topAnchor="0.0" />
+                  <TextArea fx:id="timeInfoTextArea" layoutX="17.0" prefHeight="244.0" prefWidth="288.0" AnchorPane.bottomAnchor="222.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0" />
+                  <Separator layoutX="11.0" layoutY="266.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" />
+                  <Button fx:id="getTimeInfo" layoutX="31.0" layoutY="254.0" mnemonicParsing="false" onAction="#getSelectedTimeInfo" prefHeight="25.0" prefWidth="261.0" text="Get Selected Time Info" />
+                  <TextArea fx:id="entryInfoTextArea" layoutX="17.0" layoutY="295.0" prefHeight="142.0" prefWidth="288.0" />
+                  <Button fx:id="getEntryInfo" layoutX="26.0" layoutY="440.0" mnemonicParsing="false" onAction="#getSelectedEntryInfo" prefHeight="25.0" prefWidth="254.0" text="Get Selected Entry Info" />
                </children>
             </AnchorPane>
          </children>

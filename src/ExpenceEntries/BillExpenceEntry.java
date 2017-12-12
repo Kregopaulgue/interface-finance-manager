@@ -9,19 +9,6 @@ import java.util.GregorianCalendar;
  * Created by Master on 20.10.2017.
  */
 
-/*
-    BillExpenceEntry:
-    {
-        moneySpent: Double,
-        importance: Integer,
-        comment: String,
-        time: GregorianCalendar,
-        GregorianCalendar: GregorianCalendar,
-        entryType: ExpenceEntryType,
-        String: billDescription
-    }
- */
-
 public class BillExpenceEntry extends OtherExpenceEntry{
 
     //importance by default set to 10

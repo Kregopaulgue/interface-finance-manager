@@ -1,81 +1,37 @@
 package TotalTimeEntries;
 
-import CombinedExpenceEntries.CombinedOtherExpenceEntry;
 import ExpenceEntries.OtherExpenceEntry;
-import HelperInterfaces.GeneralTotalEntryOperations;
-import WorkWithEntryData.WorkWithEntryData;
+import WorkWithData.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  * Created by Master on 23.10.2017.
  */
 
-/*
-        TotalDayEntries
-        {
-
-        ArrayList<TotalDayEntries>: allDayEntriesInMonth,
-
-
-        LinkedList<OtherExpenceEntry>: simpleEntries,
-        LinkedList<CombinedExpenceEntry>: combinedEntries,
-
-        Integer: simpleEntriesAmount,
-        Integer: combinedEntriesAmount,
-
-        Double: allMoneySpent,
-        Double: allMoneySpentSimpleEntries,
-        Double: allMoneySpentCombinedEntries,
-
-        Double: wishedMoneyLimit
-        }
-*/
-
 public class TotalWeekEntries extends TotalTimeEntry {
 
     private ArrayList<TotalDayEntries> allDayEntriesInWeek;
 
-    private LinkedList<OtherExpenceEntry> simpleEntries = new LinkedList<>();
-    private LinkedList<CombinedOtherExpenceEntry> combinedEntries = new LinkedList<>();
-
     private LocalDate beggingDate;
     private LocalDate endDate;
-
-    private Integer simpleEntriesAmount;
-    private Integer combinedEntriesAmount;
-
-    private Double averageMoneySpent;
-
-    private Double allMoneySpent = 0.0;
-    private Double allMoneySpentSimpleEntries;
-    private Double allMoneySpentCombinedEntries;
-
-    private Double wishedMoneyLimit;
 
     public TotalWeekEntries() {
 
     }
 
     public TotalWeekEntries(ArrayList<TotalDayEntries> allDayEntriesInWeek, LocalDate beggingDate, LocalDate endDate) {
-        boolean worthAddingEntries = WorkWithEntryData.getAllMoneySpentDays(allDayEntriesInWeek) != 0.0;
+        boolean worthAddingEntries =
+                WorkWithTimeData.getAllMoneySpentTotalTime(allDayEntriesInWeek) != 0;
         this.allDayEntriesInWeek = allDayEntriesInWeek;
-        this.simpleEntriesAmount = 0;
+        this.entriesAmount = 0;
         for(TotalDayEntries tempDay : allDayEntriesInWeek) {
-            this.simpleEntriesAmount += tempDay.getSimpleEntriesAmount();
+            this.entriesAmount += tempDay.getSimpleEntriesAmount();
         }
         if(worthAddingEntries) {
             this.setSimpleEntries();
-        }
-        this.combinedEntriesAmount = 0;
-        for(TotalDayEntries tempDay : allDayEntriesInWeek) {
-            this.combinedEntriesAmount += tempDay.getCombinedEntriesAmount();
-        }
-        if(worthAddingEntries) {
-            this.setCombinedEntries();
         }
         this.beggingDate = beggingDate;
         this.endDate = endDate;
@@ -93,24 +49,8 @@ public class TotalWeekEntries extends TotalTimeEntry {
         }
     }
 
-    @Override
-    public void countAllMoneySpentSimpleEntries() {
-        this.allMoneySpentSimpleEntries = 0.0;
-        for(int i = 0; i < this.allDayEntriesInWeek.size(); i++) {
-            this.allMoneySpentSimpleEntries += this.allDayEntriesInWeek.get(i).getAllMoneySpentSimpleEntries();
-        }
-    }
-
-    @Override
-    public void countAllMoneySpentCombinedEntries() {
-        this.allMoneySpentCombinedEntries = 0.0;
-        for(int i = 0; i < this.allDayEntriesInWeek.size(); i++) {
-            this.allMoneySpentSimpleEntries += this.allDayEntriesInWeek.get(i).getAllMoneySpentCombinedEntries();
-        }
-    }
-
     public void countAverageMoneySpentByEntries() {
-        this.averageMoneySpent = this.allMoneySpent / (this.simpleEntriesAmount + this.combinedEntriesAmount);
+        this.averageMoneySpent = this.allMoneySpent / entriesAmount;
     }
 
     public ArrayList<TotalDayEntries> getAllDayEntriesInWeek() {
@@ -122,45 +62,23 @@ public class TotalWeekEntries extends TotalTimeEntry {
     }
 
     @Override
-    public LinkedList<OtherExpenceEntry> getSimpleEntries() {
+    public ArrayList<OtherExpenceEntry> getSimpleEntries() {
         return this.simpleEntries;
     }
 
     public void setSimpleEntries() {
         for(TotalDayEntries tempDay : this.allDayEntriesInWeek) {
-            for(OtherExpenceEntry tempSimpleEntry : tempDay.getSimpleEntries()) {
-                this.simpleEntries.add(tempSimpleEntry);
-            }
-        }
-    }
-
-    @Override
-    public LinkedList<CombinedOtherExpenceEntry> getCombinedEntries() {
-        return this.combinedEntries;
-    }
-
-    public void setCombinedEntries() {
-        for(TotalDayEntries tempDay : this.allDayEntriesInWeek) {
-            this.combinedEntries.addAll(tempDay.getCombinedEntries());
+            this.simpleEntries.addAll(tempDay.getSimpleEntries());
         }
     }
 
     public Integer getSimpleEntriesAmount() {
-        this.setSimpleEntriesAmount();
-        return simpleEntriesAmount;
+        this.setEntriesAmount();
+        return entriesAmount;
     }
 
-    public void setSimpleEntriesAmount() {
-        this.simpleEntriesAmount = this.simpleEntries.size();
-    }
-
-    public Integer getCombinedEntriesAmount() {
-        this.setCombinedEntriesAmount();
-        return combinedEntriesAmount;
-    }
-
-    public void setCombinedEntriesAmount() {
-        this.combinedEntriesAmount = this.combinedEntries.size();
+    public void setEntriesAmount() {
+        this.entriesAmount = this.simpleEntries.size();
     }
 
     @Override
@@ -172,33 +90,6 @@ public class TotalWeekEntries extends TotalTimeEntry {
         this.allMoneySpent = allMoneySpent;
     }
 
-    @Override
-    public Double getAllMoneySpentSimpleEntries() {
-        return allMoneySpentSimpleEntries;
-    }
-
-    public void setAllMoneySpentSimpleEntries(Double allMoneySpentSimpleEntries) {
-        this.allMoneySpentSimpleEntries = allMoneySpentSimpleEntries;
-    }
-
-    @Override
-    public Double getAllMoneySpentCombinedEntries() {
-        return allMoneySpentCombinedEntries;
-    }
-
-    public void setAllMoneySpentCombinedEntries(Double allMoneySpentCombinedEntries) {
-        this.allMoneySpentCombinedEntries = allMoneySpentCombinedEntries;
-    }
-
-    @Override
-    public Double getWishedMoneyLimit() {
-        return wishedMoneyLimit;
-    }
-
-    public void setWishedMoneyLimit(Double wishedMoneyLimit) {
-        this.wishedMoneyLimit = wishedMoneyLimit;
-    }
-
     public void setCertainDay(TotalDayEntries totalDayEntry, int index) {
         this.allDayEntriesInWeek.set(index, totalDayEntry);
     }
@@ -208,7 +99,6 @@ public class TotalWeekEntries extends TotalTimeEntry {
         countAllMoneySpent();
         countAverageMoneySpentByEntries();
         setSimpleEntries();
-        setCombinedEntries();
     }
 
     public void deleteDay(TotalDayEntries dayEntry) {
@@ -216,7 +106,6 @@ public class TotalWeekEntries extends TotalTimeEntry {
         countAllMoneySpent();
         countAverageMoneySpentByEntries();
         setSimpleEntries();
-        setCombinedEntries();
     }
 
     public void deleteDay(int index) {
@@ -224,7 +113,6 @@ public class TotalWeekEntries extends TotalTimeEntry {
         countAllMoneySpent();
         countAverageMoneySpentByEntries();
         setSimpleEntries();
-        setCombinedEntries();
     }
 
     public LocalDate getBeggingDate() {

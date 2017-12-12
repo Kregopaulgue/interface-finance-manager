@@ -11,18 +11,6 @@ import HelperTypes.ExpenceEntryType;
  * Created by Master on 18.10.2017.
  */
 
-/*
-    OtherExpenceEntry:
-    {
-        moneySpent: Double,
-        importance: Integer,
-        comment: String,
-        time: GregorianCalendar,
-        GregorianCalendar: GregorianCalendar,
-        entryType: ExpenceEntryType
-    }
- */
-
 public class OtherExpenceEntry extends ExpenceEntry {
 
     protected Double moneySpent;
@@ -146,7 +134,8 @@ public class OtherExpenceEntry extends ExpenceEntry {
                               "\nImportance: " + importance.toString() +
                               "\nDate: " + GregorianCalendar.toString() +
                               "\nEntry type: " + entryType.toString() +
-                              "\nEntry description: " + expenceDescription + "\n";
+                              "\nEntry description: " + expenceDescription +
+                              "\n---------------------------------------\n";
         return stringToReturn;
     }
 

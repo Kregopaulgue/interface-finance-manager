@@ -10,19 +10,6 @@ import java.util.GregorianCalendar;
  * Created by Master on 18.10.2017.
  */
 
-/*
-    FoodExpenceEntry:
-    {
-        moneySpent: Double,
-        importance: Integer,
-        comment: String,
-        time: GregorianCalendar,
-        GregorianCalendar: GregorianCalendar,
-        entryType: ExpenceEntryType,
-        String: textFoodType
-    }
- */
-
 public class FoodExpenceEntry extends OtherExpenceEntry {
 
     private String textFoodType = new String("");

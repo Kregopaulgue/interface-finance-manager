@@ -8,21 +8,10 @@
       <xs:element type="xs:int" name="day"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="CombinedEntryType">
-    <xs:sequence>
-      <xs:element type="OtherExpenceEntriesType" name="OtherExpenceEntries"/>
-      <xs:element type="xs:int" name="amountOfEntries"/>
-      <xs:element type="xs:double" name="allMoneySpent"/>
-      <xs:element type="xs:double" name="averageMoneySpent"/>
-      <xs:element type="dateType" name="date"/>
-      <xs:element type="xs:string" name="combinedEntryType"/>
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="TotalDayType">
     <xs:sequence>
       <xs:element type="dateDayType" name="dateDay"/>
       <xs:element type="ExpenceType" name="Expence" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element type="CombinedEntryType" name="CombinedEntry" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="OtherExpenceEntriesType">
