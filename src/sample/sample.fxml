@@ -96,9 +96,9 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </opaqueInsets>
                   </Separator>
-                  <Button fx:id="paintTotal" layoutX="23.0" layoutY="297.0" mnemonicParsing="false" onAction="#doPaintTotalSum" text="Paint Total Money Diagram" />
-                  <Button fx:id="paintAverage" layoutX="23.0" layoutY="332.0" mnemonicParsing="false" onAction="#doPaintAverageMoney" text="Paint Average Money Diagram" />
-                  <Button fx:id="paintTotalSelected" layoutX="23.0" layoutY="368.0" mnemonicParsing="false" onAction="#doPaintTotalSumForSelected" text="Paint Total Money Diagram For Selected" />
+                  <Button fx:id="paintTotal" layoutX="23.0" layoutY="303.0" mnemonicParsing="false" onAction="#doPaintTotalSum" text="Paint Total Money Diagram" />
+                  <Button fx:id="paintAverage" layoutX="23.0" layoutY="340.0" mnemonicParsing="false" onAction="#doPaintAverageMoney" text="Paint Average Money Diagram" />
+                  <Button fx:id="paintTotalSelected" layoutX="23.0" layoutY="374.0" mnemonicParsing="false" onAction="#doPaintTotalSumForSelected" text="Paint Total Money Diagram For Selected" />
                   <Button fx:id="paintAverageSelected" layoutX="23.0" layoutY="409.0" mnemonicParsing="false" onAction="#doPaintAverageMoneyForSelected" text="Paint Average Money Diagram For Selected" />
                   <Separator layoutX="11.0" orientation="VERTICAL" prefHeight="281.0" prefWidth="6.0" AnchorPane.topAnchor="0.0" />
                   <Separator layoutX="11.0" layoutY="210.0" orientation="VERTICAL" prefHeight="260.0" prefWidth="6.0" AnchorPane.bottomAnchor="-4.0" />
